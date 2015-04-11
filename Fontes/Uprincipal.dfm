@@ -283,7 +283,7 @@ object FrmPrincipal: TFrmPrincipal
     end
   end
   object pnlEndereco: TPanel
-    Left = 267
+    Left = 259
     Top = 125
     Width = 142
     Height = 84
