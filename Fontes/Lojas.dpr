@@ -3,8 +3,10 @@ program Lojas;
 uses
   Forms,
   Udm in '..\Banco\Udm.pas' {DM: TDataModule},
+  U_Modelo in '..\Objetos\U_Modelo.pas' {F_Modelo},
   UCadObjeto in '..\Objetos\UCadObjeto.pas' {FrmCadObjeto},
-  UCadBairros in 'UCadBairros.pas' {FrmCadBairros},
+  UListObjeto in '..\Objetos\UListObjeto.pas' {frmListaObjeto},
+  UCadBairros in 'UCadBairros.pas',
   UCadCidades in 'UCadCidades.pas' {FrmCadCidades},
   UCadClientes in 'UCadClientes.pas' {FrmCadClientes},
   UCadCompras in 'UCadCompras.pas' {FrmCadCompras},
@@ -19,16 +21,14 @@ uses
   UCadProdutos in 'UCadProdutos.pas' {FrmCadProdutos},
   UCadTamanhos in 'UCadTamanhos.pas' {FrmCadTamanhos},
   UCadVenda in 'UCadVenda.pas' {FrmCadVendas},
-  Uprincipal in 'Uprincipal.pas' {FrmPrincipal},
-  U_Modelo in '..\Objetos\U_Modelo.pas' {F_Modelo};
+  UListEndereco in 'UListEndereco.pas' {FrmListaEndereco},
+  Uprincipal in 'Uprincipal.pas' {FrmPrincipal};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.Title := 'LojaTechs.';
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TF_Modelo, F_Modelo);
   Application.Run;
 end.
