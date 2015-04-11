@@ -12,7 +12,7 @@ object DM: TDM
     LoginPrompt = False
     Params.Strings = (
       'DriverName=Interbase'
-      'Database=C:\Users\user\Desktop\ProgamaExemplo\Banco\LOJA.FDB'
+      'Database=C:\Users\user\Desktop\ExemploCoral\Banco\LOJA.FDB'
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'
