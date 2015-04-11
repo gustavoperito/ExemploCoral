@@ -41,7 +41,7 @@ implementation
 procedure TF_Modelo.FormCreate(Sender: TObject);
 begin
 
- ArquivoIni := TIniFile.Create('C:\Users\RoberUau\Desktop\ExemploCoral\config.ini');
+ ArquivoIni := TIniFile.Create('C:\Users\user\Desktop\ExemploCoral\config.ini');
  //Linkando a variavel de memória com o caminho do arquivo no disco.
 
 
