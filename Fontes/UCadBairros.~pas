@@ -1,0 +1,113 @@
+unit UCadBairros;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UCadObjeto, ExtCtrls, StdCtrls, Mask, Buttons, ComCtrls, DBCtrls,
+  Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
+
+type
+  TFrmCadBairros = class(TFrmCadObjeto)
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEnome: TDBEdit;
+    SQLBAI: TSQLDataSet;
+    PROVIDER: TDataSetProvider;
+    CDSBAI: TClientDataSet;
+    DSBAI: TDataSource;
+    SQLBAIIDBAIRRO: TIntegerField;
+    SQLBAINOME_BAI: TStringField;
+    SQLBAISTATTUS_SIS: TStringField;
+    CDSBAIIDBAIRRO: TIntegerField;
+    CDSBAINOME_BAI: TStringField;
+    CDSBAISTATTUS_SIS: TStringField;
+    procedure BtnNovoClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnGravarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadBairros: TFrmCadBairros;
+
+implementation
+
+uses Udm;
+
+{$R *.dfm}
+
+procedure TFrmCadBairros.BtnNovoClick(Sender: TObject);
+begin
+//Gerando o código automaticamente no Auxiliar
+  dm.auxiliar.close;
+  dm.auxiliar.CommandText :=(' SELECT MAX (BAIRROS.IDBAIRRO +1) FROM BAIRROS ');
+  dm.auxiliar.Open;
+
+  //Desligando os Datasets
+  CDSBAI.close;
+  SQLBAI.close;
+                                                        
+  //Zerando o parametro para nao trazer clientes
+  SQLBAI.ParamByName('PARIDBAIRRO').AsInteger:=0;
+
+  //Abrindo os Datasets
+  SQLBAI.Open;
+  CDSBAI.Open;
+
+  //Criando um registro em Branco(e preto) no final do arquivo
+  CDSBAI.Append;
+
+  CDSBAI.FieldByName('IDBAIRRO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger;
+  MedBusca.Text :=IntToStr(CDSBAI.FieldByName('IDBAIRRO').AsInteger);
+
+  //Atribuindo o Status
+  CDSBAISTATTUS_SIS.AsString := 'A';
+  inherited;
+
+end;
+
+procedure TFrmCadBairros.BtnSairClick(Sender: TObject);
+begin
+  inherited;
+  close;
+end;
+
+procedure TFrmCadBairros.BtnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  CDSBAI.Cancel;
+  MedBusca.Text:='';
+  DBEnome.Text:='';
+end;
+
+procedure TFrmCadBairros.BtnGravarClick(Sender: TObject);
+begin
+  If (CDSBAI.State = DsInsert) Then
+    Begin
+      dm.auxiliar.close;
+      dm.auxiliar.CommandText :=(' SELECT MAX (BAIRROS.IDBAIRRO +1) FROM BAIRROS ');
+      dm.auxiliar.Open;
+
+      CDSBAI.FieldByName('IDBAIRRO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger;
+      MedBusca.Text :=IntToStr(CDSBAI.FieldByName('IDBAIRRO').AsInteger);
+    End;
+
+  try
+    CDSBAI.Post;
+    CDSBAI.ApplyUpdates(0);
+  except
+    ShowMessage('Erro de Gravação....');
+    Exit;
+  end;
+
+  CDSBAI.Close;
+  SQLBAI.Close;
+  inherited;
+end;
+
+end.

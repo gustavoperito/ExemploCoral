@@ -1,0 +1,52 @@
+unit UCadItensCompras;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UCadObjeto, StdCtrls, ExtCtrls, Mask, Buttons, ComCtrls, DBCtrls,
+  Grids, DBGrids, FMTBcd, DB, DBClient, Provider, SqlExpr;
+
+type
+  TFrmCadItensCompras = class(TFrmCadObjeto)
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEdit1: TDBEdit;
+    Label3: TLabel;
+    DBEdit2: TDBEdit;
+    Label4: TLabel;
+    DBEdit3: TDBEdit;
+    Label5: TLabel;
+    DBEdit4: TDBEdit;
+    SQLITEMCOMPRA: TSQLDataSet;
+    PROVIDER: TDataSetProvider;
+    CDSITEMCOMPRA: TClientDataSet;
+    DSITEMCOMPRA: TDataSource;
+    SQLITEMCOMPRAIDITENSCOMPRA: TIntegerField;
+    SQLITEMCOMPRAIDPRODUTO: TIntegerField;
+    SQLITEMCOMPRAIDCOMPRA: TIntegerField;
+    SQLITEMCOMPRAVALORUNITARIO_ITENS_COMP: TFMTBCDField;
+    SQLITEMCOMPRAQTDE__INTES_COMP: TIntegerField;
+    SQLITEMCOMPRASTATUS_SIS: TStringField;
+    CDSITEMCOMPRAIDITENSCOMPRA: TIntegerField;
+    CDSITEMCOMPRAIDPRODUTO: TIntegerField;
+    CDSITEMCOMPRAIDCOMPRA: TIntegerField;
+    CDSITEMCOMPRAVALORUNITARIO_ITENS_COMP: TFMTBCDField;
+    CDSITEMCOMPRAQTDE__INTES_COMP: TIntegerField;
+    CDSITEMCOMPRASTATUS_SIS: TStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadItensCompras: TFrmCadItensCompras;
+
+implementation
+
+uses Udm;
+
+{$R *.dfm}
+
+end.

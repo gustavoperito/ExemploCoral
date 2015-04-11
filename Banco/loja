@@ -1,0 +1,301 @@
+/*==============================================================*/
+/* DBMS name:      Firebird                                     */
+/* Created on:     18/09/2014 15:30:37                          */
+/*==============================================================*/
+
+
+drop table BAIRROS;
+
+drop table CIDADES;
+
+drop table CLIENTES;
+
+drop table COMPRAS;
+
+drop table ENDERECOS;
+
+drop table FORNECEDORES;
+
+drop table ITENSCOMPRAS;
+
+drop table ITENSVENDAS;
+
+drop table MARCAS;
+
+drop table MODELOS;
+
+drop table PERCENTUAL;
+
+drop table PRODUTOS;
+
+drop table TAMANHOS;
+
+drop table TIPO_LOGRADOURO;
+
+drop table VENDAS;
+
+/*==============================================================*/
+/* Table: BAIRROS                                               */
+/*==============================================================*/
+create table BAIRROS (
+IDBAIRRO             INTEGER                        not null,
+NOME_BAIRRO          VARCHAR(30)                    not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_BAIRROS primary key (IDBAIRRO)
+);
+
+/*==============================================================*/
+/* Table: CIDADES                                               */
+/*==============================================================*/
+create table CIDADES (
+IDCIDADE             INTEGER                        not null,
+NOME_CID             VARCHAR(30)                    not null,
+UF                   CHAR(2)                        not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_CIDADES primary key (IDCIDADE)
+);
+
+/*==============================================================*/
+/* Table: CLIENTES                                              */
+/*==============================================================*/
+create table CLIENTES (
+IDCLIENTE            INTEGER                        not null,
+IDENDERECO           INTEGER                        not null,
+NOME_CLIENTE         VARCHAR(50)                    not null,
+SEXO_CLIENTE         CHAR(1)                        not null,
+CPF_CLIENTE          CHAR(11)                       not null,
+RG_CLIENTE           CHAR(7)                        not null,
+TELEFONE_CLIENTE     VARCHAR(15),
+CELULAR_CLIENTE      VARCHAR(15),
+EMAIL_CLIENTE        VARCHAR(30),
+PROFISSAO_CLIENTE    VARCHAR(25),
+ESCOLARIDADE_CLIENTE VARCHAR(30)                    not null,
+DATANASC_CLIENTE     DATE                           not null,
+NACIONALIDADE_CLIENTE VARCHAR(25),
+ESTADO_CIVIL_CLIENTE VARCHAR(30),
+TIPOSANGUINEO_CLIENTE VARCHAR(3),
+PESO_CLIENTE         NUMERIC(3,2),
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_CLIENTES primary key (IDCLIENTE)
+);
+
+/*==============================================================*/
+/* Table: COMPRAS                                               */
+/*==============================================================*/
+create table COMPRAS (
+IDCOMPRA             INTEGER                        not null,
+IDFORNECEDOR         INTEGER                        not null,
+NUMNOTA_COMPRA       INTEGER                        not null,
+DATACOMPRA_COMPRA    DATE                           not null,
+VALTOTAL_COMPRA      NUMERIC(3,2)                   not null,
+DESCONTO_COMPRA      NUMERIC(4,2)                   not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_COMPRAS primary key (IDCOMPRA)
+);
+
+/*==============================================================*/
+/* Table: ENDERECOS                                             */
+/*==============================================================*/
+create table ENDERECOS (
+IDENDERECO           INTEGER                        not null,
+IDLOG                INTEGER                        not null,
+IDBAIRRO             INTEGER                        not null,
+IDCIDADE             INTEGER                        not null,
+CEP                  CHAR(8),
+NOME_END             VARCHAR(50)                    not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_ENDERECOS primary key (IDENDERECO)
+);
+
+/*==============================================================*/
+/* Table: FORNECEDORES                                          */
+/*==============================================================*/
+create table FORNECEDORES (
+IDFORNECEDOR         INTEGER                        not null,
+IDENDERECO           INTEGER                        not null,
+NOME_FORNE           VARCHAR(50)                    not null,
+TELERESI_FORNE       VARCHAR(15),
+CELULAR_FORNE        VARCHAR(15),
+CNPJ_FORNE           CHAR(14)                       not null,
+EMAIL_FORNE          VARCHAR(50),
+NOMEFANTASIA_FORNE   VARCHAR(30)                    not null,
+RAZAOSOCIAL_FORNE    VARCHAR(50)                    not null,
+BANCO_FORNE          VARCHAR(30)                    not null,
+INAUGURACAO_FORNE    DATE,
+GERENTE_FORNE        VARCHAR(50)                    not null,
+PRODUTOS_FORNE       VARCHAR(50)                    not null,
+FAX_FORNE            VARCHAR(15)                    not null,
+QUANTFUNC_FORNE      VARCHAR(10),
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_FORNECEDORES primary key (IDFORNECEDOR)
+);
+
+/*==============================================================*/
+/* Table: ITENSCOMPRAS                                          */
+/*==============================================================*/
+create table ITENSCOMPRAS (
+IDITENCOMPRA         INTEGER                        not null,
+IDPRODUTO            INTEGER                        not null,
+IDCOMPRA             INTEGER                        not null,
+VALUNITARIO_COMPRA   NUMERIC(4,2)                   not null,
+QUANTDECOMPRA        INTEGER                        not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_ITENSCOMPRAS primary key (IDITENCOMPRA)
+);
+
+/*==============================================================*/
+/* Table: ITENSVENDAS                                           */
+/*==============================================================*/
+create table ITENSVENDAS (
+IDITENSVENDAS        INTEGER                        not null,
+IDPRODUTO            INTEGER                        not null,
+IDVENDAS             INTEGER                        not null,
+VALUNITARIO_ITENVENDA NUMERIC(3,2)                   not null,
+QTDE_VENDA           INTEGER                        not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_ITENSVENDAS primary key (IDITENSVENDAS)
+);
+
+/*==============================================================*/
+/* Table: MARCAS                                                */
+/*==============================================================*/
+create table MARCAS (
+IDMARCA              INTEGER                        not null,
+NOME_MARCA           VARCHAR(50)                    not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_MARCAS primary key (IDMARCA)
+);
+
+/*==============================================================*/
+/* Table: MODELOS                                               */
+/*==============================================================*/
+create table MODELOS (
+IDMODELO             INTEGER                        not null,
+IDMARCA              INTEGER                        not null,
+DESCRICAO_MODELO     VARCHAR(50)                    not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_MODELOS primary key (IDMODELO)
+);
+
+/*==============================================================*/
+/* Table: PERCENTUAL                                            */
+/*==============================================================*/
+create table PERCENTUAL (
+IDPERCENTUAL         INTEGER                        not null,
+DESCRICAO_PERCE      VARCHAR(30)                    not null,
+PERCEVALOR_PER       NUMERIC                        not null,
+STATUS_SIS           CHAR(1),
+constraint PK_PERCENTUAL primary key (IDPERCENTUAL)
+);
+
+/*==============================================================*/
+/* Table: PRODUTOS                                              */
+/*==============================================================*/
+create table PRODUTOS (
+IDPRODUTO            INTEGER                        not null,
+IDPERCENTUAL         INTEGER,
+IDTAMANHO            INTEGER                        not null,
+IDMODELO             INTEGER                        not null,
+DESCRICAO_PROD       VARCHAR(50)                    not null,
+QTD_PROD             NUMERIC                        not null,
+QTDMIN_PROD          NUMERIC                        not null,
+QTDMAX_PROD          NUMERIC                        not null,
+VALORCOMPRA_PROD     NUMERIC                        not null,
+VALORVENDA_PROD      NUMERIC                        not null,
+STATUS_SIS           CHAR(1),
+constraint PK_PRODUTOS primary key (IDPRODUTO)
+);
+
+/*==============================================================*/
+/* Table: TAMANHOS                                              */
+/*==============================================================*/
+create table TAMANHOS (
+IDTAMANHO            INTEGER                        not null,
+DESCRICAO_TAM        VARCHAR(50)                    not null,
+STATUS_SIS           CHAR(1),
+constraint PK_TAMANHOS primary key (IDTAMANHO)
+);
+
+/*==============================================================*/
+/* Table: TIPO_LOGRADOURO                                       */
+/*==============================================================*/
+create table TIPO_LOGRADOURO (
+IDLOG                INTEGER                        not null,
+NOME_LOG             VARCHAR(25)                    not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_TIPO_LOGRADOURO primary key (IDLOG)
+);
+
+/*==============================================================*/
+/* Table: VENDAS                                                */
+/*==============================================================*/
+create table VENDAS (
+IDVENDAS             INTEGER                        not null,
+IDCLIENTE            INTEGER                        not null,
+DATAVENDA_VENDA      DATE                           not null,
+VALORTOTAL_VENDA     NUMERIC(3,2)                   not null,
+DESCONTO_VENDA       NUMERIC(3,2)                   not null,
+STATUS_SIS           CHAR(1)                        not null,
+constraint PK_VENDAS primary key (IDVENDAS)
+);
+
+alter table CLIENTES
+   add constraint FK_CLIENTES_ENDERECOS_ENDERECO foreign key (IDENDERECO)
+      references ENDERECOS (IDENDERECO);
+
+alter table COMPRAS
+   add constraint FK_COMPRAS_FORNECEDO_FORNECED foreign key (IDFORNECEDOR)
+      references FORNECEDORES (IDFORNECEDOR);
+
+alter table ENDERECOS
+   add constraint FK_ENDERECO_BAIRROS_E_BAIRROS foreign key (IDBAIRRO)
+      references BAIRROS (IDBAIRRO);
+
+alter table ENDERECOS
+   add constraint FK_ENDERECO_CIDADES_E_CIDADES foreign key (IDCIDADE)
+      references CIDADES (IDCIDADE);
+
+alter table ENDERECOS
+   add constraint FK_ENDERECO_LOGRADOUR_TIPO_LOG foreign key (IDLOG)
+      references TIPO_LOGRADOURO (IDLOG);
+
+alter table FORNECEDORES
+   add constraint FK_FORNECED_FORNECEDO_ENDERECO foreign key (IDENDERECO)
+      references ENDERECOS (IDENDERECO);
+
+alter table ITENSCOMPRAS
+   add constraint FK_ITENSCOM_COMPRAS_I_COMPRAS foreign key (IDCOMPRA)
+      references COMPRAS (IDCOMPRA);
+
+alter table ITENSCOMPRAS
+   add constraint FK_ITENSCOM_PRODUTOS__PRODUTOS foreign key (IDPRODUTO)
+      references PRODUTOS (IDPRODUTO);
+
+alter table ITENSVENDAS
+   add constraint FK_ITENSVEN_ITENSVEND_PRODUTOS foreign key (IDPRODUTO)
+      references PRODUTOS (IDPRODUTO);
+
+alter table ITENSVENDAS
+   add constraint FK_ITENSVEN_ITENSVEND_VENDAS foreign key (IDVENDAS)
+      references VENDAS (IDVENDAS);
+
+alter table MODELOS
+   add constraint FK_MODELOS_MARCAS_MO_MARCAS foreign key (IDMARCA)
+      references MARCAS (IDMARCA);
+
+alter table PRODUTOS
+   add constraint FK_PRODUTOS_MODELOS_P_MODELOS foreign key (IDMODELO)
+      references MODELOS (IDMODELO);
+
+alter table PRODUTOS
+   add constraint FK_PRODUTOS_PERCENTUA_PERCENTU foreign key (IDPERCENTUAL)
+      references PERCENTUAL (IDPERCENTUAL);
+
+alter table PRODUTOS
+   add constraint FK_PRODUTOS_TAMANHOS__TAMANHOS foreign key (IDTAMANHO)
+      references TAMANHOS (IDTAMANHO);
+
+alter table VENDAS
+   add constraint FK_VENDAS_CLIENTES__CLIENTES foreign key (IDCLIENTE)
+      references CLIENTES (IDCLIENTE);
+

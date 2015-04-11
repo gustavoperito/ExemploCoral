@@ -1,0 +1,71 @@
+unit UListEndereco;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UListObjeto, FMTBcd, DB, DBClient, Provider, SqlExpr, Grids,
+  DBGrids, ExtCtrls, StdCtrls, UDM;
+
+type
+  TFrmListaEndereco = class(TfrmListaObjeto)
+    SQLLISTNOME_CID: TStringField;
+    SQLLISTNOME_BAI: TStringField;
+    SQLLISTCEP: TStringField;
+    SQLLISTNOME_END: TStringField;
+    rbPesquisa: TRadioGroup;
+    estPesquisa: TEdit;
+    Button1: TButton;
+    Label1: TLabel;
+    CDSLISTCEP: TStringField;
+    CDSLISTNOME_CID: TStringField;
+    CDSLISTNOME_BAI: TStringField;
+    CDSLISTNOME_END: TStringField;
+    rbOrdem: TRadioGroup;
+    procedure Button1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmListaEndereco: TFrmListaEndereco;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmListaEndereco.Button1Click(Sender: TObject);
+begin
+  inherited;
+  SQLLIST.close;
+  CDSLIST.Close;
+  SQLLIST.CommandText:='select '+
+                       ' CIDADES.NOME_CID,'+
+                       ' BAIRROS.NOME_BAI,'+
+                       ' ENDERECOS.CEP,'+
+                       ' ENDERECOS.NOME_END'+
+                       ' from ENDERECOS, CIDADES, BAIRROS'+
+                       ' WHERE' +
+                       ' CIDADES.IDCIDADE = ENDERECOS.IDCIDADE'+
+                       ' AND BAIRROS.IDBAIRRO = ENDERECOS.IDBAIRRO';
+ case rbPesquisa.ItemIndex of
+ 0:SQLLIST.CommandText:= SQLLIST.CommandText + ' AND ENDERECOS.CEP LIKE ' + QuotedStr('%' + estPesquisa.Text+'%');
+ 1:SQLLIST.CommandText:= SQLLIST.CommandText + ' AND CIDADES.NOME_CID LIKE ' + QuotedStr('%'+estPesquisa.Text+'%');
+ 2:SQLLIST.CommandText:= SQLLIST.CommandText + ' AND BAIRROS.NOME_BAI LIKE ' + QuotedStr('%'+estPesquisa.Text+'%');
+ 3:SQLLIST.CommandText:= SQLLIST.CommandText + ' AND ENDERECOS.NOME_END LIKE ' + QuotedStr('%'+estPesquisa.Text+'%');
+ end;
+ case rbOrdem.ItemIndex of
+ 0:SQLLIST.CommandText:= SQLLIST.CommandText + ' ORDER BY ENDERECOS.CEP ';
+ 1:SQLLIST.CommandText:= SQLLIST.CommandText + ' ORDER BY CIDADES.NOME_CID ';
+ 2:SQLLIST.CommandText:= SQLLIST.CommandText + ' ORDER BAIRROS.NOME_BAI ';
+ 3:SQLLIST.CommandText:= SQLLIST.CommandText + ' ORDER ENDERECOS.NOME_END ';
+ end;
+  CDSLIST.Close;
+  CDSLIST.Open;
+  SQLLIST.Open;
+  SQLLIST.close;
+end;
+
+end.

@@ -1,0 +1,351 @@
+unit UCadClientes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UCadObjeto, ExtCtrls, StdCtrls, Mask, Buttons, ComCtrls, DBCtrls,
+  Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd,
+  Provider, SqlExpr, ExtDlgs, Jpeg, ClipBrd;
+
+type
+  TFrmCadClientes = class(TFrmCadObjeto)
+    Label1: TLabel;
+    DSClientes: TDataSource;
+    Label3: TLabel;
+    DBEnome: TDBEdit;
+    Label4: TLabel;
+    DBEcpf: TDBEdit;
+    Label5: TLabel;
+    DBErg: TDBEdit;
+    Label6: TLabel;
+    Label7: TLabel;
+    DDbcEstadocivil: TDBComboBox;
+    Label8: TLabel;
+    DBEmail: TDBEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    DBEcel: TDBEdit;
+    DbcSexo: TDBComboBox;
+    Label11: TLabel;
+    DBEfone: TDBEdit;
+    Label12: TLabel;
+    DBEprof: TDBEdit;
+    Label13: TLabel;
+    DBEnatur: TDBEdit;
+    Label16: TLabel;
+    DBEmae: TDBEdit;
+    Label2: TLabel;
+    DbCep: TDBEdit;
+    Label14: TLabel;
+    DBEdit2: TDBEdit;
+    Label15: TLabel;
+    DbNomeCid: TDBEdit;
+    Label17: TLabel;
+    DBEdit4: TDBEdit;
+    Label18: TLabel;
+    DBEdit5: TDBEdit;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    DbDtNas: TDBEdit;
+    Label19: TLabel;
+    DbDtCad: TDBEdit;
+    SqlCli: TSQLDataSet;
+    Provider: TDataSetProvider;
+    CdsCli: TClientDataSet;
+    SqlCliIDCLIENTE: TIntegerField;
+    SqlCliIDENDERECO: TIntegerField;
+    SqlCliNOME_CLI: TStringField;
+    SqlCliCPF_CLI: TStringField;
+    SqlCliRG_CLI: TStringField;
+    SqlCliESTADO_CIVIL_CLI: TStringField;
+    SqlCliDATA_NASC_CLI: TDateField;
+    SqlCliDATA_CAD_CLI: TDateField;
+    SqlCliEMAIL_CLI: TStringField;
+    SqlCliSEXO_CLI: TStringField;
+    SqlCliCELULAR_CLI: TStringField;
+    SqlCliFONE_CLI: TStringField;
+    SqlCliPROFISSAO_CLI: TStringField;
+    SqlCliNATURALIDADE_CLI: TStringField;
+    SqlCliNUM_END_CLI: TStringField;
+    SqlCliCOMPLEMENTO_CLI: TStringField;
+    SqlCliMAE_CLI: TStringField;
+    SqlCliSTATUS_SIS: TStringField;
+    SqlCliNOME_END: TStringField;
+    SqlCliCEP: TStringField;
+    SqlCliSTATUSEND: TStringField;
+    SqlCliNOME_BAI: TStringField;
+    SqlCliNOME_CID: TStringField;
+    CdsCliIDCLIENTE: TIntegerField;
+    CdsCliIDENDERECO: TIntegerField;
+    CdsCliNOME_CLI: TStringField;
+    CdsCliCPF_CLI: TStringField;
+    CdsCliRG_CLI: TStringField;
+    CdsCliESTADO_CIVIL_CLI: TStringField;
+    CdsCliDATA_NASC_CLI: TDateField;
+    CdsCliDATA_CAD_CLI: TDateField;
+    CdsCliEMAIL_CLI: TStringField;
+    CdsCliSEXO_CLI: TStringField;
+    CdsCliCELULAR_CLI: TStringField;
+    CdsCliFONE_CLI: TStringField;
+    CdsCliPROFISSAO_CLI: TStringField;
+    CdsCliNATURALIDADE_CLI: TStringField;
+    CdsCliNUM_END_CLI: TStringField;
+    CdsCliCOMPLEMENTO_CLI: TStringField;
+    CdsCliMAE_CLI: TStringField;
+    CdsCliSTATUS_SIS: TStringField;
+    CdsCliNOME_END: TStringField;
+    CdsCliCEP: TStringField;
+    CdsCliSTATUSEND: TStringField;
+    CdsCliNOME_BAI: TStringField;
+    CdsCliNOME_CID: TStringField;
+    dbFoto: TDBImage;
+    SqlCliIMAGEM_CLI: TBlobField;
+    CdsCliIMAGEM_CLI: TBlobField;
+    OpenImagem: TOpenPictureDialog;
+    Label20: TLabel;
+    procedure CdsCliCEPValidate(Sender: TField);
+    procedure DBEnomeEnter(Sender: TObject);
+    procedure DBEnomeExit(Sender: TObject);
+    procedure DbCepEnter(Sender: TObject);
+    procedure DbCepExit(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure dbFotoDblClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BtnNovoClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnGravarClick(Sender: TObject);
+    procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmCadClientes: TFrmCadClientes;
+
+implementation
+
+uses Udm, UCadEnderecos, UListEndereco;
+
+
+{$R *.dfm}
+
+procedure TFrmCadClientes.CdsCliCEPValidate(Sender: TField);
+begin
+  //Estamos aqui validando o valor do cep digitado pelo usuário, e
+  //verificando se o mesmo existe. Caso exista, atualizamos os campos
+  //com os devidos valores, caso contrário ficam zerados....
+  DM.auxiliar.Close;
+  DM.auxiliar.CommandText :='';
+  DM.auxiliar.CommandText :=  ' SELECT '  +
+                              ' ENDERECOS.IDENDERECO,'+
+                              ' ENDERECOS.NOME_END,'+
+                              ' ENDERECOS.STATUS_SIS AS STATUSEND,'+
+                              ' BAIRROS.NOME_BAI,'+
+                              ' CIDADES.NOME_CID,'+
+                              ' ENDERECOS.CEP'+
+                              ' FROM ENDERECOS'  +
+                              ' LEFT OUTER JOIN BAIRROS ON (BAIRROS.IDBAIRRO = ENDERECOS.IDBAIRRO)'+
+                              ' LEFT OUTER JOIN CIDADES ON (CIDADES.IDCIDADE = ENDERECOS.IDCIDADE)'+
+                              ' WHERE ENDERECOS.CEP = ' + QuotedStr(cdscliCEP.AsString);
+  DM.auxiliar.Open;
+
+  IF (DM.auxiliar.FieldByName('STATUSEND').AsString <> 'D') THEN
+    BEGIN
+      //SimpleDSClieCEP.AsString      := DM.auxiliar.FIELDBYNAME('CEP').AsString;
+      cdscliNOME_BAI.AsString := DM.auxiliar.FIELDBYNAME('NOME_BAI').AsString;
+      cdscliNOME_CID.AsString := DM.auxiliar.FIELDBYNAME('NOME_CID').AsString;
+      cdscliNOME_END.AsString := DM.auxiliar.FIELDBYNAME('NOME_END').AsString;
+      cdscliIDENDERECO.AsInteger := DM.auxiliar.FIELDBYNAME('IDENDERECO').AsInteger;
+    END
+  ELSE
+    BEGIN
+      //SimpleDSClieCEP.AsString      := '';
+      cdscliNOME_BAI.AsString := '';
+      cdscliNOME_CID.AsString := '';
+      cdscliNOME_END.AsString := '';
+      cdscliIDENDERECO.AsInteger := null;
+      MessageDlg('Cep Desativado....',mtInformation,[MBOK],0);
+      FocusControl(DbCep);
+    END;
+
+end;
+
+procedure TFrmCadClientes.DBEnomeEnter(Sender: TObject);
+begin
+  inherited;
+  if (DBEnome.Color = clwindow) then
+    begin
+      DBEnome.Color := clyellow;
+    end;
+end;
+
+procedure TFrmCadClientes.DBEnomeExit(Sender: TObject);
+begin
+  inherited;
+  DBEnome.Color := clWindow;
+end;
+
+procedure TFrmCadClientes.DbCepEnter(Sender: TObject);
+begin
+  inherited;
+  DbCep.Color := clYellow;
+end;
+
+procedure TFrmCadClientes.DbCepExit(Sender: TObject);
+begin
+  inherited;
+   DbCep.Color := clWindow;
+end;
+
+procedure TFrmCadClientes.SpeedButton2Click(Sender: TObject);
+begin
+  Application.CreateForm(TFrmCadEnderecos, FrmCadEnderecos);
+  FrmCadEnderecos.ShowModal;
+  FrmCadEnderecos.Free;
+  inherited;
+end;
+
+procedure TFrmCadClientes.SpeedButton1Click(Sender: TObject);
+begin
+  Application.CreateForm(TFrmListaEndereco, FrmListaEndereco);
+  FrmListaEndereco.ShowModal;
+  FrmListaEndereco.Free;
+  inherited;
+
+end;
+
+procedure TFrmCadClientes.dbFotoDblClick(Sender: TObject);
+var
+   VariavelImagem : TPicture;
+begin
+  OpenImagem.Execute;
+  VariavelImagem := TPicture.Create();
+  try
+     if (FileExists(OpenImagem.FileName) = true) then
+     begin
+        VariavelImagem.LoadFromFile(OpenImagem.FileName);
+        Clipboard.Assign(VariavelImagem);
+        dbFoto.PasteFromClipboard;
+        VariavelImagem.Free;
+     end;
+  except
+     ShowMessage('Arquivo Invalido...');
+  end;   
+end;
+
+procedure TFrmCadClientes.FormCreate(Sender: TObject);
+begin
+  inherited;
+  dbFoto.Picture := nil;
+end;
+
+procedure TFrmCadClientes.BtnNovoClick(Sender: TObject);
+begin
+  //Gerando o código automaticamente no Auxiliar
+  dm.auxiliar.close;
+  dm.auxiliar.CommandText :=(' SELECT MAX (ENDERECOS.IDENDERECO +1) FROM ENDERECOS ');
+  dm.auxiliar.Open;
+
+  //Desligando os Datasets
+  CdsCli.close;
+  SqlCli.close;
+  //Zerando o parametro para nao trazer clientes
+  SqlCli.ParamByName('PARIDCLIENTE').AsInteger:=0;
+  //Abrindo os Datasets
+  SqlCli.Open;
+  CdsCli.Open;
+
+  //Criando um registro em Branco(e preto) no final do arquivo
+  CdsCli.Append;
+
+  CdsCli.FieldByName('IDCLIENTE').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger;
+  MedBusca.Text :=IntToStr(CdsCli.FieldByName('IDCLIENTE').AsInteger);
+  //Atribuindo o Status
+  CdsCliSTATUS_SIS.AsString := 'A';
+  inherited;
+end;
+
+procedure TFrmCadClientes.BtnCancelarClick(Sender: TObject);
+begin
+  CdsCli.Cancel;
+  inherited;
+
+end;
+
+procedure TFrmCadClientes.BtnGravarClick(Sender: TObject);
+begin
+  //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver
+  //roda novamente a rotina de geração da PK.
+  If (CdsCli.State = DsInsert) Then
+    Begin
+      dm.auxiliar.close;
+      dm.auxiliar.CommandText :=(' SELECT MAX (CLIENTES.IDCLIENTE +1) FROM CLIENTES ');
+      dm.auxiliar.Open;
+
+      CdsCli.FieldByName('IDCLIENTE').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger;
+      MedBusca.Text :=IntToStr(CdsCli.FieldByName('IDCLIENTE').AsInteger);
+    End;
+
+  try
+    CdsCli.Post;
+    CdsCli.ApplyUpdates(0);
+  except
+    ShowMessage('Erro de Gravação....');
+    Exit;
+  end;
+
+  CdsCli.Close;
+  SqlCli.Close;
+  inherited;
+end;
+
+procedure TFrmCadClientes.MedBuscaKeyPress(Sender: TObject; var Key: Char);
+begin
+    if (key = #13) then
+     begin
+        if trim(MedBusca.Text)='' then
+         begin
+          BtnNovoClick(self);
+          //BtnNovo.Click;
+         end
+          else
+           begin
+              dm.auxiliar.Close;
+              dm.auxiliar.CommandText:=' SELECT CLIENTES.IDCLIENTE , CLIENTES.STATUS_SIS  ' +
+                                        ' FROM CLIENTES ' +
+                                         ' WHERE CLIENTES.IDCLIENTE = :PARIDCLIENTE ';
+              dm.auxiliar.ParamByName('PARIDCLIENTE').AsInteger:= StrToInt(MedBusca.Text);
+              dm.auxiliar.Open;
+               if dm.auxiliar.FieldByName('IDCLIENTE').AsInteger>0 then
+                begin
+                    if dm.auxiliar.FieldByName('STATUS_SIS').AsString = 'A' then
+                     begin
+                        Cdscli.Close;
+                        SqlCli.Close;
+                        sqlcli.ParamByName('PARIDCLIENTE').AsInteger:=StrToInt(MedBusca.Text);
+                        sqlcli.Active:=true;
+                        Cdscli.Open;
+                        cdscli.Edit;
+                        ativaedesativa;
+                     end
+                    else
+                     begin
+                        showmessage('Impossível Editar '+#13+#10+' Cliente Desativado!');
+                        MedBusca.SetFocus;
+                     end;
+                end
+                 else
+                  begin
+                     showmessage('Impossível Editar '+#13+#10+' Cliente Inexistente!');
+                     MedBusca.SetFocus;
+                  end;
+           end;
+     end;
+  inherited;
+end;
+
+end.

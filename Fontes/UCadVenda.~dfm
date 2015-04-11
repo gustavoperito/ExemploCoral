@@ -1,0 +1,137 @@
+inherited FrmCadVendas: TFrmCadVendas
+  Left = 198
+  Top = 97
+  Caption = 'CADASTRO DE VENDAS'
+  PixelsPerInch = 96
+  TextHeight = 73
+  inherited PnlTitulo: TPanel
+    Caption = 'VENDAS'
+  end
+  inherited PnlDados: TPanel
+    object Label1: TLabel
+      Left = 40
+      Top = 32
+      Width = 40
+      Height = 16
+      Caption = 'C'#211'DIGO'
+    end
+    object Label2: TLabel
+      Left = 40
+      Top = 64
+      Width = 85
+      Height = 16
+      Caption = 'C'#211'DIGO CLIENTE'
+      FocusControl = DBEdit1
+    end
+    object Label3: TLabel
+      Left = 40
+      Top = 104
+      Width = 82
+      Height = 16
+      Caption = 'DATA DA VENDA'
+      FocusControl = DBEdit2
+    end
+    object Label4: TLabel
+      Left = 40
+      Top = 144
+      Width = 73
+      Height = 16
+      Caption = 'VALOR TOTAL'
+      FocusControl = DBEdit3
+    end
+    object Label5: TLabel
+      Left = 40
+      Top = 176
+      Width = 57
+      Height = 16
+      Caption = 'DESCONTO'
+      FocusControl = DBEdit4
+    end
+    object DBEdit1: TDBEdit
+      Left = 136
+      Top = 59
+      Width = 41
+      Height = 24
+      DataField = 'IDCLIENTE'
+      DataSource = DM.DataSourceVendas
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 131
+      Top = 100
+      Width = 126
+      Height = 24
+      DataField = 'DATAVENDA_VENDA'
+      DataSource = DM.DataSourceVendas
+      TabOrder = 1
+    end
+    object DBEdit3: TDBEdit
+      Left = 128
+      Top = 136
+      Width = 105
+      Height = 24
+      DataField = 'VALORTOTAL_VENDA'
+      DataSource = DM.DataSourceVendas
+      TabOrder = 2
+    end
+    object DBEdit4: TDBEdit
+      Left = 128
+      Top = 168
+      Width = 81
+      Height = 24
+      DataField = 'DESCONTO_VENDA'
+      DataSource = DM.DataSourceVendas
+      TabOrder = 3
+    end
+    object DBGridVendas: TDBGrid
+      Left = 40
+      Top = 240
+      Width = 417
+      Height = 153
+      DataSource = DM.DataSourceVendas
+      TabOrder = 4
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Arial Narrow'
+      TitleFont.Style = [fsBold]
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'IDVENDAS'
+          Title.Caption = 'C'#211'DIGO'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'IDCLIENTE'
+          Title.Caption = 'C'#211'DIGO CLIENTE'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DATAVENDA_VENDA'
+          Title.Caption = 'DATA VENDA'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'VALORTOTAL_VENDA'
+          Title.Caption = 'VALOR TOTAL'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DESCONTO_VENDA'
+          Title.Caption = 'DESCONTO'
+          Visible = True
+        end>
+    end
+  end
+  inherited MedBusca: TMaskEdit
+    Left = 85
+    Top = 85
+    Width = 44
+    Height = 24
+  end
+end

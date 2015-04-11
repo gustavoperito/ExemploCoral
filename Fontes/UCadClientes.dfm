@@ -1,0 +1,944 @@
+inherited FrmCadClientes: TFrmCadClientes
+  Left = 241
+  Top = 118
+  Caption = 'CADASTRO DE CLIENTES'
+  ClientHeight = 572
+  ClientWidth = 982
+  OldCreateOrder = True
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 73
+  inherited PnlTitulo: TPanel
+    Width = 982
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Caption = 'Cadastro de Clientes'
+  end
+  inherited PnlStatus: TPanel
+    Top = 540
+    Width = 982
+    inherited StbStatus: TStatusBar
+      Width = 984
+    end
+  end
+  inherited PnlBotoes: TPanel
+    Left = 857
+    Height = 451
+    Font.Height = -16
+    ParentFont = False
+  end
+  inherited PnlDados: TPanel
+    Width = 857
+    Height = 451
+    Font.Height = -16
+    Font.Name = 'Times New Roman'
+    Font.Style = []
+    object Label1: TLabel
+      Left = 15
+      Top = 11
+      Width = 50
+      Height = 21
+      Caption = 'C'#243'digo'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 15
+      Top = 61
+      Width = 51
+      Height = 21
+      Caption = '* Nome'
+      FocusControl = DBEnome
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 15
+      Top = 169
+      Width = 23
+      Height = 21
+      Caption = 'Cpf'
+      FocusControl = DBEcpf
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 197
+      Top = 170
+      Width = 22
+      Height = 21
+      Caption = 'Rg.'
+      FocusControl = DBErg
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 379
+      Top = 169
+      Width = 72
+      Height = 21
+      Caption = 'Estado civil'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 15
+      Top = 117
+      Width = 103
+      Height = 21
+      Caption = 'Dt. Nascimento'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label8: TLabel
+      Left = 15
+      Top = 321
+      Width = 35
+      Height = 21
+      Caption = 'Email'
+      FocusControl = DBEmail
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label9: TLabel
+      Left = 197
+      Top = 117
+      Width = 32
+      Height = 21
+      Caption = 'Sexo'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 374
+      Top = 118
+      Width = 46
+      Height = 21
+      Caption = 'Celular'
+      FocusControl = DBEcel
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 544
+      Top = 118
+      Width = 33
+      Height = 21
+      Caption = 'Fone'
+      FocusControl = DBEfone
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label12: TLabel
+      Left = 375
+      Top = 321
+      Width = 59
+      Height = 21
+      Caption = 'Profiss'#227'o'
+      FocusControl = DBEprof
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label13: TLabel
+      Left = 544
+      Top = 169
+      Width = 86
+      Height = 21
+      Caption = 'Naturalidade'
+      FocusControl = DBEnatur
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 15
+      Top = 373
+      Width = 29
+      Height = 21
+      Caption = 'M'#227'e'
+      FocusControl = DBEmae
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 15
+      Top = 217
+      Width = 37
+      Height = 21
+      Caption = '* Cep'
+      FocusControl = DbCep
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 160
+      Top = 217
+      Width = 39
+      Height = 21
+      Caption = 'Bairro'
+      FocusControl = DBEdit2
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label15: TLabel
+      Left = 542
+      Top = 217
+      Width = 47
+      Height = 21
+      Caption = 'Cidade'
+      FocusControl = DbNomeCid
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 15
+      Top = 269
+      Width = 63
+      Height = 21
+      Caption = 'Endere'#231'o'
+      FocusControl = DBEdit4
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 382
+      Top = 269
+      Width = 185
+      Height = 21
+      Caption = 'Complemento do Endere'#231'o'
+      FocusControl = DBEdit5
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object SpeedButton1: TSpeedButton
+      Left = 109
+      Top = 238
+      Width = 23
+      Height = 27
+      Caption = '...'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton1Click
+    end
+    object SpeedButton2: TSpeedButton
+      Left = 134
+      Top = 238
+      Width = 23
+      Height = 27
+      Caption = '+'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      OnClick = SpeedButton2Click
+    end
+    object Label19: TLabel
+      Left = 544
+      Top = 57
+      Width = 84
+      Height = 21
+      Caption = 'Dt. Cadastro'
+      FocusControl = DbDtCad
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label20: TLabel
+      Left = 712
+      Top = 57
+      Width = 106
+      Height = 21
+      Caption = 'Foto do Cliente:'
+      FocusControl = DbDtCad
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DBEnome: TDBEdit
+      Left = 13
+      Top = 82
+      Width = 516
+      Height = 29
+      DataField = 'NOME_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnEnter = DBEnomeEnter
+      OnExit = DBEnomeExit
+    end
+    object DBEcpf: TDBEdit
+      Left = 13
+      Top = 190
+      Width = 170
+      Height = 29
+      DataField = 'CPF_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 14
+      ParentFont = False
+      TabOrder = 1
+    end
+    object DBErg: TDBEdit
+      Left = 192
+      Top = 191
+      Width = 169
+      Height = 29
+      DataField = 'RG_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 11
+      ParentFont = False
+      TabOrder = 2
+    end
+    object DDbcEstadocivil: TDBComboBox
+      Left = 375
+      Top = 190
+      Width = 153
+      Height = 29
+      DataField = 'ESTADO_CIVIL_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ItemHeight = 21
+      Items.Strings = (
+        'Casado(a)'
+        'Solteiro(a)'
+        'Vi'#250'vo(a)'
+        'Divorciado(a)')
+      ParentFont = False
+      TabOrder = 3
+    end
+    object DBEmail: TDBEdit
+      Left = 13
+      Top = 342
+      Width = 348
+      Height = 29
+      DataField = 'EMAIL_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+    end
+    object DBEcel: TDBEdit
+      Left = 375
+      Top = 138
+      Width = 151
+      Height = 29
+      DataField = 'CELULAR_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 14
+      ParentFont = False
+      TabOrder = 5
+    end
+    object DbcSexo: TDBComboBox
+      Left = 192
+      Top = 138
+      Width = 169
+      Height = 29
+      DataField = 'SEXO_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ItemHeight = 21
+      Items.Strings = (
+        'M'
+        'F')
+      ParentFont = False
+      TabOrder = 6
+    end
+    object DBEfone: TDBEdit
+      Left = 544
+      Top = 138
+      Width = 161
+      Height = 29
+      DataField = 'FONE_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 14
+      ParentFont = False
+      TabOrder = 7
+    end
+    object DBEprof: TDBEdit
+      Left = 375
+      Top = 342
+      Width = 466
+      Height = 29
+      DataField = 'PROFISSAO_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+    end
+    object DBEnatur: TDBEdit
+      Left = 544
+      Top = 190
+      Width = 161
+      Height = 29
+      DataField = 'NATURALIDADE_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 9
+    end
+    object DBEmae: TDBEdit
+      Left = 13
+      Top = 394
+      Width = 826
+      Height = 29
+      DataField = 'MAE_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 10
+    end
+    object DbCep: TDBEdit
+      Left = 13
+      Top = 238
+      Width = 95
+      Height = 29
+      DataField = 'CEP'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
+      TabOrder = 11
+      OnEnter = DbCepEnter
+      OnExit = DbCepExit
+    end
+    object DBEdit2: TDBEdit
+      Left = 160
+      Top = 238
+      Width = 369
+      Height = 29
+      Color = clSilver
+      DataField = 'NOME_BAI'
+      DataSource = DSClientes
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+    end
+    object DbNomeCid: TDBEdit
+      Left = 544
+      Top = 238
+      Width = 297
+      Height = 29
+      Color = clSilver
+      DataField = 'NOME_CID'
+      DataSource = DSClientes
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 13
+    end
+    object DBEdit4: TDBEdit
+      Left = 13
+      Top = 290
+      Width = 348
+      Height = 29
+      Color = clSilver
+      DataField = 'NOME_END'
+      DataSource = DSClientes
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 14
+    end
+    object DBEdit5: TDBEdit
+      Left = 375
+      Top = 290
+      Width = 466
+      Height = 29
+      DataField = 'COMPLEMENTO_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 15
+    end
+    object DbDtNas: TDBEdit
+      Left = 13
+      Top = 138
+      Width = 172
+      Height = 29
+      DataField = 'DATA_NASC_CLI'
+      DataSource = DSClientes
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
+      TabOrder = 16
+    end
+    object DbDtCad: TDBEdit
+      Left = 544
+      Top = 82
+      Width = 161
+      Height = 29
+      Color = clSilver
+      DataField = 'DATA_CAD_CLI'
+      DataSource = DSClientes
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      MaxLength = 12
+      ParentFont = False
+      TabOrder = 17
+    end
+    object dbFoto: TDBImage
+      Left = 712
+      Top = 80
+      Width = 129
+      Height = 137
+      DataField = 'IMAGEM_CLI'
+      DataSource = DSClientes
+      Stretch = True
+      TabOrder = 18
+      OnDblClick = dbFotoDblClick
+    end
+  end
+  inherited MedBusca: TMaskEdit
+    Left = 13
+    Top = 125
+    Width = 68
+    Height = 29
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    OnKeyPress = MedBuscaKeyPress
+  end
+  object DSClientes: TDataSource
+    DataSet = CdsCli
+    Left = 248
+    Top = 8
+  end
+  object SqlCli: TSQLDataSet
+    CommandText = 
+      'SELECT '#13#10#13#10'CLIENTES.*,'#13#10'ENDERECOS.NOME_END,'#13#10'ENDERECOS.CEP,'#13#10'END' +
+      'ERECOS.STATUS_SIS AS STATUSEND,'#13#10'BAIRROS.NOME_BAI,'#13#10'CIDADES.NOME' +
+      '_CID'#13#10#13#10'FROM CLIENTES'#13#10#13#10'LEFT OUTER JOIN ENDERECOS ON (ENDERECOS' +
+      '.IDENDERECO = CLIENTES.IDENDERECO)'#13#10'LEFT OUTER JOIN CIDADES ON (' +
+      'CIDADES.IDCIDADE = ENDERECOS.IDCIDADE)'#13#10'LEFT OUTER JOIN BAIRROS ' +
+      'ON (BAIRROS.IDBAIRRO = ENDERECOS.IDBAIRRO)'#13#10#13#10#13#10'WHERE CLIENTES.I' +
+      'DCLIENTE = :PARIDCLIENTE '
+    DataSource = DSClientes
+    MaxBlobSize = -1
+    Params = <
+      item
+        DataType = ftString
+        Name = 'PARIDCLIENTE'
+        ParamType = ptInput
+        Value = '0'
+      end>
+    SQLConnection = DM.conexao
+    Left = 72
+    Top = 8
+    object SqlCliIDCLIENTE: TIntegerField
+      FieldName = 'IDCLIENTE'
+      Required = True
+    end
+    object SqlCliIDENDERECO: TIntegerField
+      FieldName = 'IDENDERECO'
+    end
+    object SqlCliNOME_CLI: TStringField
+      FieldName = 'NOME_CLI'
+      Required = True
+      Size = 75
+    end
+    object SqlCliCPF_CLI: TStringField
+      FieldName = 'CPF_CLI'
+      EditMask = '999\.999\.999\-99;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object SqlCliRG_CLI: TStringField
+      FieldName = 'RG_CLI'
+      FixedChar = True
+      Size = 15
+    end
+    object SqlCliESTADO_CIVIL_CLI: TStringField
+      FieldName = 'ESTADO_CIVIL_CLI'
+      Size = 10
+    end
+    object SqlCliDATA_NASC_CLI: TDateField
+      FieldName = 'DATA_NASC_CLI'
+      Required = True
+      EditMask = '99\/99\/9999;1;_'
+    end
+    object SqlCliDATA_CAD_CLI: TDateField
+      FieldName = 'DATA_CAD_CLI'
+      Required = True
+      EditMask = '99\/99\/9999;1:_'
+    end
+    object SqlCliEMAIL_CLI: TStringField
+      FieldName = 'EMAIL_CLI'
+      Size = 100
+    end
+    object SqlCliSEXO_CLI: TStringField
+      FieldName = 'SEXO_CLI'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SqlCliCELULAR_CLI: TStringField
+      FieldName = 'CELULAR_CLI'
+      EditMask = '\(99\)99999\-9999;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object SqlCliFONE_CLI: TStringField
+      FieldName = 'FONE_CLI'
+      EditMask = '\(99\)99999\-9999;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object SqlCliPROFISSAO_CLI: TStringField
+      FieldName = 'PROFISSAO_CLI'
+      Size = 30
+    end
+    object SqlCliNATURALIDADE_CLI: TStringField
+      FieldName = 'NATURALIDADE_CLI'
+    end
+    object SqlCliNUM_END_CLI: TStringField
+      FieldName = 'NUM_END_CLI'
+      FixedChar = True
+      Size = 4
+    end
+    object SqlCliCOMPLEMENTO_CLI: TStringField
+      FieldName = 'COMPLEMENTO_CLI'
+      FixedChar = True
+      Size = 300
+    end
+    object SqlCliMAE_CLI: TStringField
+      FieldName = 'MAE_CLI'
+      Size = 75
+    end
+    object SqlCliSTATUS_SIS: TStringField
+      FieldName = 'STATUS_SIS'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object SqlCliNOME_END: TStringField
+      FieldName = 'NOME_END'
+      ProviderFlags = []
+      Size = 50
+    end
+    object SqlCliCEP: TStringField
+      FieldName = 'CEP'
+      ProviderFlags = []
+      EditMask = '99\.999\-999;0;_'
+      FixedChar = True
+      Size = 8
+    end
+    object SqlCliSTATUSEND: TStringField
+      FieldName = 'STATUSEND'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 1
+    end
+    object SqlCliNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      ProviderFlags = []
+      Size = 30
+    end
+    object SqlCliNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      ProviderFlags = []
+      Size = 30
+    end
+    object SqlCliIMAGEM_CLI: TBlobField
+      FieldName = 'IMAGEM_CLI'
+      Required = True
+      Size = 1
+    end
+  end
+  object Provider: TDataSetProvider
+    DataSet = SqlCli
+    Left = 136
+    Top = 8
+  end
+  object CdsCli: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'Provider'
+    Left = 192
+    Top = 8
+    object CdsCliIDCLIENTE: TIntegerField
+      FieldName = 'IDCLIENTE'
+      Required = True
+    end
+    object CdsCliIDENDERECO: TIntegerField
+      FieldName = 'IDENDERECO'
+    end
+    object CdsCliNOME_CLI: TStringField
+      FieldName = 'NOME_CLI'
+      Required = True
+      Size = 75
+    end
+    object CdsCliCPF_CLI: TStringField
+      FieldName = 'CPF_CLI'
+      EditMask = '999\.999\.999\-99;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object CdsCliRG_CLI: TStringField
+      FieldName = 'RG_CLI'
+      FixedChar = True
+      Size = 15
+    end
+    object CdsCliESTADO_CIVIL_CLI: TStringField
+      FieldName = 'ESTADO_CIVIL_CLI'
+      Size = 10
+    end
+    object CdsCliDATA_NASC_CLI: TDateField
+      FieldName = 'DATA_NASC_CLI'
+      Required = True
+      EditMask = '99\/99\/9999;1;_'
+    end
+    object CdsCliDATA_CAD_CLI: TDateField
+      FieldName = 'DATA_CAD_CLI'
+      Required = True
+      EditMask = '99\/99\/9999;1:_'
+    end
+    object CdsCliEMAIL_CLI: TStringField
+      FieldName = 'EMAIL_CLI'
+      Size = 100
+    end
+    object CdsCliSEXO_CLI: TStringField
+      FieldName = 'SEXO_CLI'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CdsCliCELULAR_CLI: TStringField
+      FieldName = 'CELULAR_CLI'
+      EditMask = '\(99\)99999\-9999;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object CdsCliFONE_CLI: TStringField
+      FieldName = 'FONE_CLI'
+      EditMask = '\(99\)99999\-9999;0;_'
+      FixedChar = True
+      Size = 11
+    end
+    object CdsCliPROFISSAO_CLI: TStringField
+      FieldName = 'PROFISSAO_CLI'
+      Size = 30
+    end
+    object CdsCliNATURALIDADE_CLI: TStringField
+      FieldName = 'NATURALIDADE_CLI'
+    end
+    object CdsCliNUM_END_CLI: TStringField
+      FieldName = 'NUM_END_CLI'
+      FixedChar = True
+      Size = 4
+    end
+    object CdsCliCOMPLEMENTO_CLI: TStringField
+      FieldName = 'COMPLEMENTO_CLI'
+      FixedChar = True
+      Size = 300
+    end
+    object CdsCliMAE_CLI: TStringField
+      FieldName = 'MAE_CLI'
+      Size = 75
+    end
+    object CdsCliSTATUS_SIS: TStringField
+      FieldName = 'STATUS_SIS'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object CdsCliNOME_END: TStringField
+      FieldName = 'NOME_END'
+      ProviderFlags = []
+      Size = 50
+    end
+    object CdsCliCEP: TStringField
+      FieldName = 'CEP'
+      ProviderFlags = []
+      OnValidate = CdsCliCEPValidate
+      EditMask = '99\.999\-999;0;_'
+      FixedChar = True
+      Size = 8
+    end
+    object CdsCliSTATUSEND: TStringField
+      FieldName = 'STATUSEND'
+      ProviderFlags = []
+      FixedChar = True
+      Size = 1
+    end
+    object CdsCliNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      ProviderFlags = []
+      Size = 30
+    end
+    object CdsCliNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      ProviderFlags = []
+      Size = 30
+    end
+    object CdsCliIMAGEM_CLI: TBlobField
+      FieldName = 'IMAGEM_CLI'
+      Required = True
+      Size = 1
+    end
+  end
+  object OpenImagem: TOpenPictureDialog
+    Filter = 
+      'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg|Me' +
+      'tafiles '
+    Left = 720
+    Top = 201
+  end
+end
