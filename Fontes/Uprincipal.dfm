@@ -174,7 +174,7 @@ object FrmPrincipal: TFrmPrincipal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = 16711808
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.444340358790000000
+      Date = 42098.617793877320000000
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -193,7 +193,7 @@ object FrmPrincipal: TFrmPrincipal
     Left = 136
     Top = 125
     Width = 169
-    Height = 180
+    Height = 164
     Color = 16711808
     TabOrder = 1
     Visible = False

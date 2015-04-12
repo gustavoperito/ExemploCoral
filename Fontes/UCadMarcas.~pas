@@ -24,6 +24,8 @@ type
     CDSMARCASTATUS_SIS: TStringField;
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
+    procedure SimpleDSMarcasAfterDelete(DataSet: TDataSet);
+    procedure SimpleDSMarcasAfterPost(DataSet: TDataSet);
     procedure BtnGravarClick(Sender: TObject);
   private
     { Private declarations }

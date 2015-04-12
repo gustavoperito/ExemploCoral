@@ -21,13 +21,13 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   inherited PnlBotoes: TPanel
     Left = 904
-    Top = 100
-    Height = 465
+    Top = 81
+    Height = 484
   end
   inherited PnlDados: TPanel
-    Top = 100
+    Top = 81
     Width = 904
-    Height = 465
+    Height = 484
     Font.Height = -16
     Font.Name = 'Times New Roman'
     Font.Style = []
@@ -239,7 +239,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     object DBEfant: TDBEdit
       Left = 32
       Top = 85
-      Width = 681
+      Width = 705
       Height = 27
       DataField = 'NOME_FANTASIA_FORN'
       DataSource = DsFor
@@ -248,7 +248,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     object DBERazao: TDBEdit
       Left = 32
       Top = 136
-      Width = 681
+      Width = 705
       Height = 27
       DataField = 'RAZAO_SOCIAL_FORN'
       DataSource = DsFor
@@ -354,10 +354,10 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       TabOrder = 12
     end
     object dbFoto: TDBImage
-      Left = 720
-      Top = 8
-      Width = 161
-      Height = 177
+      Left = 744
+      Top = 32
+      Width = 137
+      Height = 153
       DataSource = DsFor
       TabOrder = 13
       OnDblClick = dbFotoDblClick
@@ -365,11 +365,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   inherited MedBusca: TMaskEdit
     Left = 31
+    Top = 112
     Font.Style = []
-  end
-  inherited Panel1: TPanel
-    Top = 81
-    Width = 1029
   end
   object SqlFor: TSQLDataSet
     CommandText = 
@@ -568,7 +565,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   object OpenImagem: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
-    Left = 744
+    Left = 752
     Top = 144
   end
 end

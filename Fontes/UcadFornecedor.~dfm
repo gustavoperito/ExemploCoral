@@ -1,6 +1,6 @@
 inherited FrmCadFornecedores: TFrmCadFornecedores
-  Left = 183
-  Top = 86
+  Left = 216
+  Top = 119
   Caption = 'Cadastro de Fornecedores'
   ClientHeight = 597
   ClientWidth = 1029
@@ -21,13 +21,13 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   inherited PnlBotoes: TPanel
     Left = 904
-    Top = 107
-    Height = 458
+    Top = 81
+    Height = 484
   end
   inherited PnlDados: TPanel
-    Top = 107
+    Top = 81
     Width = 904
-    Height = 458
+    Height = 484
     Font.Height = -16
     Font.Name = 'Times New Roman'
     Font.Style = []
@@ -365,11 +365,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   inherited MedBusca: TMaskEdit
     Left = 31
+    Top = 112
     Font.Style = []
-  end
-  inherited Panel1: TPanel
-    Top = 81
-    Width = 1029
   end
   object SqlFor: TSQLDataSet
     CommandText = 

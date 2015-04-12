@@ -1,6 +1,6 @@
 inherited FrmCadCompras: TFrmCadCompras
-  Left = 586
-  Top = 79
+  Left = 458
+  Top = 166
   Caption = 'CADASTRO DE COMPRAS'
   ClientHeight = 363
   ClientWidth = 678

@@ -1,6 +1,6 @@
 inherited FrmCadClientes: TFrmCadClientes
-  Left = 241
-  Top = 118
+  Left = 232
+  Top = 122
   Caption = 'CADASTRO DE CLIENTES'
   ClientHeight = 572
   ClientWidth = 982

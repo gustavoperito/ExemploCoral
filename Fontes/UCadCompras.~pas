@@ -43,6 +43,8 @@ type
     Label7: TLabel;
     DBEdit7: TDBEdit;
     procedure BtnNovoClick(Sender: TObject);
+    procedure BtnGravarClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,6 +80,38 @@ begin
   MedBusca.Text :=IntToStr(CDSCOMPRA.FieldByName('IDCOMPRA').AsInteger);
 
   CDSCOMPRASTATUS_SIS.AsString := 'A';
+  inherited;
+end;
+
+procedure TFrmCadCompras.BtnGravarClick(Sender: TObject);
+begin
+    If (CDSCOMPRA.State = DsInsert) Then
+    Begin
+      dm.auxiliar.close;
+      dm.auxiliar.CommandText :=(' SELECT MAX (COMPRAS.IDCOMPRA +1) FROM COMPRAS ');
+      dm.auxiliar.Open;
+
+      CDSCOMPRA.FieldByName('IDCOMPRA').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger;
+      MedBusca.Text :=IntToStr(CDSCOMPRA.FieldByName('IDCOMPRA').AsInteger);
+    End;
+
+  try
+    CDSCOMPRA.Post;
+    CDSCOMPRA.ApplyUpdates(0);
+  except
+    ShowMessage('Erro de Gravação....');
+    Exit;
+  end;
+
+  CDSCOMPRA.Close;
+  SQLCOMPRA.Close;
+  inherited;
+end;
+
+procedure TFrmCadCompras.BtnCancelarClick(Sender: TObject);
+begin
+  CDSCOMPRA.Cancel;
+  MedBusca.Text:='';
   inherited;
 end;
 
