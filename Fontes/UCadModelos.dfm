@@ -101,7 +101,6 @@ inherited FrmCadModelos: TFrmCadModelos
     Height = 25
     Font.Height = -15
     Font.Style = []
-    OnKeyPress = MedBuscaKeyPress
   end
   object SQLMODELO: TSQLDataSet
     CommandText = 'select *'#13#10'from MODELOS'#13#10#13#10'WHERE IDMODELO = :PARIDMODELO'

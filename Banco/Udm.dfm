@@ -27,7 +27,7 @@ object DM: TDM
       'Trim Char=False')
     VendorLib = 'gds32.dll'
     Connected = True
-    Left = 64
+    Left = 56
     Top = 40
   end
   object auxiliar: TSQLDataSet

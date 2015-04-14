@@ -117,6 +117,7 @@ type
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
     procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
+    procedure BtnBuscarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -273,7 +274,6 @@ procedure TFrmCadClientes.BtnCancelarClick(Sender: TObject);
 begin
   CdsCli.Cancel;
   inherited;
-
 end;
 
 procedure TFrmCadClientes.BtnGravarClick(Sender: TObject);
@@ -345,6 +345,14 @@ begin
                   end;
            end;
      end;
+  inherited;
+end;
+
+procedure TFrmCadClientes.BtnBuscarClick(Sender: TObject);
+begin
+  Application.CreateForm(TFrmListaEndereco, FrmListaEndereco);
+  FrmListaEndereco.ShowModal;
+  FrmListaEndereco.Free;
   inherited;
 end;
 

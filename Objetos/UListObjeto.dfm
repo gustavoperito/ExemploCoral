@@ -16,13 +16,13 @@ object frmListaObjeto: TfrmListaObjeto
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 862
+    Width = 854
     Height = 73
     Align = alTop
     Caption = 'Listar'
-    Color = clNavy
+    Color = 16711808
     Font.Charset = ANSI_CHARSET
-    Font.Color = clSilver
+    Font.Color = clWhite
     Font.Height = -64
     Font.Name = 'Segoe UI Light'
     Font.Style = []
@@ -32,15 +32,15 @@ object frmListaObjeto: TfrmListaObjeto
   object Panel2: TPanel
     Left = 0
     Top = 73
-    Width = 862
-    Height = 396
+    Width = 854
+    Height = 388
     Align = alClient
     TabOrder = 1
     object DBGrid1: TDBGrid
       Left = 8
-      Top = 8
+      Top = 216
       Width = 841
-      Height = 145
+      Height = 161
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText

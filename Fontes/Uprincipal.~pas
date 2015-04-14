@@ -60,6 +60,11 @@ type
     procedure lblListaEndClick(Sender: TObject);
     procedure lblCadEndClick(Sender: TObject);
     procedure lblCadCompraClick(Sender: TObject);
+    procedure lblClienteMouseLeave(Sender: TObject);
+    procedure lblCadCliMouseEnter(Sender: TObject);
+    procedure lblCadCliMouseLeave(Sender: TObject);
+    procedure lblCadFornMouseEnter(Sender: TObject);
+    procedure lblCadFornMouseLeave(Sender: TObject);
   private
     { Private declarations }
   public
@@ -186,6 +191,7 @@ end;
 procedure TFrmPrincipal.lblClienteMouseEnter(Sender: TObject);
 begin
 pnlCliente.Visible := true;
+lblCliente.Font.Color := clSilver;
 end;
 
 procedure TFrmPrincipal.Panel3MouseMove(Sender: TObject;
@@ -247,6 +253,31 @@ begin
    Application.CreateForm(TFrmCadCompras, FrmCadCompras);
    FrmCadCompras.ShowModal;
    FrmCadCompras.Free;
+end;
+
+procedure TFrmPrincipal.lblClienteMouseLeave(Sender: TObject);
+begin
+   lblCliente.Font.Color := clWhite
+end;
+
+procedure TFrmPrincipal.lblCadCliMouseEnter(Sender: TObject);
+begin
+   lblCadCli.Font.Color:= clSilver;
+end;
+
+procedure TFrmPrincipal.lblCadCliMouseLeave(Sender: TObject);
+begin
+   lblCadCli.Font.Color:= clWhite;
+end;
+
+procedure TFrmPrincipal.lblCadFornMouseEnter(Sender: TObject);
+begin
+   lblCadForn.Font.Color := clSilver;
+end;
+
+procedure TFrmPrincipal.lblCadFornMouseLeave(Sender: TObject);
+begin
+   lblCadForn.Font.Color := clWhite;
 end;
 
 end.

@@ -17,7 +17,7 @@ object FrmPrincipal: TFrmPrincipal
   object shpTopo: TShape
     Left = 0
     Top = 0
-    Width = 1027
+    Width = 1019
     Height = 97
     Align = alTop
     OnMouseMove = Panel3MouseMove
@@ -25,7 +25,7 @@ object FrmPrincipal: TFrmPrincipal
   object shpMenu: TShape
     Left = 0
     Top = 97
-    Width = 1027
+    Width = 1019
     Height = 40
     Align = alTop
     Brush.Color = 16711808
@@ -46,6 +46,7 @@ object FrmPrincipal: TFrmPrincipal
     ParentColor = False
     ParentFont = False
     OnMouseEnter = lblClienteMouseEnter
+    OnMouseLeave = lblClienteMouseLeave
   end
   object LblEndereco: TLabel
     Left = 302
@@ -97,16 +98,16 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 137
     Width = 137
-    Height = 441
+    Height = 433
     Align = alLeft
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
   end
   object shpDireita: TShape
-    Left = 890
+    Left = 882
     Top = 137
     Width = 137
-    Height = 441
+    Height = 433
     Align = alRight
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
@@ -159,8 +160,8 @@ object FrmPrincipal: TFrmPrincipal
   object pnlCorpo: TPanel
     Left = 137
     Top = 137
-    Width = 753
-    Height = 441
+    Width = 745
+    Height = 433
     Align = alClient
     Color = clWhite
     TabOrder = 0
@@ -174,7 +175,7 @@ object FrmPrincipal: TFrmPrincipal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = 16711808
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.444340358790000000
+      Date = 42098.086540347220000000
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -192,35 +193,37 @@ object FrmPrincipal: TFrmPrincipal
   object pnlCliente: TPanel
     Left = 136
     Top = 125
-    Width = 169
-    Height = 180
+    Width = 177
+    Height = 164
     Color = 16711808
     TabOrder = 1
     Visible = False
     object lblCadCli: TLabel
       Left = 11
       Top = 10
-      Width = 113
+      Width = 121
       Height = 17
       Caption = 'Cadastro de Clientes'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = lblCadCliClick
+      OnMouseEnter = lblCadCliMouseEnter
+      OnMouseLeave = lblCadCliMouseLeave
     end
     object LblCadCid: TLabel
       Left = 11
       Top = 85
-      Width = 112
+      Width = 123
       Height = 17
       Caption = 'Cadastro de Cidades'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = LblListaFornClick
@@ -228,13 +231,13 @@ object FrmPrincipal: TFrmPrincipal
     object lblCadEnd: TLabel
       Left = 11
       Top = 60
-      Width = 126
+      Width = 137
       Height = 17
       Caption = 'Cadastro de Endere'#231'os'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = lblCadEndClick
@@ -242,13 +245,13 @@ object FrmPrincipal: TFrmPrincipal
     object lblCadBai: TLabel
       Left = 11
       Top = 110
-      Width = 105
+      Width = 117
       Height = 17
       Caption = 'Cadastro de Bairros'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = Label7Click
@@ -256,27 +259,29 @@ object FrmPrincipal: TFrmPrincipal
     object lblCadForn: TLabel
       Left = 11
       Top = 35
-      Width = 143
+      Width = 156
       Height = 17
       Caption = 'Cadastro de Fornecedores'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = lblCadFornClick
+      OnMouseEnter = lblCadFornMouseEnter
+      OnMouseLeave = lblCadFornMouseLeave
     end
     object lblCadCompra: TLabel
       Left = 11
       Top = 134
-      Width = 117
+      Width = 129
       Height = 17
       Caption = 'Cadastro de Compras'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = lblCadCompraClick
@@ -293,13 +298,13 @@ object FrmPrincipal: TFrmPrincipal
     object lblListaEnd: TLabel
       Left = 11
       Top = 54
-      Width = 103
+      Width = 110
       Height = 17
       Caption = 'Lista de Enderecos'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = lblListaEndClick
@@ -307,26 +312,26 @@ object FrmPrincipal: TFrmPrincipal
     object LblListaCli: TLabel
       Left = 11
       Top = 10
-      Width = 90
+      Width = 94
       Height = 17
       Caption = 'Lista de Clientes'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object LblListaForn: TLabel
       Left = 11
       Top = 32
-      Width = 120
+      Width = 129
       Height = 17
       Caption = 'Lista de Fornecedores'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
-      Font.Name = 'Segoe UI Light'
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       OnClick = LblListaFornClick

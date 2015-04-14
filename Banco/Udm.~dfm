@@ -12,7 +12,9 @@ object DM: TDM
     LoginPrompt = False
     Params.Strings = (
       'DriverName=Interbase'
-      'Database=C:\Users\user\Desktop\ProgamaExemplo\Banco\LOJA.FDB'
+      
+        'Database=D:\Edutec\Documentos\GustavoPerito\ExemploCoral-master\' +
+        'Banco\LOJA.fdb'
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'
@@ -27,7 +29,7 @@ object DM: TDM
       'Trim Char=False')
     VendorLib = 'gds32.dll'
     Connected = True
-    Left = 64
+    Left = 56
     Top = 40
   end
   object auxiliar: TSQLDataSet

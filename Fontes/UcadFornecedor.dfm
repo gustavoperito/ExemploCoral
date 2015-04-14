@@ -236,10 +236,23 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Font.Style = []
       ParentFont = False
     end
+    object Label16: TLabel
+      Left = 752
+      Top = 56
+      Width = 34
+      Height = 21
+      Caption = 'Foto:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
     object DBEfant: TDBEdit
       Left = 32
       Top = 85
-      Width = 705
+      Width = 713
       Height = 27
       DataField = 'NOME_FANTASIA_FORN'
       DataSource = DsFor
@@ -248,7 +261,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     object DBERazao: TDBEdit
       Left = 32
       Top = 136
-      Width = 705
+      Width = 713
       Height = 27
       DataField = 'RAZAO_SOCIAL_FORN'
       DataSource = DsFor
@@ -275,7 +288,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     object DBErepres: TDBEdit
       Left = 32
       Top = 192
-      Width = 849
+      Width = 713
       Height = 27
       DataField = 'CONTATO_FORN'
       DataSource = DsFor
@@ -354,10 +367,10 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       TabOrder = 12
     end
     object dbFoto: TDBImage
-      Left = 744
-      Top = 32
-      Width = 137
-      Height = 153
+      Left = 752
+      Top = 80
+      Width = 129
+      Height = 137
       DataSource = DsFor
       TabOrder = 13
       OnDblClick = dbFotoDblClick
@@ -565,7 +578,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   object OpenImagem: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
-    Left = 752
-    Top = 144
+    Left = 760
+    Top = 176
   end
 end

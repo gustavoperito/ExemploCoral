@@ -22,7 +22,8 @@ uses
   UCadTamanhos in 'UCadTamanhos.pas' {FrmCadTamanhos},
   UCadVenda in 'UCadVenda.pas' {FrmCadVendas},
   UListEndereco in 'UListEndereco.pas' {FrmListaEndereco},
-  Uprincipal in 'Uprincipal.pas' {FrmPrincipal};
+  Uprincipal in 'Uprincipal.pas' {FrmPrincipal},
+  UListFornecedor in 'UListFornecedor.pas' {frmListaFornecedor};
 
 {$R *.res}
 
@@ -30,5 +31,6 @@ begin
   Application.Initialize;
   Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TfrmListaFornecedor, frmListaFornecedor);
   Application.Run;
 end.

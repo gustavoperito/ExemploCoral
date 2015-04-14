@@ -78,6 +78,7 @@ type
     CdsForINSCRICAO_EST_FORN: TStringField;
     CdsForSTATUS_SIS: TStringField;
     CdsForCEP: TStringField;
+    Label16: TLabel;
     procedure dbFotoDblClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);

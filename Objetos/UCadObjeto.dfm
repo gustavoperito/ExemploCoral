@@ -14,7 +14,7 @@ object FrmCadObjeto: TFrmCadObjeto
   Font.Style = [fsBold]
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 73
   object PnlTitulo: TPanel
@@ -117,7 +117,6 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      OnClick = BtnGravarClick
       Glyph.Data = {
         F2010000424DF201000000000000760000002800000024000000130000000100
         0400000000007C01000000000000000000001000000000000000000000000000
@@ -211,7 +210,6 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 4
-      OnClick = BtnCancelarClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -244,7 +242,6 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 5
-      OnClick = BtnSairClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -296,7 +293,6 @@ object FrmCadObjeto: TFrmCadObjeto
   end
   object Timer1: TTimer
     Interval = 100
-    OnTimer = Timer1Timer
     Left = 16
     Top = 8
   end

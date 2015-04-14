@@ -29,7 +29,6 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TDM, DM);
-  Application.CreateForm(TF_Modelo, F_Modelo);
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.Run;
 end.

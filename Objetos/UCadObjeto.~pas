@@ -4,10 +4,11 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Mask, ExtCtrls, ComCtrls;
+  Dialogs, StdCtrls, Buttons, Mask, ExtCtrls, ComCtrls,
+  U_Modelo;
 
 type
-  TFrmCadObjeto = class(TForm)
+  TFrmCadObjeto = class(TF_Modelo)
     PnlTitulo: TPanel;
     PnlStatus: TPanel;
     PnlBotoes: TPanel;
@@ -27,6 +28,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +41,8 @@ var
   fechar:boolean;
 
 implementation
+
+//uses U_Modelo;
 
 {$R *.dfm}
 
@@ -103,6 +107,12 @@ begin
       begin
         StbStatus.Panels[2].Text:='';
       end; 
+end;
+
+procedure TFrmCadObjeto.FormShow(Sender: TObject);
+begin
+  Caption:= DadosConfigura.Versao;
+  inherited;
 end;
 
 end.
