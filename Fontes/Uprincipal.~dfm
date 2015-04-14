@@ -12,12 +12,13 @@ object FrmPrincipal: TFrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object shpTopo: TShape
     Left = 0
     Top = 0
-    Width = 1019
+    Width = 1027
     Height = 97
     Align = alTop
     OnMouseMove = Panel3MouseMove
@@ -25,10 +26,10 @@ object FrmPrincipal: TFrmPrincipal
   object shpMenu: TShape
     Left = 0
     Top = 97
-    Width = 1019
+    Width = 1027
     Height = 40
     Align = alTop
-    Brush.Color = 16711808
+    Brush.Color = clBlack
     OnMouseMove = Panel3MouseMove
   end
   object lblCliente: TLabel
@@ -98,16 +99,16 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 137
     Width = 137
-    Height = 433
+    Height = 441
     Align = alLeft
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
   end
   object shpDireita: TShape
-    Left = 882
+    Left = 890
     Top = 137
     Width = 137
-    Height = 433
+    Height = 441
     Align = alRight
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
@@ -160,8 +161,8 @@ object FrmPrincipal: TFrmPrincipal
   object pnlCorpo: TPanel
     Left = 137
     Top = 137
-    Width = 745
-    Height = 433
+    Width = 753
+    Height = 441
     Align = alClient
     Color = clWhite
     TabOrder = 0
@@ -175,7 +176,7 @@ object FrmPrincipal: TFrmPrincipal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = 16711808
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.086540347220000000
+      Date = 42098.765038356480000000
       TabOrder = 0
     end
     object Memo1: TMemo

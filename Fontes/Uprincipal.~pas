@@ -5,10 +5,11 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, ExtCtrls, ToolWin, ActnMan, ActnCtrls,
-  ActnMenus, ComCtrls;
+  ActnMenus, ComCtrls,
+  U_Modelo;
 
 type
-  TFrmPrincipal = class(TForm)
+  TFrmPrincipal = class(TF_Modelo)
     lblCliente: TLabel;
     pnlCliente: TPanel;
     lblCadCli: TLabel;
@@ -65,6 +66,7 @@ type
     procedure lblCadCliMouseLeave(Sender: TObject);
     procedure lblCadFornMouseEnter(Sender: TObject);
     procedure lblCadFornMouseLeave(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -278,6 +280,12 @@ end;
 procedure TFrmPrincipal.lblCadFornMouseLeave(Sender: TObject);
 begin
    lblCadForn.Font.Color := clWhite;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  shpMenu.Brush.Color := StringToColor(DadosConfigura.Corum)
+  inherited;
 end;
 
 end.

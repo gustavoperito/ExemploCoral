@@ -22,6 +22,8 @@ type
                           Cliente   : String[60];
                           Banco     : String[100];
                           FundoForm : String;
+                          Corum     : String;
+                          Cordois   : String;
                       End;
 
     { Public declarations }
@@ -50,8 +52,8 @@ begin
  DadosConfigura.Versao    :=  ArquivoIni.ReadString('SOFTWARE','VERSAO','Pirata');
  DadosConfigura.Cliente   :=  ArquivoIni.ReadString('SOFTWARE','CLIENTE','Cliente Não Registrado');
  DadosConfigura.Banco     :=  ArquivoIni.ReadString('BANCO','CAMINHO','');
- DadosConfigura.FundoForm :=  ArquivoIni.ReadString('CONFIGURACOES','CORFUNDOFORM','ClYellow');
-
+ DadosConfigura.Corum     :=  ArquivoIni.ReadString('CONFIGURACOES','CORUM','clWhite');
+ DadosConfigura.Cordois   :=  ArquivoIni.ReadString('CONFIGURACOES','CORDOIS','clWhite');
  ArquivoIni.Free;
  //Descarregando o arquivo.ini da memória.....
 end;

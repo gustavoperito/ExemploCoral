@@ -41,6 +41,8 @@ var
   fechar:boolean;
 
 implementation
+
+uses Udm;
 
 //uses U_Modelo;
 
@@ -111,7 +113,9 @@ end;
 
 procedure TFrmCadObjeto.FormShow(Sender: TObject);
 begin
-  Caption:= DadosConfigura.Versao;
+  Caption:=DadosConfigura.Aplicacao+' '+DadosConfigura.Versao;
+  PnlTitulo.Color:= StringToColor(DadosConfigura.CorUM);
+  PnlTitulo.Font.Color:= stringtocolor(DadosConfigura.Cordois);
   inherited;
 end;
 

@@ -26,7 +26,7 @@ object FrmCadObjeto: TFrmCadObjeto
     BevelOuter = bvNone
     BiDiMode = bdLeftToRight
     Caption = 'T'#205'TULO'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -64
@@ -293,6 +293,7 @@ object FrmCadObjeto: TFrmCadObjeto
   end
   object Timer1: TTimer
     Interval = 100
+    OnTimer = Timer1Timer
     Left = 16
     Top = 8
   end
