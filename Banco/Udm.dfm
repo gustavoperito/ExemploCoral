@@ -1,7 +1,7 @@
 object DM: TDM
-  OldCreateOrder = False
-  Left = 788
-  Top = 179
+  OldCreateOrder = True
+  Left = 802
+  Top = 102
   Height = 203
   Width = 211
   object conexao: TSQLConnection
@@ -12,7 +12,7 @@ object DM: TDM
     LoginPrompt = False
     Params.Strings = (
       'DriverName=Interbase'
-      'Database=C:\Users\user\Desktop\ExemploCoral\Banco\LOJA.FDB'
+      'Database='
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'
@@ -26,7 +26,6 @@ object DM: TDM
       'Interbase TransIsolation=ReadCommited'
       'Trim Char=False')
     VendorLib = 'gds32.dll'
-    Connected = True
     Left = 56
     Top = 40
   end

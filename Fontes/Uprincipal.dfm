@@ -1,6 +1,6 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 205
-  Top = 131
+  Left = 226
+  Top = 186
   Width = 1035
   Height = 609
   Caption = 'Lojas'
@@ -176,7 +176,7 @@ object FrmPrincipal: TFrmPrincipal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = 16711808
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.765038356480000000
+      Date = 42098.792951076390000000
       TabOrder = 0
     end
     object Memo1: TMemo

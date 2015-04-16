@@ -283,8 +283,18 @@ begin
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);
+var
+   caminhoexe:string;
 begin
   shpMenu.Brush.Color := StringToColor(DadosConfigura.Corum);
+
+  caminhoexe := ExtractFilePath(Application.ExeName);
+  DM.conexao.ParamsLoaded:=True;
+  DM.conexao.Params.Values['DriverName'] := 'Interbase';
+  DM.conexao.Params.Values['Database']  := caminhoexe+'\Banco\LOJA.fdb';
+  DM.conexao.Params.Values['User_Name'] := 'SYSDBA';
+  DM.conexao.Params.Values['Password']  := 'masterkey';
+  DM.conexao.Params.Values['SQLDialect']:= '3';
   inherited;
 end;
 

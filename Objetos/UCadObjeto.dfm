@@ -242,6 +242,7 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      OnClick = BtnSairClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000

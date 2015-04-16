@@ -29,8 +29,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TDM, DM);
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TfrmListaFornecedor, frmListaFornecedor);
+  Application.CreateForm(TDM, DM);
   Application.Run;
 end.

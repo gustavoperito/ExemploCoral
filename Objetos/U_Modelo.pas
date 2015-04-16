@@ -41,9 +41,12 @@ implementation
 {$R *.dfm}
 
 procedure TF_Modelo.FormCreate(Sender: TObject);
+var
+   caminhoexe : String ;
 begin
 
- ArquivoIni := TIniFile.Create('C:\Users\user\Desktop\ExemploCoral\config.ini');
+ caminhoexe := ExtractFilePath(Application.ExeName);
+ ArquivoIni := TIniFile.Create(caminhoexe+'config.ini');
  //Linkando a variavel de memória com o caminho do arquivo no disco.
 
 

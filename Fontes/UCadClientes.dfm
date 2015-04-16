@@ -1,6 +1,6 @@
 inherited FrmCadClientes: TFrmCadClientes
-  Left = 330
-  Top = 80
+  Left = 172
+  Top = 110
   Caption = 'CADASTRO DE CLIENTES'
   ClientHeight = 572
   ClientWidth = 982
@@ -33,6 +33,9 @@ inherited FrmCadClientes: TFrmCadClientes
     end
     inherited BtnCancelar: TBitBtn
       OnClick = BtnCancelarClick
+    end
+    inherited BtnSair: TBitBtn
+      OnClick = BtnSairClick
     end
   end
   inherited PnlDados: TPanel
