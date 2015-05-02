@@ -1,8 +1,8 @@
 inherited FrmCadFornecedores: TFrmCadFornecedores
-  Left = 216
-  Top = 119
+  Left = 232
+  Top = 112
   Caption = 'Cadastro de Fornecedores'
-  ClientHeight = 597
+  ClientHeight = 524
   ClientWidth = 1029
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -13,7 +13,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     Caption = 'FORNECEDORES'
   end
   inherited PnlStatus: TPanel
-    Top = 565
+    Top = 492
     Width = 1029
     inherited StbStatus: TStatusBar
       Width = 1032
@@ -22,18 +22,24 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   inherited PnlBotoes: TPanel
     Left = 904
     Top = 81
-    Height = 484
+    Height = 411
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
+    inherited BtnCancelar: TBitBtn
+      OnClick = BtnCancelarClick
+    end
   end
   inherited PnlDados: TPanel
     Top = 81
     Width = 904
-    Height = 484
+    Height = 411
     Font.Height = -16
     Font.Name = 'Times New Roman'
     Font.Style = []
     object Label1: TLabel
-      Left = 32
-      Top = 10
+      Left = 35
+      Top = 16
       Width = 49
       Height = 21
       Caption = 'C'#243'digo'
@@ -45,8 +51,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 32
-      Top = 64
+      Left = 136
+      Top = 16
       Width = 98
       Height = 21
       Caption = 'Nome Fantasia'
@@ -60,7 +66,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label3: TLabel
       Left = 32
-      Top = 112
+      Top = 64
       Width = 83
       Height = 21
       Caption = 'Raz'#227'o Social'
@@ -72,22 +78,9 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Font.Style = []
       ParentFont = False
     end
-    object Label4: TLabel
-      Left = 512
-      Top = 280
-      Width = 73
-      Height = 21
-      Caption = 'Residencial'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
-      Font.Style = []
-      ParentFont = False
-    end
     object Label5: TLabel
       Left = 720
-      Top = 336
+      Top = 288
       Width = 46
       Height = 21
       Caption = 'Celular'
@@ -101,7 +94,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label6: TLabel
       Left = 32
-      Top = 171
+      Top = 123
       Width = 97
       Height = 21
       Caption = 'Representante'
@@ -114,8 +107,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 512
-      Top = 224
+      Left = 32
+      Top = 232
       Width = 33
       Height = 21
       Caption = 'CNPJ'
@@ -128,8 +121,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 32
-      Top = 280
+      Left = 392
+      Top = 232
       Width = 35
       Height = 21
       Caption = 'Email'
@@ -143,7 +136,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label9: TLabel
       Left = 32
-      Top = 336
+      Top = 288
       Width = 28
       Height = 21
       Caption = 'SITE'
@@ -156,7 +149,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label10: TLabel
       Left = 488
-      Top = 248
+      Top = 200
       Width = 4
       Height = 21
       Font.Charset = ANSI_CHARSET
@@ -168,7 +161,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label11: TLabel
       Left = 32
-      Top = 392
+      Top = 344
       Width = 86
       Height = 21
       Caption = 'Observa'#231#245'es'
@@ -181,8 +174,8 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 720
-      Top = 224
+      Left = 224
+      Top = 232
       Width = 118
       Height = 21
       Caption = 'Inscri'#231#227'o Estadual'
@@ -196,25 +189,11 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label13: TLabel
       Left = 32
-      Top = 224
-      Width = 63
+      Top = 176
+      Width = 31
       Height = 21
-      Caption = 'Endere'#231'o'
+      Caption = 'CEP:'
       FocusControl = DBEender
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label14: TLabel
-      Left = 720
-      Top = 280
-      Width = 144
-      Height = 21
-      Caption = 'N'#250'mero do Endere'#231'o'
-      FocusControl = DBENumend
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -224,7 +203,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label15: TLabel
       Left = 512
-      Top = 392
+      Top = 344
       Width = 96
       Height = 21
       Caption = 'Complemento'
@@ -238,7 +217,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object Label16: TLabel
       Left = 752
-      Top = 56
+      Top = 8
       Width = 34
       Height = 21
       Caption = 'Foto:'
@@ -249,10 +228,52 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Font.Style = []
       ParentFont = False
     end
+    object Label17: TLabel
+      Left = 224
+      Top = 176
+      Width = 117
+      Height = 21
+      Caption = 'Nome da Cidade:'
+      FocusControl = DBEdit1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 392
+      Top = 176
+      Width = 110
+      Height = 21
+      Caption = 'Nome do Bairro:'
+      FocusControl = DBEdit2
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label14: TLabel
+      Left = 584
+      Top = 176
+      Width = 134
+      Height = 21
+      Caption = 'Nome do Endere'#231'o:'
+      FocusControl = DBEdit3
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI Light'
+      Font.Style = []
+      ParentFont = False
+    end
     object DBEfant: TDBEdit
-      Left = 32
-      Top = 85
-      Width = 713
+      Left = 136
+      Top = 37
+      Width = 609
       Height = 27
       DataField = 'NOME_FANTASIA_FORN'
       DataSource = DsFor
@@ -260,131 +281,149 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object DBERazao: TDBEdit
       Left = 32
-      Top = 136
+      Top = 88
       Width = 713
       Height = 27
       DataField = 'RAZAO_SOCIAL_FORN'
       DataSource = DsFor
       TabOrder = 1
     end
-    object DBEresidencial: TDBEdit
-      Left = 512
-      Top = 304
-      Width = 201
-      Height = 27
-      DataField = 'FONE1_FORN'
-      DataSource = DsFor
-      TabOrder = 2
-    end
     object DBEcel: TDBEdit
       Left = 720
-      Top = 360
-      Width = 161
+      Top = 312
+      Width = 166
       Height = 27
       DataField = 'FONE2_FORN'
       DataSource = DsFor
-      TabOrder = 3
+      TabOrder = 2
     end
     object DBErepres: TDBEdit
       Left = 32
-      Top = 192
+      Top = 144
       Width = 713
       Height = 27
       DataField = 'CONTATO_FORN'
       DataSource = DsFor
-      TabOrder = 4
+      TabOrder = 3
     end
     object DBEcnpj: TDBEdit
-      Left = 512
-      Top = 248
-      Width = 201
+      Left = 32
+      Top = 256
+      Width = 185
       Height = 27
       DataField = 'CNPJ_FORN'
       DataSource = DsFor
-      TabOrder = 5
+      TabOrder = 4
     end
     object DBEmail: TDBEdit
-      Left = 32
-      Top = 304
-      Width = 473
+      Left = 392
+      Top = 256
+      Width = 497
       Height = 27
       DataField = 'EMAIL_FORN'
       DataSource = DsFor
-      TabOrder = 6
+      TabOrder = 5
     end
     object DBEobds: TDBEdit
       Left = 32
-      Top = 416
+      Top = 368
       Width = 473
       Height = 27
       DataField = 'OBS_FORN'
       DataSource = DsFor
-      TabOrder = 7
+      TabOrder = 6
     end
     object DBEinscEst: TDBEdit
-      Left = 720
-      Top = 248
+      Left = 224
+      Top = 256
       Width = 161
       Height = 27
       DataField = 'INSCRICAO_EST_FORN'
       DataSource = DsFor
-      TabOrder = 8
+      TabOrder = 7
     end
     object DBEsite: TDBEdit
       Left = 32
-      Top = 360
+      Top = 312
       Width = 681
       Height = 27
       DataField = 'SITE'
       DataSource = DsFor
-      TabOrder = 9
+      TabOrder = 8
     end
     object DBEender: TDBEdit
       Left = 32
-      Top = 248
-      Width = 473
+      Top = 200
+      Width = 185
       Height = 27
-      DataField = 'IDENDERECO'
+      DataField = 'CEP'
       DataSource = DsFor
-      TabOrder = 10
-    end
-    object DBENumend: TDBEdit
-      Left = 720
-      Top = 304
-      Width = 160
-      Height = 27
-      DataField = 'NUM_END_FORN'
-      DataSource = DsFor
-      TabOrder = 11
+      TabOrder = 9
     end
     object DBEcompl: TDBEdit
       Left = 512
-      Top = 416
-      Width = 384
+      Top = 368
+      Width = 374
       Height = 27
       DataField = 'COMPLEMENTO_FORN'
       DataSource = DsFor
-      TabOrder = 12
+      TabOrder = 10
     end
     object dbFoto: TDBImage
       Left = 752
-      Top = 80
+      Top = 32
       Width = 129
       Height = 137
+      DataField = 'FOTO_FORN'
+      DataSource = DsFor
+      Stretch = True
+      TabOrder = 11
+      OnDblClick = dbFotoDblClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 224
+      Top = 200
+      Width = 161
+      Height = 27
+      Color = clSilver
+      DataField = 'NOME_CID'
+      DataSource = DsFor
+      TabOrder = 12
+    end
+    object DBEdit2: TDBEdit
+      Left = 392
+      Top = 200
+      Width = 185
+      Height = 27
+      Color = clSilver
+      DataField = 'NOME_BAI'
       DataSource = DsFor
       TabOrder = 13
-      OnDblClick = dbFotoDblClick
+    end
+    object DBEdit3: TDBEdit
+      Left = 584
+      Top = 200
+      Width = 305
+      Height = 27
+      Color = clSilver
+      DataField = 'NOME_END'
+      DataSource = DsFor
+      TabOrder = 14
     end
   end
   inherited MedBusca: TMaskEdit
-    Left = 31
-    Top = 112
+    Left = 34
+    Top = 118
+    Width = 95
     Font.Style = []
   end
   object SqlFor: TSQLDataSet
     CommandText = 
-      'select '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP '#13#10'from FORNECEDORES, END' +
-      'ERECOS'#13#10#13#10#13#10'WHERE FORNECEDORES.IDFORNECEDOR = :PARIDFORNECEDOR'
+      'select '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP,'#13#10'CIDADES.NOME_CID,'#13#10'BAI' +
+      'RROS.NOME_BAI,'#13#10'ENDERECOS.NOME_END'#13#10#13#10'from FORNECEDORES, ENDEREC' +
+      'OS, CIDADES, BAIRROS'#13#10#13#10'WHERE FORNECEDORES.IDFORNECEDOR = :PARID' +
+      'FORNECEDOR'#13#10'AND ENDERECOS.IDBAIRRO= BAIRROS.IDBAIRRO '#13#10'AND ENDER' +
+      'ECOS.IDCIDADE = CIDADES.IDCIDADE'
     DataSource = DsFor
     MaxBlobSize = -1
     Params = <
@@ -476,6 +515,26 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       FieldName = 'CEP'
       FixedChar = True
       Size = 8
+    end
+    object SqlForFOTO_FORN: TMemoField
+      FieldName = 'FOTO_FORN'
+      BlobType = ftMemo
+      Size = 1
+    end
+    object SqlForNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      Required = True
+      Size = 30
+    end
+    object SqlForNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      Required = True
+      Size = 30
+    end
+    object SqlForNOME_END: TStringField
+      FieldName = 'NOME_END'
+      Required = True
+      Size = 50
     end
   end
   object Provider: TDataSetProvider
@@ -569,6 +628,26 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       FieldName = 'CEP'
       FixedChar = True
       Size = 8
+    end
+    object CdsForFOTO_FORN: TMemoField
+      FieldName = 'FOTO_FORN'
+      BlobType = ftMemo
+      Size = 1
+    end
+    object CdsForNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      Required = True
+      Size = 30
+    end
+    object CdsForNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      Required = True
+      Size = 30
+    end
+    object CdsForNOME_END: TStringField
+      FieldName = 'NOME_END'
+      Required = True
+      Size = 50
     end
   end
   object DsFor: TDataSource

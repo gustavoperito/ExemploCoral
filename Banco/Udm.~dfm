@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = True
-  Left = 802
-  Top = 102
+  Left = 471
+  Top = 178
   Height = 203
   Width = 211
   object conexao: TSQLConnection
@@ -12,7 +12,7 @@ object DM: TDM
     LoginPrompt = False
     Params.Strings = (
       'DriverName=Interbase'
-      'Database='
+      'Database=C:\Users\user\Desktop\ExemploCoral\Banco\LOJA.fdb'
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'

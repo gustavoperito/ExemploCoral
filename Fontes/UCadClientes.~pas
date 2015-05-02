@@ -118,6 +118,7 @@ type
     procedure BtnGravarClick(Sender: TObject);
     procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
     procedure BtnBuscarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,7 +130,8 @@ var
 
 implementation
 
-uses Udm, UCadEnderecos, UListEndereco;
+uses Udm, UCadEnderecos, UListEndereco,
+  U_Modelo;
 
 
 {$R *.dfm}
@@ -353,6 +355,21 @@ begin
   Application.CreateForm(TFrmListaEndereco, FrmListaEndereco);
   FrmListaEndereco.ShowModal;
   FrmListaEndereco.Free;
+  inherited;
+end;
+
+procedure TFrmCadClientes.FormShow(Sender: TObject);
+var
+   x:integer;
+begin
+  for x := 0 to ComponentePai.ComponentCount - 1 do
+  begin
+    if  TLabel.Components[x] is TLabel then
+        TLabel(TLabel.Components[x]).Font.Color := StringToColor(DadosConfigura.Corum) ;
+    {endif};
+  end;
+
+  end;
   inherited;
 end;
 

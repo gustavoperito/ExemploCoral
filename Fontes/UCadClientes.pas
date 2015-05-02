@@ -110,7 +110,6 @@ type
     procedure DbCepEnter(Sender: TObject);
     procedure DbCepExit(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure dbFotoDblClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
@@ -118,6 +117,7 @@ type
     procedure BtnGravarClick(Sender: TObject);
     procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
     procedure BtnBuscarClick(Sender: TObject);
+    procedure BtnStatusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -129,7 +129,10 @@ var
 
 implementation
 
-uses Udm, UCadEnderecos, UListEndereco;
+uses Udm,
+  UCadEnderecos,
+  UBusClientes,
+  UStatusCli; //UListEndereco;
 
 
 {$R *.dfm}
@@ -208,15 +211,6 @@ begin
   FrmCadEnderecos.ShowModal;
   FrmCadEnderecos.Free;
   inherited;
-end;
-
-procedure TFrmCadClientes.SpeedButton1Click(Sender: TObject);
-begin
-  Application.CreateForm(TFrmListaEndereco, FrmListaEndereco);
-  FrmListaEndereco.ShowModal;
-  FrmListaEndereco.Free;
-  inherited;
-
 end;
 
 procedure TFrmCadClientes.dbFotoDblClick(Sender: TObject);
@@ -350,10 +344,19 @@ end;
 
 procedure TFrmCadClientes.BtnBuscarClick(Sender: TObject);
 begin
-  Application.CreateForm(TFrmListaEndereco, FrmListaEndereco);
-  FrmListaEndereco.ShowModal;
-  FrmListaEndereco.Free;
+    Application.CreateForm(TF_BusCli, F_BusCli);
+    F_BusCli.ShowModal;
+    F_BusCli.Free;
+  inherited;
+end;
+
+procedure TFrmCadClientes.BtnStatusClick(Sender: TObject);
+begin
+    Application.CreateForm(TF_StatusCli, F_StatusCli);
+    F_StatusCli.ShowModal;
+    F_StatusCli.Free;
   inherited;
 end;
 
 end.
+

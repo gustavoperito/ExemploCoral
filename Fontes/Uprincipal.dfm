@@ -1,6 +1,6 @@
 object FrmPrincipal: TFrmPrincipal
-  Left = 226
-  Top = 186
+  Left = 234
+  Top = 102
   Width = 1035
   Height = 609
   Caption = 'Lojas'
@@ -18,7 +18,7 @@ object FrmPrincipal: TFrmPrincipal
   object shpTopo: TShape
     Left = 0
     Top = 0
-    Width = 1027
+    Width = 1019
     Height = 97
     Align = alTop
     OnMouseMove = Panel3MouseMove
@@ -26,7 +26,7 @@ object FrmPrincipal: TFrmPrincipal
   object shpMenu: TShape
     Left = 0
     Top = 97
-    Width = 1027
+    Width = 1019
     Height = 40
     Align = alTop
     Brush.Color = clBlack
@@ -99,16 +99,16 @@ object FrmPrincipal: TFrmPrincipal
     Left = 0
     Top = 137
     Width = 137
-    Height = 441
+    Height = 433
     Align = alLeft
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
   end
   object shpDireita: TShape
-    Left = 890
+    Left = 882
     Top = 137
     Width = 137
-    Height = 441
+    Height = 433
     Align = alRight
     Brush.Color = 15329769
     OnMouseMove = Panel3MouseMove
@@ -161,8 +161,8 @@ object FrmPrincipal: TFrmPrincipal
   object pnlCorpo: TPanel
     Left = 137
     Top = 137
-    Width = 753
-    Height = 441
+    Width = 745
+    Height = 433
     Align = alClient
     Color = clWhite
     TabOrder = 0
@@ -176,7 +176,7 @@ object FrmPrincipal: TFrmPrincipal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = 16711808
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.792951076390000000
+      Date = 42098.881449687500000000
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -228,6 +228,8 @@ object FrmPrincipal: TFrmPrincipal
       Font.Style = []
       ParentFont = False
       OnClick = LblListaFornClick
+      OnMouseMove = LblCadCidMouseMove
+      OnMouseLeave = LblCadCidMouseLeave
     end
     object lblCadEnd: TLabel
       Left = 11
@@ -242,6 +244,8 @@ object FrmPrincipal: TFrmPrincipal
       Font.Style = []
       ParentFont = False
       OnClick = lblCadEndClick
+      OnMouseEnter = lblCadEndMouseEnter
+      OnMouseLeave = lblCadEndMouseLeave
     end
     object lblCadBai: TLabel
       Left = 11
@@ -308,7 +312,6 @@ object FrmPrincipal: TFrmPrincipal
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      OnClick = lblListaEndClick
     end
     object LblListaCli: TLabel
       Left = 11

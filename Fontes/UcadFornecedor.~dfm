@@ -1,156 +1,149 @@
 inherited FrmCadFornecedores: TFrmCadFornecedores
-  Left = 216
-  Top = 119
+  Left = 146
+  Top = 104
   Caption = 'Cadastro de Fornecedores'
-  ClientHeight = 597
-  ClientWidth = 1029
+  ClientHeight = 571
+  ClientWidth = 1044
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 73
   inherited PnlTitulo: TPanel
-    Width = 1029
+    Width = 1044
     Height = 81
     Caption = 'FORNECEDORES'
   end
   inherited PnlStatus: TPanel
-    Top = 565
-    Width = 1029
+    Top = 539
+    Width = 1044
     inherited StbStatus: TStatusBar
       Width = 1032
     end
   end
   inherited PnlBotoes: TPanel
-    Left = 904
+    Left = 919
     Top = 81
-    Height = 484
+    Height = 458
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
+    inherited BtnCancelar: TBitBtn
+      OnClick = BtnCancelarClick
+    end
   end
   inherited PnlDados: TPanel
     Top = 81
-    Width = 904
-    Height = 484
+    Width = 919
+    Height = 458
     Font.Height = -16
     Font.Name = 'Times New Roman'
     Font.Style = []
     object Label1: TLabel
       Left = 32
-      Top = 10
-      Width = 49
-      Height = 21
+      Top = 15
+      Width = 43
+      Height = 17
       Caption = 'C'#243'digo'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label2: TLabel
       Left = 32
-      Top = 64
-      Width = 98
-      Height = 21
+      Top = 72
+      Width = 87
+      Height = 17
       Caption = 'Nome Fantasia'
       FocusControl = DBEfant
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
       Left = 32
-      Top = 112
-      Width = 83
-      Height = 21
+      Top = 125
+      Width = 74
+      Height = 17
       Caption = 'Raz'#227'o Social'
       FocusControl = DBERazao
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label4: TLabel
-      Left = 512
-      Top = 280
-      Width = 73
-      Height = 21
-      Caption = 'Residencial'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 720
-      Top = 336
-      Width = 46
-      Height = 21
+      Left = 584
+      Top = 72
+      Width = 40
+      Height = 17
       Caption = 'Celular'
       FocusControl = DBEcel
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label6: TLabel
       Left = 32
-      Top = 171
-      Width = 97
-      Height = 21
+      Top = 178
+      Width = 84
+      Height = 17
       Caption = 'Representante'
       FocusControl = DBErepres
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 512
-      Top = 224
-      Width = 33
-      Height = 21
+      Left = 728
+      Top = 280
+      Width = 30
+      Height = 17
       Caption = 'CNPJ'
       FocusControl = DBEcnpj
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label8: TLabel
       Left = 32
-      Top = 280
-      Width = 35
-      Height = 21
+      Top = 337
+      Width = 31
+      Height = 17
       Caption = 'Email'
       FocusControl = DBEmail
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 32
-      Top = 336
-      Width = 28
-      Height = 21
+      Left = 512
+      Top = 334
+      Width = 24
+      Height = 17
       Caption = 'SITE'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
@@ -158,220 +151,363 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Left = 488
       Top = 248
       Width = 4
-      Height = 21
+      Height = 17
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label11: TLabel
       Left = 32
-      Top = 392
-      Width = 86
-      Height = 21
+      Top = 396
+      Width = 76
+      Height = 17
       Caption = 'Observa'#231#245'es'
       FocusControl = DBEobds
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label12: TLabel
-      Left = 720
-      Top = 224
-      Width = 118
-      Height = 21
+      Left = 512
+      Top = 280
+      Width = 104
+      Height = 17
       Caption = 'Inscri'#231#227'o Estadual'
       FocusControl = DBEinscEst
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label13: TLabel
       Left = 32
-      Top = 224
-      Width = 63
-      Height = 21
-      Caption = 'Endere'#231'o'
+      Top = 231
+      Width = 25
+      Height = 17
+      Caption = 'CEP:'
       FocusControl = DBEender
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label14: TLabel
-      Left = 720
-      Top = 280
-      Width = 144
-      Height = 21
-      Caption = 'N'#250'mero do Endere'#231'o'
-      FocusControl = DBENumend
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label15: TLabel
       Left = 512
       Top = 392
-      Width = 96
-      Height = 21
+      Width = 82
+      Height = 17
       Caption = 'Complemento'
       FocusControl = DBEcompl
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Segoe UI Light'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label16: TLabel
+      Left = 752
+      Top = 72
+      Width = 29
+      Height = 17
+      Caption = 'Foto:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label17: TLabel
+      Left = 240
+      Top = 228
+      Width = 64
+      Height = 17
+      Caption = 'NOME_CID'
+      FocusControl = DBEdit1
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 568
+      Top = 228
+      Width = 62
+      Height = 17
+      Caption = 'NOME_BAI'
+      FocusControl = DBEdit2
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 32
+      Top = 284
+      Width = 135
+      Height = 17
+      Caption = 'COMPLEMENTO_FORN'
+      FocusControl = DBEdit3
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object DBEfant: TDBEdit
       Left = 32
-      Top = 85
-      Width = 705
-      Height = 27
+      Top = 93
+      Width = 545
+      Height = 25
       DataField = 'NOME_FANTASIA_FORN'
       DataSource = DsFor
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 0
     end
     object DBERazao: TDBEdit
       Left = 32
-      Top = 136
-      Width = 705
-      Height = 27
+      Top = 146
+      Width = 713
+      Height = 25
       DataField = 'RAZAO_SOCIAL_FORN'
       DataSource = DsFor
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 1
     end
-    object DBEresidencial: TDBEdit
-      Left = 512
-      Top = 304
-      Width = 201
-      Height = 27
-      DataField = 'FONE1_FORN'
-      DataSource = DsFor
-      TabOrder = 2
-    end
     object DBEcel: TDBEdit
-      Left = 720
-      Top = 360
+      Left = 584
+      Top = 93
       Width = 161
-      Height = 27
+      Height = 25
       DataField = 'FONE2_FORN'
       DataSource = DsFor
-      TabOrder = 3
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
     end
     object DBErepres: TDBEdit
       Left = 32
-      Top = 192
-      Width = 849
-      Height = 27
+      Top = 199
+      Width = 713
+      Height = 25
       DataField = 'CONTATO_FORN'
       DataSource = DsFor
-      TabOrder = 4
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
     end
     object DBEcnpj: TDBEdit
-      Left = 512
-      Top = 248
-      Width = 201
-      Height = 27
+      Left = 728
+      Top = 305
+      Width = 155
+      Height = 25
       DataField = 'CNPJ_FORN'
       DataSource = DsFor
-      TabOrder = 5
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
     end
     object DBEmail: TDBEdit
       Left = 32
-      Top = 304
+      Top = 358
       Width = 473
-      Height = 27
+      Height = 25
       DataField = 'EMAIL_FORN'
       DataSource = DsFor
-      TabOrder = 6
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
     end
     object DBEobds: TDBEdit
       Left = 32
       Top = 416
       Width = 473
-      Height = 27
+      Height = 25
       DataField = 'OBS_FORN'
       DataSource = DsFor
-      TabOrder = 7
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
     end
     object DBEinscEst: TDBEdit
-      Left = 720
-      Top = 248
-      Width = 161
-      Height = 27
+      Left = 512
+      Top = 305
+      Width = 209
+      Height = 25
       DataField = 'INSCRICAO_EST_FORN'
       DataSource = DsFor
-      TabOrder = 8
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
     end
     object DBEsite: TDBEdit
-      Left = 32
-      Top = 360
-      Width = 681
-      Height = 27
+      Left = 512
+      Top = 358
+      Width = 370
+      Height = 25
       DataField = 'SITE'
       DataSource = DsFor
-      TabOrder = 9
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
     end
     object DBEender: TDBEdit
       Left = 32
-      Top = 248
-      Width = 473
-      Height = 27
-      DataField = 'IDENDERECO'
+      Top = 252
+      Width = 201
+      Height = 25
+      DataField = 'CEP'
       DataSource = DsFor
-      TabOrder = 10
-    end
-    object DBENumend: TDBEdit
-      Left = 720
-      Top = 304
-      Width = 160
-      Height = 27
-      DataField = 'NUM_END_FORN'
-      DataSource = DsFor
-      TabOrder = 11
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 9
     end
     object DBEcompl: TDBEdit
       Left = 512
       Top = 416
-      Width = 384
-      Height = 27
+      Width = 371
+      Height = 25
       DataField = 'COMPLEMENTO_FORN'
       DataSource = DsFor
-      TabOrder = 12
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 10
     end
     object dbFoto: TDBImage
-      Left = 744
-      Top = 32
-      Width = 137
-      Height = 153
+      Left = 752
+      Top = 92
+      Width = 129
+      Height = 137
       DataSource = DsFor
-      TabOrder = 13
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
       OnDblClick = dbFotoDblClick
+    end
+    object DBEdit1: TDBEdit
+      Left = 240
+      Top = 252
+      Width = 321
+      Height = 25
+      DataField = 'NOME_CID'
+      DataSource = DsFor
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+    end
+    object DBEdit2: TDBEdit
+      Left = 568
+      Top = 252
+      Width = 313
+      Height = 25
+      DataField = 'NOME_BAI'
+      DataSource = DsFor
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 13
+    end
+    object DBEdit3: TDBEdit
+      Left = 32
+      Top = 305
+      Width = 473
+      Height = 25
+      DataField = 'COMPLEMENTO_FORN'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 14
     end
   end
   inherited MedBusca: TMaskEdit
     Left = 31
-    Top = 112
+    Top = 119
     Font.Style = []
+    OnKeyPress = MedBuscaKeyPress
   end
   object SqlFor: TSQLDataSet
     CommandText = 
-      'select '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP '#13#10'from FORNECEDORES, END' +
-      'ERECOS'#13#10#13#10#13#10'WHERE FORNECEDORES.IDFORNECEDOR = :PARIDFORNECEDOR'
+      'select '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP,'#13#10'CIDADES.NOME_CID,'#13#10'BAI' +
+      'RROS.NOME_BAI'#13#10' '#13#10'from FORNECEDORES, ENDERECOS, CIDADES, BAIRROS' +
+      #13#10#13#10'WHERE '#13#10'FORNECEDORES.IDFORNECEDOR = :PARIDFORNECEDOR '#13#10'AND F' +
+      'ORNECEDORES.IDENDERECO=ENDERECOS.IDENDERECO AND ENDERECOS.IDBAIR' +
+      'RO = BAIRROS.IDBAIRRO'#13#10'AND ENDERECOS.IDCIDADE = CIDADES.IDCIDADE'
     DataSource = DsFor
     MaxBlobSize = -1
     Params = <
@@ -416,12 +552,6 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       FieldName = 'CONTATO_FORN'
       Size = 100
     end
-    object SqlForCNPJ_FORN: TFMTBCDField
-      FieldName = 'CNPJ_FORN'
-      Required = True
-      Precision = 15
-      Size = 0
-    end
     object SqlForEMAIL_FORN: TStringField
       FieldName = 'EMAIL_FORN'
       Size = 100
@@ -464,6 +594,22 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       FixedChar = True
       Size = 8
     end
+    object SqlForCNPJ_FORN: TFMTBCDField
+      FieldName = 'CNPJ_FORN'
+      Required = True
+      Precision = 15
+      Size = 0
+    end
+    object SqlForNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      Required = True
+      Size = 30
+    end
+    object SqlForNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      Required = True
+      Size = 30
+    end
   end
   object Provider: TDataSetProvider
     DataSet = SqlFor
@@ -471,7 +617,6 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     Top = 8
   end
   object CdsFor: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Provider'
@@ -557,6 +702,16 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       FixedChar = True
       Size = 8
     end
+    object CdsForNOME_CID: TStringField
+      FieldName = 'NOME_CID'
+      Required = True
+      Size = 30
+    end
+    object CdsForNOME_BAI: TStringField
+      FieldName = 'NOME_BAI'
+      Required = True
+      Size = 30
+    end
   end
   object DsFor: TDataSource
     DataSet = CdsFor
@@ -565,7 +720,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   object OpenImagem: TOpenPictureDialog
     Filter = 'JPEG Image File (*.jpg)|*.jpg|JPEG Image File (*.jpeg)|*.jpeg'
-    Left = 752
-    Top = 144
+    Left = 760
+    Top = 176
   end
 end

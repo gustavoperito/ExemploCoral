@@ -15,8 +15,6 @@ type
     DBEfant: TDBEdit;
     Label3: TLabel;
     DBERazao: TDBEdit;
-    Label4: TLabel;
-    DBEresidencial: TDBEdit;
     Label5: TLabel;
     DBEcel: TDBEdit;
     Label6: TLabel;
@@ -34,8 +32,6 @@ type
     DBEsite: TDBEdit;
     Label13: TLabel;
     DBEender: TDBEdit;
-    Label14: TLabel;
-    DBENumend: TDBEdit;
     Label15: TLabel;
     DBEcompl: TDBEdit;
     SqlFor: TSQLDataSet;
@@ -51,7 +47,6 @@ type
     SqlForFONE1_FORN: TStringField;
     SqlForFONE2_FORN: TStringField;
     SqlForCONTATO_FORN: TStringField;
-    SqlForCNPJ_FORN: TFMTBCDField;
     SqlForEMAIL_FORN: TStringField;
     SqlForSITE: TStringField;
     SqlForNUM_END_FORN: TStringField;
@@ -78,10 +73,23 @@ type
     CdsForINSCRICAO_EST_FORN: TStringField;
     CdsForSTATUS_SIS: TStringField;
     CdsForCEP: TStringField;
+    Label16: TLabel;
+    SqlForCNPJ_FORN: TFMTBCDField;
+    SqlForNOME_CID: TStringField;
+    SqlForNOME_BAI: TStringField;
+    CdsForNOME_CID: TStringField;
+    CdsForNOME_BAI: TStringField;
+    Label17: TLabel;
+    DBEdit1: TDBEdit;
+    Label18: TLabel;
+    DBEdit2: TDBEdit;
+    Label19: TLabel;
+    DBEdit3: TDBEdit;
     procedure dbFotoDblClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
+    procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -174,6 +182,52 @@ begin
   MedBusca.Text :=IntToStr(CdsFor.FieldByName('IDFORNECEDOR').AsInteger);
   //Atribuindo o Status
   CdsForSTATUS_SIS.AsString := 'A';
+  inherited;
+end;
+
+procedure TFrmCadFornecedores.MedBuscaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+      if (key = #13) then
+     begin
+        if trim(MedBusca.Text)='' then
+         begin
+          BtnNovoClick(self);
+          //BtnNovo.Click;
+         end
+          else
+           begin
+              dm.auxiliar.Close;
+              dm.auxiliar.CommandText:=' SELECT FORNECEDORES.IDFORNECEDOR , FORNECEDORES.STATUS_SIS  ' +
+                                        ' FROM FORNECEDORES ' +
+                                         ' WHERE FORNECEDORES.IDFORNECEDOR = :PARIDFORNECEDOR ';
+              dm.auxiliar.ParamByName('PARIDFORNECEDOR').AsInteger:= StrToInt(MedBusca.Text);
+              dm.auxiliar.Open;
+               if dm.auxiliar.FieldByName('IDFORNECEDOR').AsInteger>0 then
+                begin
+                    if dm.auxiliar.FieldByName('STATUS_SIS').AsString = 'A' then
+                     begin
+                        CdsFor.Close;
+                        SqlFor.Close;
+                        SqlFor.ParamByName('PARIDFORNECEDOR').AsInteger:=StrToInt(MedBusca.Text);
+                        SqlFor.Active:=true;
+                        CdsFor.Open;
+                        CdsFor.Edit;
+                        ativaedesativa;
+                     end
+                    else
+                     begin
+                        showmessage('Impossível Editar '+#13+#10+' Fornecedor Desativado!');
+                        MedBusca.SetFocus;
+                     end;
+                end
+                 else
+                  begin
+                     showmessage('Impossível Editar '+#13+#10+' Fornecedor Inexistente!');
+                     MedBusca.SetFocus;
+                  end;
+           end;
+     end;
   inherited;
 end;
 

@@ -15,8 +15,6 @@ type
     DBEfant: TDBEdit;
     Label3: TLabel;
     DBERazao: TDBEdit;
-    Label4: TLabel;
-    DBEresidencial: TDBEdit;
     Label5: TLabel;
     DBEcel: TDBEdit;
     Label6: TLabel;
@@ -34,8 +32,6 @@ type
     DBEsite: TDBEdit;
     Label13: TLabel;
     DBEender: TDBEdit;
-    Label14: TLabel;
-    DBENumend: TDBEdit;
     Label15: TLabel;
     DBEcompl: TDBEdit;
     SqlFor: TSQLDataSet;
@@ -79,6 +75,20 @@ type
     CdsForSTATUS_SIS: TStringField;
     CdsForCEP: TStringField;
     Label16: TLabel;
+    SqlForFOTO_FORN: TMemoField;
+    CdsForFOTO_FORN: TMemoField;
+    SqlForNOME_CID: TStringField;
+    SqlForNOME_BAI: TStringField;
+    CdsForNOME_CID: TStringField;
+    CdsForNOME_BAI: TStringField;
+    Label17: TLabel;
+    DBEdit1: TDBEdit;
+    Label4: TLabel;
+    DBEdit2: TDBEdit;
+    SqlForNOME_END: TStringField;
+    CdsForNOME_END: TStringField;
+    Label14: TLabel;
+    DBEdit3: TDBEdit;
     procedure dbFotoDblClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
@@ -149,7 +159,6 @@ procedure TFrmCadFornecedores.BtnCancelarClick(Sender: TObject);
 begin
   CdsFor.Cancel;
   inherited;
-
 end;
 
 procedure TFrmCadFornecedores.BtnNovoClick(Sender: TObject);

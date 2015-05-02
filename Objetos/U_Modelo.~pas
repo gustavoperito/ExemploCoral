@@ -24,6 +24,8 @@ type
                           FundoForm : String;
                           Corum     : String;
                           Cordois   : String;
+                          Fonte     : String;
+                          Tamanho   : String;
                       End;
 
     { Public declarations }
@@ -57,6 +59,8 @@ begin
  DadosConfigura.Banco     :=  ArquivoIni.ReadString('BANCO','CAMINHO','');
  DadosConfigura.Corum     :=  ArquivoIni.ReadString('CONFIGURACOES','CORUM','clWhite');
  DadosConfigura.Cordois   :=  ArquivoIni.ReadString('CONFIGURACOES','CORDOIS','clWhite');
+ DadosConfigura.Fonte     :=  ArquivoIni.ReadString('CONFIGURACOES','FONTE','Arial');
+
  ArquivoIni.Free;
  //Descarregando o arquivo.ini da memória.....
 end;

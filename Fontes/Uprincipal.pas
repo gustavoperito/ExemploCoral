@@ -58,7 +58,6 @@ type
     procedure lblCadFornClick(Sender: TObject);
     procedure Label7Click(Sender: TObject);
     procedure LblListaFornClick(Sender: TObject);
-    procedure lblListaEndClick(Sender: TObject);
     procedure lblCadEndClick(Sender: TObject);
     procedure lblCadCompraClick(Sender: TObject);
     procedure lblClienteMouseLeave(Sender: TObject);
@@ -67,6 +66,11 @@ type
     procedure lblCadFornMouseEnter(Sender: TObject);
     procedure lblCadFornMouseLeave(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure lblCadEndMouseEnter(Sender: TObject);
+    procedure lblCadEndMouseLeave(Sender: TObject);
+    procedure LblCadCidMouseLeave(Sender: TObject);
+    procedure LblCadCidMouseMove(Sender: TObject; Shift: TShiftState; X,
+      Y: Integer);
   private
     { Private declarations }
   public
@@ -81,7 +85,7 @@ implementation
 uses UCadClientes, UcadFornecedor, UCadBairros, UCadCidades, UCadCompras,
   UCadEnderecos, UCadItensCompras, UCadItensVendas, UCadLogradouro,
   UCadMarcas, UCadModelos, UCadObjeto, UCadPercentual, UCadProdutos,
-  UCadTamanhos, UCadVenda, Udm, UListEndereco;
+  UCadTamanhos, UCadVenda, Udm;
 
 {$R *.dfm}
 
@@ -236,13 +240,6 @@ begin
    FrmCadCidades.Free;
 end;
 
-procedure TFrmPrincipal.lblListaEndClick(Sender: TObject);
-begin
-   Application.CreateForm(TFrmListaEndereco,FrmListaEndereco);
-   FrmListaEndereco.ShowModal;
-   FrmListaEndereco.Free;
-end;
-
 procedure TFrmPrincipal.lblCadEndClick(Sender: TObject);
 begin
    Application.CreateForm(TFrmCadEnderecos, FrmCadEnderecos);
@@ -296,6 +293,32 @@ begin
   DM.conexao.Params.Values['Password']  := 'masterkey';
   DM.conexao.Params.Values['SQLDialect']:= '3';
   inherited;
+end;
+
+procedure TFrmPrincipal.lblCadEndMouseEnter(Sender: TObject);
+begin
+  inherited;
+  lblCadEnd.Font.Color := clSilver;
+end;
+
+procedure TFrmPrincipal.lblCadEndMouseLeave(Sender: TObject);
+begin
+  inherited;
+   lblCadEnd.Font.Color := clWhite;
+end;
+
+procedure TFrmPrincipal.LblCadCidMouseLeave(Sender: TObject);
+begin
+  inherited;
+  LblCadCid.Font.Color := clWhite;
+end;
+
+procedure TFrmPrincipal.LblCadCidMouseMove(Sender: TObject;
+  Shift: TShiftState; X, Y: Integer);
+begin
+   LblCadCid.Font.Color := clSilver;
+  inherited;
+
 end;
 
 end.
