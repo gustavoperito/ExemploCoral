@@ -1,8 +1,8 @@
-inherited FrmCadProdutos: TFrmCadProdutos
-  Left = 455
-  Top = 47
+inherited F_CadProdutos: TF_CadProdutos
+  Left = 197
+  Top = 149
   Caption = 'CADASTRO DE PRODUTOS'
-  ClientHeight = 598
+  ClientHeight = 425
   ClientWidth = 790
   OldCreateOrder = True
   PixelsPerInch = 96
@@ -12,367 +12,428 @@ inherited FrmCadProdutos: TFrmCadProdutos
     Caption = 'PRODUTOS'
   end
   inherited PnlStatus: TPanel
-    Top = 566
+    Top = 393
     Width = 790
   end
   inherited PnlBotoes: TPanel
     Left = 665
-    Height = 493
+    Height = 304
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
   end
   inherited PnlDados: TPanel
     Width = 665
-    Height = 493
+    Height = 304
     object Label1: TLabel
-      Left = 32
-      Top = 24
-      Width = 41
+      Left = 24
+      Top = 25
+      Width = 43
       Height = 17
       Caption = 'C'#243'digo'
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 120
-      Top = 24
-      Width = 126
+      Left = 24
+      Top = 80
+      Width = 89
       Height = 17
-      Caption = 'C'#243'digo do Percentual'
-      FocusControl = DBEpec
+      Caption = 'IDPERCENTUAL'
+      FocusControl = DBEdit1
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 288
-      Top = 24
-      Width = 117
+      Left = 232
+      Top = 80
+      Width = 76
       Height = 17
-      Caption = 'C'#243'digo do Tamanho'
-      FocusControl = DBEtam
+      Caption = 'IDTAMANHO'
+      FocusControl = DBEdit2
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 456
-      Top = 24
-      Width = 107
+      Left = 440
+      Top = 80
+      Width = 66
       Height = 17
-      Caption = 'C'#243'digo do Modelo'
-      FocusControl = DBEmodelo
+      Caption = 'IDMODELO'
+      FocusControl = DBEdit3
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 32
-      Top = 88
-      Width = 60
+      Left = 24
+      Top = 128
+      Width = 107
       Height = 17
-      Caption = 'Descri'#231#227'o'
-      FocusControl = DBEdescri
+      Caption = 'DESCRICAO_PROD'
+      FocusControl = DBEdit4
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 32
-      Top = 136
-      Width = 140
+      Left = 24
+      Top = 176
+      Width = 72
       Height = 17
-      Caption = 'Quantidade em Estoque'
-      FocusControl = DBEquantesto
+      Caption = 'QTDE_PROD'
+      FocusControl = DBEdit5
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 216
-      Top = 136
-      Width = 115
+      Left = 232
+      Top = 176
+      Width = 102
       Height = 17
-      Caption = 'Quantidade Min'#237'ma'
-      FocusControl = DBEquantmin
+      Caption = 'QTDE_MIN_PROD'
+      FocusControl = DBEdit6
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 376
-      Top = 136
-      Width = 119
+      Left = 440
+      Top = 176
+      Width = 105
       Height = 17
-      Caption = 'Quantidade M'#225'xima'
-      FocusControl = DBEquantmax
+      Caption = 'QTDE_MAX_PROD'
+      FocusControl = DBEdit7
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 32
-      Top = 192
-      Width = 100
+      Left = 24
+      Top = 224
+      Width = 121
       Height = 17
-      Caption = 'Valor de Compra'
-      FocusControl = DBEvalco
+      Caption = 'VALOR_COMP_PROD'
+      FocusControl = DBEdit8
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 160
-      Top = 192
-      Width = 90
+      Left = 344
+      Top = 224
+      Width = 118
       Height = 17
-      Caption = 'Valor de Venda'
-      FocusControl = DBEvalve
+      Caption = 'VALOR_VEND_PROD'
+      FocusControl = DBEdit9
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
     end
-    object DBEpec: TDBEdit
-      Left = 120
-      Top = 40
-      Width = 102
+    object DBEdit1: TDBEdit
+      Left = 24
+      Top = 96
+      Width = 200
       Height = 25
       DataField = 'IDPERCENTUAL'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
     end
-    object DBEtam: TDBEdit
-      Left = 288
-      Top = 40
-      Width = 113
+    object DBEdit2: TDBEdit
+      Left = 232
+      Top = 96
+      Width = 200
       Height = 25
       DataField = 'IDTAMANHO'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 1
     end
-    object DBEmodelo: TDBEdit
-      Left = 456
-      Top = 40
-      Width = 153
+    object DBEdit3: TDBEdit
+      Left = 440
+      Top = 96
+      Width = 200
       Height = 25
       DataField = 'IDMODELO'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 2
     end
-    object DBEdescri: TDBEdit
-      Left = 32
-      Top = 104
-      Width = 497
+    object DBEdit4: TDBEdit
+      Left = 24
+      Top = 144
+      Width = 617
       Height = 25
       DataField = 'DESCRICAO_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 3
     end
-    object DBEquantesto: TDBEdit
-      Left = 32
-      Top = 152
-      Width = 80
+    object DBEdit5: TDBEdit
+      Left = 24
+      Top = 192
+      Width = 200
       Height = 25
       DataField = 'QTDE_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 4
     end
-    object DBEquantmin: TDBEdit
-      Left = 216
-      Top = 152
-      Width = 89
+    object DBEdit6: TDBEdit
+      Left = 232
+      Top = 192
+      Width = 200
       Height = 25
       DataField = 'QTDE_MIN_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 5
     end
-    object DBEquantmax: TDBEdit
-      Left = 376
-      Top = 152
-      Width = 80
+    object DBEdit7: TDBEdit
+      Left = 440
+      Top = 192
+      Width = 200
       Height = 25
       DataField = 'QTDE_MAX_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 6
     end
-    object DBEvalco: TDBEdit
-      Left = 32
-      Top = 208
-      Width = 80
+    object DBEdit8: TDBEdit
+      Left = 24
+      Top = 240
+      Width = 305
       Height = 25
       DataField = 'VALOR_COMP_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 7
     end
-    object DBEvalve: TDBEdit
-      Left = 160
-      Top = 208
-      Width = 80
+    object DBEdit9: TDBEdit
+      Left = 344
+      Top = 240
+      Width = 296
       Height = 25
       DataField = 'VALOR_VEND_PROD'
-      DataSource = Prod
+      DataSource = DSPRODUTOS
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -15
-      Font.Name = 'Times New Roman'
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
       TabOrder = 8
     end
   end
   inherited MedBusca: TMaskEdit
-    Left = 28
-    Top = 116
+    Left = 23
+    Top = 135
     Width = 70
     Height = 25
     Font.Height = -15
     Font.Style = []
-    OnKeyPress = MedBuscaKeyPress
   end
-  object SimpleDSProd: TSimpleDataSet
-    Aggregates = <>
-    Connection = DM.conexao
-    DataSet.CommandText = 'SELECT* FROM PRODUTOS '#13#10'WHERE PRODUTOS.IDPRODUTO = :PARIDPROD'
-    DataSet.MaxBlobSize = -1
-    DataSet.Params = <
+  object SQLPRODUTOS: TSQLDataSet
+    CommandText = 'select *'#13#10'from PRODUTOS'#13#10#13#10'WHERE IDPRODUTO = :PARIDPRODUTO'
+    DataSource = DSPRODUTOS
+    MaxBlobSize = -1
+    Params = <
       item
         DataType = ftInteger
-        Name = 'PARIDPROD'
+        Name = 'PARIDPRODUTO'
         ParamType = ptInput
-        Value = 0
+        Value = '0'
       end>
-    Params = <>
-    Left = 80
-    Top = 16
-    object SimpleDSProdIDPRODUTO: TIntegerField
+    SQLConnection = DM.conexao
+    Left = 64
+    Top = 8
+    object SQLPRODUTOSIDPRODUTO: TIntegerField
       FieldName = 'IDPRODUTO'
       Required = True
     end
-    object SimpleDSProdIDPERCENTUAL: TIntegerField
+    object SQLPRODUTOSIDPERCENTUAL: TIntegerField
       FieldName = 'IDPERCENTUAL'
     end
-    object SimpleDSProdIDTAMANHO: TIntegerField
+    object SQLPRODUTOSIDTAMANHO: TIntegerField
       FieldName = 'IDTAMANHO'
     end
-    object SimpleDSProdIDMODELO: TIntegerField
+    object SQLPRODUTOSIDMODELO: TIntegerField
       FieldName = 'IDMODELO'
     end
-    object SimpleDSProdDESCRICAO_PROD: TStringField
+    object SQLPRODUTOSDESCRICAO_PROD: TStringField
       FieldName = 'DESCRICAO_PROD'
       Required = True
       Size = 100
     end
-    object SimpleDSProdQTDE_PROD: TIntegerField
+    object SQLPRODUTOSQTDE_PROD: TIntegerField
       FieldName = 'QTDE_PROD'
       Required = True
     end
-    object SimpleDSProdQTDE_MIN_PROD: TIntegerField
+    object SQLPRODUTOSQTDE_MIN_PROD: TIntegerField
       FieldName = 'QTDE_MIN_PROD'
       Required = True
     end
-    object SimpleDSProdQTDE_MAX_PROD: TIntegerField
+    object SQLPRODUTOSQTDE_MAX_PROD: TIntegerField
       FieldName = 'QTDE_MAX_PROD'
       Required = True
     end
-    object SimpleDSProdVALOR_COMP_PROD: TFMTBCDField
+    object SQLPRODUTOSVALOR_COMP_PROD: TFMTBCDField
       FieldName = 'VALOR_COMP_PROD'
       Required = True
       Precision = 15
       Size = 2
     end
-    object SimpleDSProdVALOR_VEND_PROD: TFMTBCDField
+    object SQLPRODUTOSVALOR_VEND_PROD: TFMTBCDField
       FieldName = 'VALOR_VEND_PROD'
       Required = True
       Precision = 15
       Size = 2
     end
-    object SimpleDSProdSTATUS_SIS: TStringField
+    object SQLPRODUTOSSTATUS_SIS: TStringField
       FieldName = 'STATUS_SIS'
       Required = True
       FixedChar = True
       Size = 1
     end
   end
-  object Prod: TDataSource
-    DataSet = SimpleDSProd
-    Left = 136
+  object PROVIDER: TDataSetProvider
+    DataSet = SQLPRODUTOS
+    Left = 120
+    Top = 8
+  end
+  object CDSPRODUTOS: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'PROVIDER'
+    Left = 176
+    Top = 8
+    object CDSPRODUTOSIDPRODUTO: TIntegerField
+      FieldName = 'IDPRODUTO'
+      Required = True
+    end
+    object CDSPRODUTOSIDPERCENTUAL: TIntegerField
+      FieldName = 'IDPERCENTUAL'
+    end
+    object CDSPRODUTOSIDTAMANHO: TIntegerField
+      FieldName = 'IDTAMANHO'
+    end
+    object CDSPRODUTOSIDMODELO: TIntegerField
+      FieldName = 'IDMODELO'
+    end
+    object CDSPRODUTOSDESCRICAO_PROD: TStringField
+      FieldName = 'DESCRICAO_PROD'
+      Required = True
+      Size = 100
+    end
+    object CDSPRODUTOSQTDE_PROD: TIntegerField
+      FieldName = 'QTDE_PROD'
+      Required = True
+    end
+    object CDSPRODUTOSQTDE_MIN_PROD: TIntegerField
+      FieldName = 'QTDE_MIN_PROD'
+      Required = True
+    end
+    object CDSPRODUTOSQTDE_MAX_PROD: TIntegerField
+      FieldName = 'QTDE_MAX_PROD'
+      Required = True
+    end
+    object CDSPRODUTOSVALOR_COMP_PROD: TFMTBCDField
+      FieldName = 'VALOR_COMP_PROD'
+      Required = True
+      Precision = 15
+      Size = 2
+    end
+    object CDSPRODUTOSVALOR_VEND_PROD: TFMTBCDField
+      FieldName = 'VALOR_VEND_PROD'
+      Required = True
+      Precision = 15
+      Size = 2
+    end
+    object CDSPRODUTOSSTATUS_SIS: TStringField
+      FieldName = 'STATUS_SIS'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object DSPRODUTOS: TDataSource
+    DataSet = CDSPRODUTOS
+    Left = 232
     Top = 8
   end
 end

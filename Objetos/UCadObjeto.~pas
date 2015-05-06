@@ -44,8 +44,6 @@ implementation
 
 uses Udm;
 
-//uses U_Modelo;
-
 {$R *.dfm}
 
 procedure TFrmCadObjeto.ativaedesativa;

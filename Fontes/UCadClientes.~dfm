@@ -1,6 +1,6 @@
-inherited FrmCadClientes: TFrmCadClientes
-  Left = 268
-  Top = 178
+inherited F_CadClientes: TF_CadClientes
+  Left = 239
+  Top = 113
   Caption = 'CADASTRO DE CLIENTES'
   ClientHeight = 572
   ClientWidth = 982
@@ -31,8 +31,8 @@ inherited FrmCadClientes: TFrmCadClientes
     inherited BtnBuscar: TBitBtn
       OnClick = BtnBuscarClick
     end
-    inherited BtnCancelar: TBitBtn
-      OnClick = BtnCancelarClick
+    inherited BtnStatus: TBitBtn
+      OnClick = BtnStatusClick
     end
   end
   inherited PnlDados: TPanel
@@ -301,7 +301,6 @@ inherited FrmCadClientes: TFrmCadClientes
       Font.Name = 'Segoe UI Light'
       Font.Style = []
       ParentFont = False
-      OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
       Left = 134

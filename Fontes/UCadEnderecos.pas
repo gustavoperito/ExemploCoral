@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadEnderecos = class(TFrmCadObjeto)
+  TF_CadEnderecos = class(TF_CadObjeto)
     Label1: TLabel;
     SqlEnd: TSQLDataSet;
     Provider: TDataSetProvider;
@@ -65,7 +65,7 @@ type
   end;
 
 var
-  FrmCadEnderecos: TFrmCadEnderecos;
+  F_CadEnderecos: TF_CadEnderecos;
 
 implementation
 
@@ -73,7 +73,7 @@ uses Udm, UCadBairros, UCadCidades;
 
 {$R *.dfm}
 
-procedure TFrmCadEnderecos.BtnNovoClick(Sender: TObject);  
+procedure TF_CadEnderecos.BtnNovoClick(Sender: TObject);
 begin
 //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -99,7 +99,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadEnderecos.BtnGravarClick(Sender: TObject);
+procedure TF_CadEnderecos.BtnGravarClick(Sender: TObject);
 begin
   //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver
   //roda novamente a rotina de geração da PK.
@@ -126,25 +126,25 @@ begin
   inherited;
 end;
 
-procedure TFrmCadEnderecos.BtnCancelarClick(Sender: TObject);
+procedure TF_CadEnderecos.BtnCancelarClick(Sender: TObject);
 begin
   inherited;
   CdsEnd.Cancel;
 end;
 
-procedure TFrmCadEnderecos.SimpleDSEndAfterPost(DataSet: TDataSet);
+procedure TF_CadEnderecos.SimpleDSEndAfterPost(DataSet: TDataSet);
 begin
   inherited;
   CdsEnd.ApplyUpdates(0);
 end;
 
-procedure TFrmCadEnderecos.SimpleDSEndBeforeDelete(DataSet: TDataSet);
+procedure TF_CadEnderecos.SimpleDSEndBeforeDelete(DataSet: TDataSet);
 begin
   inherited;
    CdsEnd.ApplyUpdates(0);
 end;
 
-procedure TFrmCadEnderecos.MedBuscaKeyPress(Sender: TObject;
+procedure TF_CadEnderecos.MedBuscaKeyPress(Sender: TObject;
   var Key: Char);
 begin
   if (key = #13) then
@@ -187,23 +187,23 @@ begin
      end;
 end;
 
-procedure TFrmCadEnderecos.SpeedButton2Click(Sender: TObject);
+procedure TF_CadEnderecos.SpeedButton2Click(Sender: TObject);
 begin
-  Application.CreateForm(TFrmCadCidades,FrmCadCidades);
-  FrmCadCidades.ShowModal;
-  FrmCadCidades.Free;
+  Application.CreateForm(TF_CadCidades,F_CadCidades);
+  F_CadCidades.ShowModal;
+  F_CadCidades.Free;
   inherited;
 end;
 
-procedure TFrmCadEnderecos.SpeedButton5Click(Sender: TObject);
+procedure TF_CadEnderecos.SpeedButton5Click(Sender: TObject);
 begin
-  Application.CreateForm(TFrmCadBairros, FrmCadBairros);
-  FrmCadBairros.ShowModal;
-  FrmCadBairros.Free;
+  Application.CreateForm(TF_CadBairros, F_CadBairros);
+  F_CadBairros.ShowModal;
+  F_CadBairros.Free;
   inherited;
 end;
 
-procedure TFrmCadEnderecos.CdsEndIDCIDADEValidate(Sender: TField);
+procedure TF_CadEnderecos.CdsEndIDCIDADEValidate(Sender: TField);
 begin
   //Estamos aqui validando o valor do cep digitado pelo usuário, e
   //verificando se o mesmo existe. Caso exista, atualizamos os campos
@@ -227,7 +227,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadEnderecos.CdsEndIDBAIRROValidate(Sender: TField);
+procedure TF_CadEnderecos.CdsEndIDBAIRROValidate(Sender: TField);
 begin
   DM.auxiliar.Close;
   DM.auxiliar.CommandText :='';

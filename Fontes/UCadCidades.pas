@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadCidades = class(TFrmCadObjeto)
+  TF_CadCidades = class(TF_CadObjeto)
     Label1: TLabel;
     DsCidades: TDataSource;
     DBCUF: TDBComboBox;
@@ -31,6 +31,8 @@ type
     procedure CdsCidadesBeforeDelete(DataSet: TDataSet);
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnGravarClick(Sender: TObject);
+    procedure BtnBuscarClick(Sender: TObject);
+    procedure BtnStatusClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,33 +40,35 @@ type
   end;
 
 var
-  FrmCadCidades: TFrmCadCidades;
+  F_CadCidades: TF_CadCidades;
 
 implementation
 
-uses Udm;
+uses Udm,
+  UBusCidade,
+  UStatusCid;
 
 {$R *.dfm}
 
-procedure TFrmCadCidades.BtnCancelarClick(Sender: TObject);
+procedure TF_CadCidades.BtnCancelarClick(Sender: TObject);
 begin
   inherited;
   CdsCidades.Cancel;
 end;
 
-procedure TFrmCadCidades.CdsCidadesAfterPost(DataSet: TDataSet);
+procedure TF_CadCidades.CdsCidadesAfterPost(DataSet: TDataSet);
 begin
   inherited;
   CdsCidades.ApplyUpdates(0);
 end;
 
-procedure TFrmCadCidades.CdsCidadesBeforeDelete(DataSet: TDataSet);
+procedure TF_CadCidades.CdsCidadesBeforeDelete(DataSet: TDataSet);
 begin
   inherited;
   CdsCidades.ApplyUpdates(0);
 end;
 
-procedure TFrmCadCidades.BtnNovoClick(Sender: TObject);
+procedure TF_CadCidades.BtnNovoClick(Sender: TObject);
 begin
 //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -91,10 +95,8 @@ begin
 
 end;
 
-procedure TFrmCadCidades.BtnGravarClick(Sender: TObject);
+procedure TF_CadCidades.BtnGravarClick(Sender: TObject);
 begin
-    //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver
-  //roda novamente a rotina de geração da PK.
   If (CdsCidades.State = DsInsert) Then
     Begin
       dm.auxiliar.close;
@@ -117,6 +119,23 @@ begin
   SQLCidades.Close;
   inherited;
 
+end;
+
+procedure TF_CadCidades.BtnBuscarClick(Sender: TObject);
+begin
+    Application.CreateForm(TF_BusCid, F_BusCid);
+    F_BusCid.ShowModal;
+    F_BusCid.Free;
+  inherited;
+
+end;
+
+procedure TF_CadCidades.BtnStatusClick(Sender: TObject);
+begin
+    Application.CreateForm(TF_StatusCid, F_StatusCid);
+    F_StatusCid.ShowModal;
+    F_StatusCid.Free;
+  inherited;
 end;
 
 end.

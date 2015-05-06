@@ -8,7 +8,7 @@ uses
   DBGrids, DBCtrls, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadMarcas = class(TFrmCadObjeto)
+  TF_CadMarcas = class(TF_CadObjeto)
     Label1: TLabel;
     DBEnome: TDBEdit;
     Label2: TLabel;
@@ -32,7 +32,7 @@ type
   end;
 
 var
-  FrmCadMarcas: TFrmCadMarcas;
+  F_CadMarcas: TF_CadMarcas;
 
 implementation
 
@@ -40,7 +40,7 @@ uses Udm;
 
 {$R *.dfm}
 
-procedure TFrmCadMarcas.BtnNovoClick(Sender: TObject);
+procedure TF_CadMarcas.BtnNovoClick(Sender: TObject);
 begin
   //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -71,13 +71,13 @@ begin
   inherited;
 end;
 
-procedure TFrmCadMarcas.BtnCancelarClick(Sender: TObject);
+procedure TF_CadMarcas.BtnCancelarClick(Sender: TObject);
 begin
   inherited;
   CDSMARCA.Cancel;
 end;
 
-procedure TFrmCadMarcas.BtnGravarClick(Sender: TObject);
+procedure TF_CadMarcas.BtnGravarClick(Sender: TObject);
 begin
      //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver roda novamente a rotina de geração da PK.
   If (CDSMARCA.State = DsInsert) Then

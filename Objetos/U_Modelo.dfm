@@ -1,7 +1,7 @@
 object F_Modelo: TF_Modelo
-  Left = 192
+  Left = 208
   Top = 125
-  Width = 928
+  Width = 912
   Height = 480
   Caption = 'F_Modelo'
   Color = clBtnFace

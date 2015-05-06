@@ -49,6 +49,7 @@ object FrmCadObjeto: TFrmCadObjeto
       Width = 943
       Height = 40
       Align = alNone
+      Color = clWhite
       Panels = <
         item
           Width = 80
@@ -67,6 +68,7 @@ object FrmCadObjeto: TFrmCadObjeto
     Width = 125
     Height = 415
     Align = alRight
+    Color = clWhite
     TabOrder = 3
     object BtnNovo: TBitBtn
       Left = 22
@@ -208,6 +210,7 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 4
+      OnClick = BtnCancelarClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -267,6 +270,7 @@ object FrmCadObjeto: TFrmCadObjeto
     Width = 775
     Height = 415
     Align = alClient
+    Color = clWhite
     Enabled = False
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText

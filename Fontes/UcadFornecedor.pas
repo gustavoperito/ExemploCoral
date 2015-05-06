@@ -9,7 +9,7 @@ uses
   ExtDlgs, Jpeg, ClipBrd;
 
 type
-  TFrmCadFornecedores = class(TFrmCadObjeto)
+  TF_CadFornecedores = class(TF_CadObjeto)
     Label1: TLabel;
     Label2: TLabel;
     DBEfant: TDBEdit;
@@ -93,6 +93,7 @@ type
     procedure BtnGravarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
+    procedure CdsForCEPValidate(Sender: TField);
   private
     { Private declarations }
   public
@@ -100,7 +101,7 @@ type
   end;
 
 var
-  FrmCadFornecedores: TFrmCadFornecedores;
+  F_CadFornecedores: TF_CadFornecedores;
 
 implementation
 
@@ -108,7 +109,7 @@ uses Udm;
 
 {$R *.dfm}
 
-procedure TFrmCadFornecedores.dbFotoDblClick(Sender: TObject);
+procedure TF_CadFornecedores.dbFotoDblClick(Sender: TObject);
 var
    VariavelImagem : TPicture;
 begin
@@ -127,7 +128,7 @@ begin
   end;
 end;
 
-procedure TFrmCadFornecedores.BtnGravarClick(Sender: TObject);
+procedure TF_CadFornecedores.BtnGravarClick(Sender: TObject);
 begin
   //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver
   //roda novamente a rotina de geração da PK.
@@ -155,13 +156,13 @@ begin
   inherited;
 end;
 
-procedure TFrmCadFornecedores.BtnCancelarClick(Sender: TObject);
+procedure TF_CadFornecedores.BtnCancelarClick(Sender: TObject);
 begin
   CdsFor.Cancel;
   inherited;
 end;
 
-procedure TFrmCadFornecedores.BtnNovoClick(Sender: TObject);
+procedure TF_CadFornecedores.BtnNovoClick(Sender: TObject);
 begin
   //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -184,6 +185,39 @@ begin
   MedBusca.Text :=IntToStr(CdsFor.FieldByName('IDFORNECEDOR').AsInteger);
   //Atribuindo o Status
   CdsForSTATUS_SIS.AsString := 'A';
+  inherited;
+end;
+
+procedure TF_CadFornecedores.CdsForCEPValidate(Sender: TField);
+begin
+  DM.auxiliar.Close;
+  DM.auxiliar.CommandText :='';
+  DM.auxiliar.CommandText :=  ' SELECT '  +
+                              ' ENDERECOS.IDENDERECO,'+
+                              ' ENDERECOS.NOME_END,'+
+                              ' ENDERECOS.STATUS_SIS AS STATUSEND,'+
+                              ' BAIRROS.NOME_BAI,'+
+                              ' CIDADES.NOME_CID,'+
+
+                              ' ENDERECOS.CEP'+
+                              ' FROM ENDERECOS'+ 
+                              ' LEFT OUTER JOIN BAIRROS ON (BAIRROS.IDBAIRRO = ENDERECOS.IDBAIRRO)'+
+                              ' LEFT OUTER JOIN CIDADES ON (CIDADES.IDCIDADE = ENDERECOS.IDCIDADE)'+
+                              ' WHERE ENDERECOS.CEP = ' + QuotedStr(CdsForCEP.AsString);
+  DM.auxiliar.Open;
+  IF (DM.auxiliar.FieldByName('STATUSEND').AsString <> 'D') THEN
+    BEGIN
+      CdsForNOME_BAI.AsString := DM.auxiliar.FIELDBYNAME('NOME_BAI').AsString;
+      CdsForNOME_CID.AsString := DM.auxiliar.FIELDBYNAME('NOME_CID').AsString;
+      CdsForNOME_END.AsString := DM.auxiliar.FIELDBYNAME('NOME_END').AsString;
+    END
+  ELSE
+    BEGIN
+      CdsForNOME_BAI.AsString := '';
+      CdsForNOME_CID.AsString := '';
+      CdsForNOME_END.AsString := '';
+      MessageDlg('CEP não cadastrado!',mtInformation,[MBOK],0);
+    END;
   inherited;
 end;
 

@@ -1,6 +1,6 @@
-inherited FrmCadCidades: TFrmCadCidades
-  Left = 197
-  Top = 108
+inherited F_CadCidades: TF_CadCidades
+  Left = 504
+  Top = 202
   Caption = 'Cadastro de Cidades'
   ClientHeight = 356
   ClientWidth = 676
@@ -18,6 +18,15 @@ inherited FrmCadCidades: TFrmCadCidades
   inherited PnlBotoes: TPanel
     Left = 551
     Height = 235
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
+    inherited BtnBuscar: TBitBtn
+      OnClick = BtnBuscarClick
+    end
+    inherited BtnStatus: TBitBtn
+      OnClick = BtnStatusClick
+    end
   end
   inherited PnlDados: TPanel
     Width = 551

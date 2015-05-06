@@ -5,46 +5,59 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, UCadObjeto, ExtCtrls, StdCtrls, Mask, Buttons, ComCtrls, DBCtrls,
-  Grids, DBGrids, DB, DBClient, SimpleDS;
+  Grids, DBGrids, DB, DBClient, SimpleDS,
+  FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadProdutos = class(TFrmCadObjeto)
-    SimpleDSProd: TSimpleDataSet;
-    Prod: TDataSource;
-    SimpleDSProdIDPRODUTO: TIntegerField;
-    SimpleDSProdIDPERCENTUAL: TIntegerField;
-    SimpleDSProdIDTAMANHO: TIntegerField;
-    SimpleDSProdIDMODELO: TIntegerField;
-    SimpleDSProdDESCRICAO_PROD: TStringField;
-    SimpleDSProdQTDE_PROD: TIntegerField;
-    SimpleDSProdQTDE_MIN_PROD: TIntegerField;
-    SimpleDSProdQTDE_MAX_PROD: TIntegerField;
-    SimpleDSProdVALOR_COMP_PROD: TFMTBCDField;
-    SimpleDSProdVALOR_VEND_PROD: TFMTBCDField;
-    SimpleDSProdSTATUS_SIS: TStringField;
+  TF_CadProdutos = class(TF_CadObjeto)
     Label1: TLabel;
+    SQLPRODUTOS: TSQLDataSet;
+    PROVIDER: TDataSetProvider;
+    CDSPRODUTOS: TClientDataSet;
+    DSPRODUTOS: TDataSource;
+    SQLPRODUTOSIDPRODUTO: TIntegerField;
+    SQLPRODUTOSIDPERCENTUAL: TIntegerField;
+    SQLPRODUTOSIDTAMANHO: TIntegerField;
+    SQLPRODUTOSIDMODELO: TIntegerField;
+    SQLPRODUTOSDESCRICAO_PROD: TStringField;
+    SQLPRODUTOSQTDE_PROD: TIntegerField;
+    SQLPRODUTOSQTDE_MIN_PROD: TIntegerField;
+    SQLPRODUTOSQTDE_MAX_PROD: TIntegerField;
+    SQLPRODUTOSVALOR_COMP_PROD: TFMTBCDField;
+    SQLPRODUTOSVALOR_VEND_PROD: TFMTBCDField;
+    SQLPRODUTOSSTATUS_SIS: TStringField;
+    CDSPRODUTOSIDPRODUTO: TIntegerField;
+    CDSPRODUTOSIDPERCENTUAL: TIntegerField;
+    CDSPRODUTOSIDTAMANHO: TIntegerField;
+    CDSPRODUTOSIDMODELO: TIntegerField;
+    CDSPRODUTOSDESCRICAO_PROD: TStringField;
+    CDSPRODUTOSQTDE_PROD: TIntegerField;
+    CDSPRODUTOSQTDE_MIN_PROD: TIntegerField;
+    CDSPRODUTOSQTDE_MAX_PROD: TIntegerField;
+    CDSPRODUTOSVALOR_COMP_PROD: TFMTBCDField;
+    CDSPRODUTOSVALOR_VEND_PROD: TFMTBCDField;
+    CDSPRODUTOSSTATUS_SIS: TStringField;
     Label2: TLabel;
-    DBEpec: TDBEdit;
+    DBEdit1: TDBEdit;
     Label3: TLabel;
-    DBEtam: TDBEdit;
+    DBEdit2: TDBEdit;
     Label4: TLabel;
-    DBEmodelo: TDBEdit;
+    DBEdit3: TDBEdit;
     Label5: TLabel;
-    DBEdescri: TDBEdit;
+    DBEdit4: TDBEdit;
     Label6: TLabel;
-    DBEquantesto: TDBEdit;
+    DBEdit5: TDBEdit;
     Label7: TLabel;
-    DBEquantmin: TDBEdit;
+    DBEdit6: TDBEdit;
     Label8: TLabel;
-    DBEquantmax: TDBEdit;
+    DBEdit7: TDBEdit;
     Label9: TLabel;
-    DBEvalco: TDBEdit;
+    DBEdit8: TDBEdit;
     Label10: TLabel;
-    DBEvalve: TDBEdit;
-    procedure BtnGravarClick(Sender: TObject);
-    procedure BtnCancelarClick(Sender: TObject);
+    DBEdit9: TDBEdit;
     procedure BtnNovoClick(Sender: TObject);
-    procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,7 +65,7 @@ type
   end;
 
 var
-  FrmCadProdutos: TFrmCadProdutos;
+  F_CadProdutos: TF_CadProdutos;
 
 implementation
 
@@ -60,81 +73,68 @@ uses Udm;
 
 {$R *.dfm}
 
-procedure TFrmCadProdutos.BtnGravarClick(Sender: TObject);
+procedure TF_CadProdutos.BtnNovoClick(Sender: TObject);
 begin
-  inherited;
-  SimpleDSProdSTATUS_SIS.Value:='A';
-  SimpleDSProd.Post;
-end;
-
-procedure TFrmCadProdutos.BtnCancelarClick(Sender: TObject);
-begin
-  inherited;
-   SimpleDSProd.Cancel;
-end;
-
-procedure TFrmCadProdutos.BtnNovoClick(Sender: TObject);
-begin
-    dm.auxiliar.close;
-  dm.auxiliar.CommandText :=(' SELECT MAX (PRODUTOS.IDPRODUTO +1) FROM PRODUTOS ');
+  //Gerando o código automaticamente no Auxiliar
+  dm.auxiliar.close;
+  dm.auxiliar.CommandText :=(' SELECT MAX (PRODUTOS.IDPRODUTO) FROM PRODUTOS ');
   dm.auxiliar.Open;
-  SimpleDSProd.Close;
-  SimpleDSProd.DataSet.ParamByName('PARIDPROD').AsInteger:=0;
-  SimpleDSProd.Active:=true;
-  SimpleDSProd.Append;
-  if dm.auxiliar.FieldbyName('MAX').AsInteger = 0 then
-  begin
-      SimpleDSProd.FieldByName('IDPRODUTO').AsInteger:=1;
-  end
-  else
-      SimpleDSProd.FieldByName('IDPRODUTO').AsInteger:=dm.auxiliar.FieldbyName('MAX').AsInteger;
-  MedBusca.Text :=IntToStr(SimpleDSProd.FieldByName('IDPRODUTO').AsInteger);
+
+  //Desligando os Datasets
+  CDSPRODUTOS.close;
+  SQLPRODUTOS.close;
+
+  //Zerando o parametro para nao trazer clientes
+  SQLPRODUTOS.ParamByName('PARIDPRODUTO').AsInteger:=0;
+
+  //Abrindo os Datasets
+  SQLPRODUTOS.Open;
+  CDSPRODUTOS.Open;
+
+  //Criando um registro em Branco(e preto) no final do arquivo
+  CDSPRODUTOS.Append;
+
+  //Inserindo o id no cadastro
+  CDSPRODUTOS.FieldByName('IDPRODUTO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger + 1;
+  MedBusca.Text :=IntToStr(CDSPRODUTOS.FieldByName('IDPRODUTO').AsInteger);
+
+  //Atribuindo o Status
+  CDSPRODUTOSSTATUS_SIS.AsString := 'A';
 
   inherited;
 
 end;
 
-procedure TFrmCadProdutos.MedBuscaKeyPress(Sender: TObject; var Key: Char);
+procedure TF_CadProdutos.BtnCancelarClick(Sender: TObject);
 begin
+  CDSPRODUTOS.Cancel;
+  inherited;
+end;
 
-   if (key = #13) then
-     begin
-        if (trim(MedBusca.Text) = '' ) then
-         begin
-          BtnNovoClick(Self);
-         end
-         else
-         begin
-             DM.auxiliar.Close;
-             DM.auxiliar.CommandText:=' SELECT PRODUTOS.IDPRODUTO, PRODUTOS.STATUS_SIS'+
-                                      ' FROM PRODUTOS ' +
-                                      ' WHERE PRODUTOS.IDPRODUTO = :PARPROD ';
-             DM.auxiliar.ParamByName('PARPROD').AsInteger:= StrToInt(MedBusca.Text);
-             DM.auxiliar.Open;
-             IF (DM.auxiliar.FieldByName('IDPRODUTO').AsInteger>0) THEN
-             BEGIN
-                 IF (DM.auxiliar.FieldByName('STATUS_SIS').AsString = 'A') THEN
-                 begin
-                     SimpleDSProd.Close;
-                     SimpleDSProd.DataSet.ParamByName('PARIDPROD').AsInteger:=StrToInt(MedBusca.Text);
-                     SimpleDSProd.Active:=True;
-                     SimpleDSProd.Edit;
-                     ativaedesativa;
-                     end
-                     else
-                     begin
-                         showmessage('Impossível Editar '+#13+#10+' Produto Desativada!');
-                         MedBusca.SetFocus;
-                     end;
-                end
-                 else
-                  begin
-                     showmessage('Impossível Editar '+#13+#10+' Produto Inexistente!');
-                     MedBusca.SetFocus;
-                  end;
-           end;
+procedure TF_CadProdutos.BtnGravarClick(Sender: TObject);
+begin
+  //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver roda novamente a rotina de geração da PK.
+  If (CDSPRODUTOS.State = DsInsert) Then
+    Begin
+      dm.auxiliar.close;
+      dm.auxiliar.CommandText :=(' SELECT MAX (PRODUTOS.IDPRODUTO) FROM PRODUTOS ');
+      dm.auxiliar.Open;
 
-     end;
+      CDSPRODUTOS.FieldByName('IDPRODUTO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger + 1;
+      MedBusca.Text :=IntToStr(CDSPRODUTOS.FieldByName('IDPRODUTO').AsInteger);
+    End;
+
+  try
+    CDSPRODUTOS.Post;
+    CDSPRODUTOS.ApplyUpdates(0);
+  except
+    ShowMessage('Erro de Gravação....');
+    Exit;
+  end;
+
+  CDSPRODUTOS.Close;
+  SQLPRODUTOS.Close;
+  inherited;
 end;
 
 end.

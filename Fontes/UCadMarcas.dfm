@@ -1,26 +1,26 @@
-inherited FrmCadMarcas: TFrmCadMarcas
-  Left = 296
+inherited F_CadMarcas: TF_CadMarcas
+  Left = 472
   Top = 145
   Caption = 'CADASTRO DE MARCAS'
   ClientHeight = 351
-  ClientWidth = 862
+  ClientWidth = 685
   OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 73
   inherited PnlTitulo: TPanel
-    Width = 862
+    Width = 685
     Caption = 'MARCAS'
   end
   inherited PnlStatus: TPanel
     Top = 319
-    Width = 862
+    Width = 685
   end
   inherited PnlBotoes: TPanel
-    Left = 737
+    Left = 560
     Height = 230
   end
   inherited PnlDados: TPanel
-    Width = 737
+    Width = 560
     Height = 230
     object Label1: TLabel
       Left = 16
@@ -52,7 +52,7 @@ inherited FrmCadMarcas: TFrmCadMarcas
     object DBEnome: TDBEdit
       Left = 16
       Top = 87
-      Width = 700
+      Width = 521
       Height = 29
       DataField = 'NOME_MARCA'
       DataSource = DSMARCA
@@ -109,7 +109,6 @@ inherited FrmCadMarcas: TFrmCadMarcas
     Top = 8
   end
   object CDSMARCA: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'PROVIDER'

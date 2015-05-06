@@ -9,7 +9,7 @@ uses
   Provider, SqlExpr, ExtDlgs, Jpeg, ClipBrd;
 
 type
-  TFrmCadClientes = class(TFrmCadObjeto)
+  TF_CadClientes = class(TF_CadObjeto)
     Label1: TLabel;
     DSClientes: TDataSource;
     Label3: TLabel;
@@ -125,7 +125,7 @@ type
   end;
 
 var
-  FrmCadClientes: TFrmCadClientes;
+  F_CadClientes: TF_CadClientes;
 
 implementation
 
@@ -137,7 +137,7 @@ uses Udm,
 
 {$R *.dfm}
 
-procedure TFrmCadClientes.CdsCliCEPValidate(Sender: TField);
+procedure TF_CadClientes.CdsCliCEPValidate(Sender: TField);
 begin
   //Estamos aqui validando o valor do cep digitado pelo usuário, e
   //verificando se o mesmo existe. Caso exista, atualizamos os campos
@@ -178,7 +178,7 @@ begin
 
 end;
 
-procedure TFrmCadClientes.DBEnomeEnter(Sender: TObject);
+procedure TF_CadClientes.DBEnomeEnter(Sender: TObject);
 begin
   inherited;
   if (DBEnome.Color = clwindow) then
@@ -187,33 +187,33 @@ begin
     end;
 end;
 
-procedure TFrmCadClientes.DBEnomeExit(Sender: TObject);
+procedure TF_CadClientes.DBEnomeExit(Sender: TObject);
 begin
   inherited;
   DBEnome.Color := clWindow;
 end;
 
-procedure TFrmCadClientes.DbCepEnter(Sender: TObject);
+procedure TF_CadClientes.DbCepEnter(Sender: TObject);
 begin
   inherited;
   DbCep.Color := clYellow;
 end;
 
-procedure TFrmCadClientes.DbCepExit(Sender: TObject);
+procedure TF_CadClientes.DbCepExit(Sender: TObject);
 begin
   inherited;
    DbCep.Color := clWindow;
 end;
 
-procedure TFrmCadClientes.SpeedButton2Click(Sender: TObject);
+procedure TF_CadClientes.SpeedButton2Click(Sender: TObject);
 begin
-  Application.CreateForm(TFrmCadEnderecos, FrmCadEnderecos);
-  FrmCadEnderecos.ShowModal;
-  FrmCadEnderecos.Free;
+  Application.CreateForm(TF_CadEnderecos, F_CadEnderecos);
+  F_CadEnderecos.ShowModal;
+  F_CadEnderecos.Free;
   inherited;
 end;
 
-procedure TFrmCadClientes.dbFotoDblClick(Sender: TObject);
+procedure TF_CadClientes.dbFotoDblClick(Sender: TObject);
 var
    VariavelImagem : TPicture;
 begin
@@ -232,13 +232,13 @@ begin
   end;   
 end;
 
-procedure TFrmCadClientes.FormCreate(Sender: TObject);
+procedure TF_CadClientes.FormCreate(Sender: TObject);
 begin
   inherited;
   dbFoto.Picture := nil;
 end;
 
-procedure TFrmCadClientes.BtnNovoClick(Sender: TObject);
+procedure TF_CadClientes.BtnNovoClick(Sender: TObject);
 begin
   //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -264,13 +264,13 @@ begin
   inherited;
 end;
 
-procedure TFrmCadClientes.BtnCancelarClick(Sender: TObject);
+procedure TF_CadClientes.BtnCancelarClick(Sender: TObject);
 begin
   CdsCli.Cancel;
   inherited;
 end;
 
-procedure TFrmCadClientes.BtnGravarClick(Sender: TObject);
+procedure TF_CadClientes.BtnGravarClick(Sender: TObject);
 begin
   //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver
   //roda novamente a rotina de geração da PK.
@@ -297,7 +297,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadClientes.MedBuscaKeyPress(Sender: TObject; var Key: Char);
+procedure TF_CadClientes.MedBuscaKeyPress(Sender: TObject; var Key: Char);
 begin
     if (key = #13) then
      begin
@@ -342,7 +342,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadClientes.BtnBuscarClick(Sender: TObject);
+procedure TF_CadClientes.BtnBuscarClick(Sender: TObject);
 begin
     Application.CreateForm(TF_BusCli, F_BusCli);
     F_BusCli.ShowModal;
@@ -350,7 +350,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadClientes.BtnStatusClick(Sender: TObject);
+procedure TF_CadClientes.BtnStatusClick(Sender: TObject);
 begin
     Application.CreateForm(TF_StatusCli, F_StatusCli);
     F_StatusCli.ShowModal;

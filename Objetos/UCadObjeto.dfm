@@ -1,4 +1,4 @@
-object FrmCadObjeto: TFrmCadObjeto
+object F_CadObjeto: TF_CadObjeto
   Left = 276
   Top = 135
   BorderIcons = [biSystemMenu]
@@ -210,6 +210,7 @@ object FrmCadObjeto: TFrmCadObjeto
       Font.Style = []
       ParentFont = False
       TabOrder = 4
+      OnClick = BtnCancelarClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000

@@ -90,7 +90,7 @@ MaxStackSize=1048576
 ImageBase=4194304
 ExeDescription=
 [Directories]
-OutputDir=C:\Users\user\Desktop\ExemploCoral
+OutputDir=C:\Users\user\Desktop\Nova pasta
 UnitOutputDir=
 PackageDLLOutputDir=
 PackageDCPOutputDir=
@@ -138,8 +138,9 @@ Comments=
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
 [HistoryLists\hlOutputDirectorry]
-Count=4
-Item0=C:\Users\user\Desktop\ExemploCoral
-Item1=F:\ExemploCoral-master
-Item2=G:\ExemploCoral-master
-Item3=D:\Edutec\Documentos\GustavoPerito\ExemploCoral-master
+Count=5
+Item0=C:\Users\user\Desktop\Nova pasta
+Item1=D:\Edutec\Documentos\GustavoPerito\GustavoPerito
+Item2=F:\ExemploCoral-master
+Item3=G:\ExemploCoral-master
+Item4=D:\Edutec\Documentos\GustavoPerito\ExemploCoral-master

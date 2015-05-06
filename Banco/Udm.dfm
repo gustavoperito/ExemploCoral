@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = True
-  Left = 802
-  Top = 102
+  Left = 800
+  Top = 235
   Height = 203
   Width = 211
   object conexao: TSQLConnection

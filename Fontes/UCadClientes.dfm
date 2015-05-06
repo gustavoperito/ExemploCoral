@@ -1,4 +1,4 @@
-inherited FrmCadClientes: TFrmCadClientes
+inherited F_CadClientes: TF_CadClientes
   Left = 239
   Top = 113
   Caption = 'CADASTRO DE CLIENTES'
@@ -33,9 +33,6 @@ inherited FrmCadClientes: TFrmCadClientes
     end
     inherited BtnStatus: TBitBtn
       OnClick = BtnStatusClick
-    end
-    inherited BtnCancelar: TBitBtn
-      OnClick = BtnCancelarClick
     end
   end
   inherited PnlDados: TPanel

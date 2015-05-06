@@ -1,0 +1,256 @@
+unit UBusClientes;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UBuscasObjeto, StdCtrls, Buttons, ExtCtrls, Grids, DBGrids,
+  ComCtrls, FMTBcd, DB, DBClient, Provider, SqlExpr, Mask;
+
+type
+  TF_BusCli = class(TF_Buscas)
+    ChCodigo: TCheckBox;
+    ChNome: TCheckBox;
+    ChCidade: TCheckBox;
+    ChCpf: TCheckBox;
+    codini: TLabeledEdit;
+    codfim: TLabeledEdit;
+    NOMECLI: TLabeledEdit;
+    NOMECID: TLabeledEdit;
+    SqlCli: TSQLDataSet;
+    SqlCliIDCLIENTE: TIntegerField;
+    SqlCliIDENDERECO: TIntegerField;
+    SqlCliNOME_CLI: TStringField;
+    SqlCliCPF_CLI: TStringField;
+    SqlCliRG_CLI: TStringField;
+    SqlCliESTADO_CIVIL_CLI: TStringField;
+    SqlCliDATA_NASC_CLI: TDateField;
+    SqlCliDATA_CAD_CLI: TDateField;
+    SqlCliEMAIL_CLI: TStringField;
+    SqlCliSEXO_CLI: TStringField;
+    SqlCliCELULAR_CLI: TStringField;
+    SqlCliFONE_CLI: TStringField;
+    SqlCliPROFISSAO_CLI: TStringField;
+    SqlCliNATURALIDADE_CLI: TStringField;
+    SqlCliNUM_END_CLI: TStringField;
+    SqlCliCOMPLEMENTO_CLI: TStringField;
+    SqlCliMAE_CLI: TStringField;
+    SqlCliSTATUS_SIS: TStringField;
+    SqlCliNOME_END: TStringField;
+    SqlCliCEP: TStringField;
+    SqlCliSTATUSEND: TStringField;
+    SqlCliNOME_BAI: TStringField;
+    SqlCliNOME_CID: TStringField;
+    Provider: TDataSetProvider;
+    CdsCli: TClientDataSet;
+    CdsCliIDCLIENTE: TIntegerField;
+    CdsCliIDENDERECO: TIntegerField;
+    CdsCliNOME_CLI: TStringField;
+    CdsCliCPF_CLI: TStringField;
+    CdsCliRG_CLI: TStringField;
+    CdsCliESTADO_CIVIL_CLI: TStringField;
+    CdsCliDATA_NASC_CLI: TDateField;
+    CdsCliDATA_CAD_CLI: TDateField;
+    CdsCliEMAIL_CLI: TStringField;
+    CdsCliSEXO_CLI: TStringField;
+    CdsCliCELULAR_CLI: TStringField;
+    CdsCliFONE_CLI: TStringField;
+    CdsCliPROFISSAO_CLI: TStringField;
+    CdsCliNATURALIDADE_CLI: TStringField;
+    CdsCliNUM_END_CLI: TStringField;
+    CdsCliCOMPLEMENTO_CLI: TStringField;
+    CdsCliMAE_CLI: TStringField;
+    CdsCliSTATUS_SIS: TStringField;
+    CdsCliNOME_END: TStringField;
+    CdsCliCEP: TStringField;
+    CdsCliSTATUSEND: TStringField;
+    CdsCliNOME_BAI: TStringField;
+    CdsCliNOME_CID: TStringField;
+    DSClientes: TDataSource;
+    CPFCLI: TMaskEdit;
+    Label1: TLabel;
+    procedure ChCodigoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure ChNomeClick(Sender: TObject);
+    procedure ChCidadeClick(Sender: TObject);
+    procedure ChCpfClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    SqlOriginal, SqlFiltro, SqlOrdem, SqlStatus : String;
+
+
+
+
+  end;
+
+var
+  F_BusCli: TF_BusCli;
+
+implementation
+
+uses UCadClientes, U_Modelo;
+
+{$R *.dfm}
+
+procedure TF_BusCli.ChCodigoClick(Sender: TObject);
+begin
+ If (ChCodigo.Checked = True) then
+   Begin
+     codini.Enabled := True;
+     codfim.Enabled := True;
+     codini.Color   := ClWhite;
+     codfim.Color   := Clwhite;
+     codini.SetFocus;
+   End
+ Else
+   Begin
+     codini.Enabled:= False;
+     codfim.Enabled:= False;
+     codini.Color   := clGray;
+     codfim.Color   := clGray;
+   End;
+
+end;
+
+procedure TF_BusCli.FormCreate(Sender: TObject);
+begin
+  inherited;
+  //PnlTitulo.Color := StringToColor(F_Modelo.DadosConfigura.Corum);
+  SqlOriginal := SqlCli.CommandText;
+end;
+
+procedure TF_BusCli.BitBtn1Click(Sender: TObject);
+begin
+
+  SqlFiltro := 'WHERE 1=1 ';
+  //Testando os CheckBox
+  If (ChCodigo.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CLIENTES.IDCLIENTE >= ' + QuotedStr(CODINI.Text) +
+                    ' AND CLIENTES.IDCLIENTE <= ' + QuotedStr(CODFIM.Text);
+    End;
+
+  If (ChNome.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CLIENTES.NOME_CLI LIKE ' + QuotedStr('%'+NOMECLI.Text+'%');
+    End;
+
+  If (ChCidade.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND NOME_CID = ' + QuotedStr(NOMECID.Text);
+    End;
+  If (ChCpf.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CLIENTES.CPF_CLI = ' + QuotedStr(CPFCLI.Text);
+    End;
+  //Montando a variavel do order by
+  Case RadioOrdem.itemindex of
+    0: SqlOrdem := ' ORDER BY CLIENTES.IDCLIENTE';
+    1: SqlOrdem := ' ORDER BY CLIENTES.NOME_CLI';
+    2: SqlOrdem := ' ORDER BY NOME_CID , CLIENTES.NOME_CLI';
+  End;
+
+  //MONTANDO A VARIAVEL DO STATUS
+  Case RadioStatus.ItemIndex of
+    0: SqlStatus := ' AND CLIENTES.STATUS_SIS = ' + QuotedStr('A');
+    1: SqlStatus := ' AND CLIENTES.STATUS_SIS = ' + QuotedStr('D');
+  End;
+
+
+  CdsCli.Close;
+  SqlCli.Close;
+  SqlCli.CommandText := '';
+  SqlCli.CommandText := SqlOriginal + SqlFiltro + SqlStatus + SqlOrdem;
+  SqlCli.Open;
+  CdsCli.Open;
+
+
+end;
+
+
+
+
+
+
+
+procedure TF_BusCli.DBGrid1DblClick(Sender: TObject);
+begin
+
+  If (CdsCli.RecordCount > 0 ) Then
+    Begin
+        if CdsCli.FieldByName('STATUS_SIS').AsString = 'A' then
+         begin
+            F_CadClientes.Cdscli.Close;
+            F_CadClientes.SqlCli.Close;
+            F_CadClientes.sqlcli.ParamByName('PARIDCLIENTE').AsInteger := CdsCliIDCLIENTE.AsInteger;
+            F_CadClientes.sqlcli.Active:=true;
+            F_CadClientes.Cdscli.Open;
+            F_CadClientes.cdscli.Edit;
+            F_CadClientes.MedBusca.Text := IntToStr(CdsCliIDCLIENTE.AsInteger);
+            F_CadClientes.ativaedesativa;
+            Close;
+         end
+        else
+         begin
+            showmessage('Impossível Editar '+#13+#10+' Cliente Desativado!');
+         end;
+    End
+  Else
+    Begin
+      ShowMessage('Impossível Editar,' + #13 + #10 +'Cliente Inexistente !');
+      Exit;
+    End;
+end;
+procedure TF_BusCli.ChNomeClick(Sender: TObject);
+begin
+  If (ChNome.Checked = True) then
+   Begin
+     NOMECLI.Enabled := True;
+     NOMECLI.Color   := ClWhite;
+     NOMECLI.SetFocus;
+   End
+ Else
+   Begin
+     NOMECLI.Enabled:= False;
+     NOMECLI.Color   := clGray;
+   End;
+  inherited;
+end;
+
+procedure TF_BusCli.ChCidadeClick(Sender: TObject);
+begin
+    If (ChCidade.Checked = True) then
+   Begin
+     NOMECID.Enabled := True;
+     NOMECID.Color   := ClWhite;
+     NOMECID.SetFocus;
+   End
+ Else
+   Begin
+     NOMECID.Enabled:= False;
+     NOMECID.Color   := clGray;
+   End;
+  inherited;
+end;
+
+procedure TF_BusCli.ChCpfClick(Sender: TObject);
+begin
+  If (ChCpf.Checked = True) then
+   Begin
+     CPFCLI.Enabled := True;
+     CPFCLI.Color   := ClWhite;
+     CPFCLI.SetFocus;
+   End
+ Else
+   Begin
+     CPFCLI.Enabled:= False;
+     CPFCLI.Color   := clGray;
+   End;
+  inherited;
+end;
+
+end.

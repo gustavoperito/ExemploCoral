@@ -8,16 +8,7 @@ uses
   Grids, DBGrids, FMTBcd, DB, DBClient, Provider, SqlExpr;
 
 type
-  TFrmCadItensCompras = class(TFrmCadObjeto)
-    Label1: TLabel;
-    Label2: TLabel;
-    DBEdit1: TDBEdit;
-    Label3: TLabel;
-    DBEdit2: TDBEdit;
-    Label4: TLabel;
-    DBEdit3: TDBEdit;
-    Label5: TLabel;
-    DBEdit4: TDBEdit;
+  TF_CadItensCompras = class(TF_CadObjeto)
     SQLITEMCOMPRA: TSQLDataSet;
     PROVIDER: TDataSetProvider;
     CDSITEMCOMPRA: TClientDataSet;
@@ -34,6 +25,15 @@ type
     CDSITEMCOMPRAVALORUNITARIO_ITENS_COMP: TFMTBCDField;
     CDSITEMCOMPRAQTDE__INTES_COMP: TIntegerField;
     CDSITEMCOMPRASTATUS_SIS: TStringField;
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
   private
     { Private declarations }
   public

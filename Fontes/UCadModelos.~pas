@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadModelos = class(TFrmCadObjeto)
+  TF_CadModelos = class(TFrmCadObjeto)
     Label1: TLabel;
     DBEcodmarca: TDBEdit;
     Label2: TLabel;
@@ -26,7 +26,6 @@ type
     CDSMODELOIDMARCA: TIntegerField;
     CDSMODELODESCRICAO_MOD: TStringField;
     CDSMODELOSTATUS_SIS: TStringField;
-    procedure MedBuscaKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -34,54 +33,12 @@ type
   end;
 
 var
-  FrmCadModelos: TFrmCadModelos;
+  F_CadModelos: TF_CadModelos;
 
 implementation
 
 uses Udm;
 
 {$R *.dfm}
-
-procedure TFrmCadModelos.MedBuscaKeyPress(Sender: TObject; var Key: Char);
-begin
-  if (key = #13) then
-     begin
-        if (trim(MedBusca.Text) = '' ) then
-         begin
-          BtnNovoClick(Self);
-         end
-         else
-         begin
-             DM.auxiliar.Close;
-             DM.auxiliar.CommandText:=' SELECT MODELOS.IDMODELO, MODELOS.STATUS_SIS'+
-                                      ' FROM MODELOS ' +
-                                      ' WHERE MODELOS.IDMODELO = :PARMODEL ';
-             DM.auxiliar.ParamByName('PARMODEL').AsInteger:= StrToInt(MedBusca.Text);
-             DM.auxiliar.Open;
-             IF (DM.auxiliar.FieldByName('IDMODELO').AsInteger>0) THEN
-             BEGIN
-                 IF (DM.auxiliar.FieldByName('STATUS_SIS').AsString = 'A') THEN
-                 begin
-                     SimpleDSModelos.Close;
-                     SimpleDSModelos.DataSet.ParamByName('PARIDMODELO').AsInteger:=StrToInt(MedBusca.Text);
-                     SimpleDSModelos.Active:=True;
-                     SimpleDSModelos.Edit;
-                     ativaedesativa;
-                     end
-                     else
-                     begin
-                         showmessage('Impossível Editar '+#13+#10+' Endereço Desativada!');
-                         MedBusca.SetFocus;
-                     end;
-                end
-                 else
-                  begin
-                     showmessage('Impossível Editar '+#13+#10+' Endereço Inexistente!');
-                     MedBusca.SetFocus;
-                  end;
-           end;
-
-     end;
-end;
 
 end.

@@ -4,32 +4,31 @@ uses
   Forms,
   Udm in '..\Banco\Udm.pas' {DM: TDataModule},
   U_Modelo in '..\Objetos\U_Modelo.pas' {F_Modelo},
-  UCadObjeto in '..\Objetos\UCadObjeto.pas' {FrmCadObjeto},
-  UListObjeto in '..\Objetos\UListObjeto.pas' {frmListaObjeto},
-  UCadBairros in 'UCadBairros.pas',
-  UCadCidades in 'UCadCidades.pas' {FrmCadCidades},
-  UCadClientes in 'UCadClientes.pas' {FrmCadClientes},
-  UCadCompras in 'UCadCompras.pas' {FrmCadCompras},
-  UCadEnderecos in 'UCadEnderecos.pas' {FrmCadEnderecos},
-  UcadFornecedor in 'UcadFornecedor.pas' {FrmCadFornecedores},
-  UCadItensCompras in 'UCadItensCompras.pas' {FrmCadItensCompras},
-  UCadItensVendas in 'UCadItensVendas.pas' {FrmCadItensVendas},
-  UCadLogradouro in 'UCadLogradouro.pas' {FrmCadLogradouro},
-  UCadMarcas in 'UCadMarcas.pas' {FrmCadMarcas},
-  UCadModelos in 'UCadModelos.pas' {FrmCadModelos},
-  UCadPercentual in 'UCadPercentual.pas' {FrmCadPercentual},
-  UCadProdutos in 'UCadProdutos.pas' {FrmCadProdutos},
-  UCadTamanhos in 'UCadTamanhos.pas' {FrmCadTamanhos},
-  UCadVenda in 'UCadVenda.pas' {FrmCadVendas},
-  UListEndereco in 'UListEndereco.pas' {FrmListaEndereco},
-  Uprincipal in 'Uprincipal.pas' {FrmPrincipal},
-  UListFornecedor in 'UListFornecedor.pas' {frmListaFornecedor};
+  UCadObjeto in '..\Objetos\UCadObjeto.pas' {F_CadObjeto},
+  UCadCidades in 'UCadCidades.pas' {F_CadCidades},
+  UCadClientes in 'UCadClientes.pas' {F_CadClientes},
+  UCadCompras in 'UCadCompras.pas' {F_CadCompras},
+  UCadEnderecos in 'UCadEnderecos.pas' {F_CadEnderecos},
+  UcadFornecedor in 'UcadFornecedor.pas' {F_CadFornecedores},
+  UCadMarcas in 'UCadMarcas.pas' {F_CadMarcas},
+  UCadModelos in 'UCadModelos.pas' {F_CadModelos},
+  UCadProdutos in 'UCadProdutos.pas' {F_CadProdutos},
+  UCadTamanhos in 'UCadTamanhos.pas' {F_CadTamanhos},
+  Uprincipal in 'Uprincipal.pas' {F_Principal},
+  UCadBairros in 'UCadBairros.pas' {F_CadBairros},
+  UBuscasObjeto in '..\Objetos\UBuscasObjeto.pas' {F_Buscas},
+  UBusClientes in 'UBusClientes.pas' {F_BusCli},
+  UStatusCli in 'UStatusCli.pas' {F_StatusCli},
+  UBusCidade in 'UBusCidade.pas' {F_BusCid},
+  UStatusCid in 'UStatusCid.pas' {F_StatusCid},
+  UCadPercentual in 'UCadPercentual.pas' {F_CadPercentual};
 
 {$R *.res}
 
 begin
   Application.Initialize;
-  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
   Application.CreateForm(TDM, DM);
+  Application.CreateForm(TF_Principal, F_Principal);
+  Application.CreateForm(TF_CadPercentual, F_CadPercentual);
   Application.Run;
 end.

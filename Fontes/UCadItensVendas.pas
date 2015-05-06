@@ -8,7 +8,7 @@ uses
   DBGrids, DBCtrls;
 
 type
-  TFrmCadItensVendas = class(TFrmCadObjeto)
+  TF_CadItensVendas = class(TF_CadObjeto)
     Label1: TLabel;
     Label2: TLabel;
     DBEdit1: TDBEdit;
@@ -26,7 +26,7 @@ type
   end;
 
 var
-  FrmCadItensVendas: TFrmCadItensVendas;
+  F_CadItensVendas: TF_CadItensVendas;
 
 implementation
 

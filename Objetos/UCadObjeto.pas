@@ -8,7 +8,7 @@ uses
   U_Modelo;
 
 type
-  TFrmCadObjeto = class(TF_Modelo)
+  TF_CadObjeto = class(TF_Modelo)
     PnlTitulo: TPanel;
     PnlStatus: TPanel;
     PnlBotoes: TPanel;
@@ -37,18 +37,16 @@ type
   end;
 
 var
-  FrmCadObjeto: TFrmCadObjeto;
+  F_CadObjeto: TF_CadObjeto;
   fechar:boolean;
 
 implementation
 
 uses Udm;
 
-//uses U_Modelo;
-
 {$R *.dfm}
 
-procedure TFrmCadObjeto.ativaedesativa;
+procedure TF_CadObjeto.ativaedesativa;
 begin
 
   BtnNovo.Enabled       := not BtnNovo.Enabled;
@@ -69,27 +67,27 @@ begin
     End;  
 end;
 
-procedure TFrmCadObjeto.BtnNovoClick(Sender: TObject);
+procedure TF_CadObjeto.BtnNovoClick(Sender: TObject);
 begin
    ativaedesativa;
 end;
 
-procedure TFrmCadObjeto.BtnGravarClick(Sender: TObject);
+procedure TF_CadObjeto.BtnGravarClick(Sender: TObject);
 begin
  ativaedesativa;
 end;
 
-procedure TFrmCadObjeto.BtnCancelarClick(Sender: TObject);
+procedure TF_CadObjeto.BtnCancelarClick(Sender: TObject);
 begin
   ativaedesativa;
 end;
 
-procedure TFrmCadObjeto.BtnSairClick(Sender: TObject);
+procedure TF_CadObjeto.BtnSairClick(Sender: TObject);
 begin
    close;
 end;
 
-procedure TFrmCadObjeto.FormClose(Sender: TObject;
+procedure TF_CadObjeto.FormClose(Sender: TObject;
   var Action: TCloseAction);
 begin
        if BtnGravar.Enabled then
@@ -101,7 +99,7 @@ begin
         end;
 end;
 
-procedure TFrmCadObjeto.Timer1Timer(Sender: TObject);
+procedure TF_CadObjeto.Timer1Timer(Sender: TObject);
 begin
     StbStatus.Panels[0].Text:='Hora:'+ TimeToStr(time);
     StbStatus.Panels[1].Text:='Data:'+ DateToStr(date);
@@ -111,7 +109,7 @@ begin
       end; 
 end;
 
-procedure TFrmCadObjeto.FormShow(Sender: TObject);
+procedure TF_CadObjeto.FormShow(Sender: TObject);
 begin
   Caption:=DadosConfigura.Aplicacao+' '+DadosConfigura.Versao;
   PnlTitulo.Color:= StringToColor(DadosConfigura.CorUM);

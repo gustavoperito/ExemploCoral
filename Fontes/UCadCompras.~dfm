@@ -1,4 +1,4 @@
-inherited FrmCadCompras: TFrmCadCompras
+inherited F_CadCompras: TF_CadCompras
   Left = 458
   Top = 166
   Caption = 'CADASTRO DE COMPRAS'
@@ -18,6 +18,9 @@ inherited FrmCadCompras: TFrmCadCompras
   inherited PnlBotoes: TPanel
     Left = 553
     Height = 242
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
   end
   inherited PnlDados: TPanel
     Width = 553
@@ -279,7 +282,6 @@ inherited FrmCadCompras: TFrmCadCompras
     Top = 8
   end
   object CDSCOMPRA: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'PROVIDER'

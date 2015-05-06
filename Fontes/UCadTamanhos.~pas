@@ -1,0 +1,107 @@
+unit UCadTamanhos;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UCadObjeto, ExtCtrls, StdCtrls, Mask, Buttons, ComCtrls, Grids,
+  DBGrids, DBCtrls, DB, DBClient, SimpleDS,
+  FMTBcd, Provider, SqlExpr;
+
+type
+  TF_CadTamanhos = class(TFrmCadObjeto)
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEdesc: TDBEdit;
+    SQLTAMANHOS: TSQLDataSet;
+    PROVIDER: TDataSetProvider;
+    CDSTAMANHOS: TClientDataSet;
+    DSTAMANHOS: TDataSource;
+    SQLTAMANHOSIDTAMANHO: TIntegerField;
+    SQLTAMANHOSDESCRICAO_TAM: TStringField;
+    SQLTAMANHOSSTATUS_SIS: TStringField;
+    CDSTAMANHOSIDTAMANHO: TIntegerField;
+    CDSTAMANHOSDESCRICAO_TAM: TStringField;
+    CDSTAMANHOSSTATUS_SIS: TStringField;
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnNovoClick(Sender: TObject);
+    procedure BtnGravarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_CadTamanhos: TF_CadTamanhos;
+
+implementation
+
+uses Udm;
+
+{$R *.dfm}
+
+
+procedure TF_CadTamanhos.BtnCancelarClick(Sender: TObject);
+begin
+  inherited;
+  CDSTAMANHOS.Cancel;
+end;
+
+procedure TF_CadTamanhos.BtnNovoClick(Sender: TObject);
+begin
+    //Gerando o código automaticamente no Auxiliar
+  dm.auxiliar.close;
+  dm.auxiliar.CommandText :=(' SELECT MAX (TAMANHOS.IDTAMANHO) FROM TAMANHOS ');
+  dm.auxiliar.Open;
+
+  //Desligando os Datasets
+  CDSTAMANHOS.close;
+  SQLTAMANHOS.close;
+
+  //Zerando o parametro para nao trazer clientes
+  SQLTAMANHOS.ParamByName('PARIDTAMANHO').AsInteger:=0;
+
+  //Abrindo os Datasets
+  SQLTAMANHOS.Open;
+  CDSTAMANHOS.Open;
+
+  //Criando um registro em Branco(e preto) no final do arquivo
+  CDSTAMANHOS.Append;
+
+  //Inserindo o id no cadastro
+  CDSTAMANHOS.FieldByName('IDTAMANHO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger + 1;
+  MedBusca.Text :=IntToStr(CDSTAMANHOS.FieldByName('IDTAMANHO').AsInteger);
+
+  //Atribuindo o Status
+  CDSTAMANHOSSTATUS_SIS.AsString := 'A';
+  inherited;
+end;
+
+procedure TF_CadTamanhos.BtnGravarClick(Sender: TObject);
+begin
+     //Este if testa se o DataSet está em modo de Inserção(dsinsert), se estiver roda novamente a rotina de geração da PK.
+  If (CDSTAMANHOS.State = DsInsert) Then
+    Begin
+      dm.auxiliar.close;
+      dm.auxiliar.CommandText :=(' SELECT MAX (TAMANHOS.IDTAMANHO) FROM TAMANHOS ');
+      dm.auxiliar.Open;
+
+      CDSTAMANHOS.FieldByName('IDTAMANHO').AsInteger := dm.auxiliar.fieldbyname('MAX').AsInteger +1;
+      MedBusca.Text :=IntToStr(CDSTAMANHOS.FieldByName('IDTAMANHO').AsInteger);
+    End;
+
+  try
+    CDSTAMANHOS.Post;
+    CDSTAMANHOS.ApplyUpdates(0);
+  except
+    ShowMessage('Erro de Gravação....');
+    Exit;
+  end;
+
+  CDSTAMANHOS.Close;
+  SQLTAMANHOS.Close;
+  inherited;
+end;
+
+end.

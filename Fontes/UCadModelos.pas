@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadModelos = class(TFrmCadObjeto)
+  TF_CadModelos = class(TF_CadObjeto)
     Label1: TLabel;
     DBEcodmarca: TDBEdit;
     Label2: TLabel;
@@ -33,7 +33,7 @@ type
   end;
 
 var
-  FrmCadModelos: TFrmCadModelos;
+  F_CadModelos: TF_CadModelos;
 
 implementation
 

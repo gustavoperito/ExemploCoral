@@ -1,0 +1,190 @@
+unit UBusCidade;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UBuscasObjeto, StdCtrls, Buttons, ExtCtrls, Grids, DBGrids,
+  ComCtrls, DBXpress, DB, DBClient, Provider, SqlExpr, FMTBcd;
+
+type
+  TF_BusCid = class(TF_Buscas)
+    PROVIDER: TDataSetProvider;
+    CDSCID: TClientDataSet;
+    DSCID: TDataSource;
+    SQLCID: TSQLDataSet;
+    SQLCIDIDCIDADE: TIntegerField;
+    SQLCIDNOME_CID: TStringField;
+    SQLCIDUF_CID: TStringField;
+    SQLCIDSTATUS_SIS: TStringField;
+    CDSCIDIDCIDADE: TIntegerField;
+    CDSCIDNOME_CID: TStringField;
+    CDSCIDUF_CID: TStringField;
+    CDSCIDSTATUS_SIS: TStringField;
+    ChID: TCheckBox;
+    ChNome: TCheckBox;
+    ChUF: TCheckBox;
+    EdtIDIni: TEdit;
+    EdtIDFin: TEdit;
+    EdtNome: TEdit;
+    EdtUF: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    procedure ChNomeClick(Sender: TObject);
+    procedure ChIDClick(Sender: TObject);
+    procedure ChUFClick(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    SqlOriginal, SqlFiltro, SqlOrdem, SqlStatus : String;
+  end;
+
+var
+  F_BusCid: TF_BusCid;
+
+implementation
+
+uses Udm, UCadCidades, U_Modelo;
+
+{$R *.dfm}
+
+procedure TF_BusCid.ChNomeClick(Sender: TObject);
+begin
+  If (ChNome.Checked = True) then
+   Begin
+     EdtNome.Enabled := True;
+     EdtNome.Color   := ClWhite;
+     EdtNome.SetFocus;
+   End
+ Else
+   Begin
+     EdtNome.Enabled:= False;
+     EdtNome.Color   := clGray;
+   End;
+  inherited;
+end;
+
+procedure TF_BusCid.ChIDClick(Sender: TObject);
+begin
+   If (ChID.Checked = True) then
+   Begin
+     EdtIDIni.Enabled := True;
+     EdtIDFin.Enabled := True;
+     EdtIDIni.Color   := ClWhite;
+     EdtIDFin.Color   := ClWhite;
+     EdtIDIni.SetFocus;
+   End
+ Else
+   Begin
+     EdtIDIni.Enabled:= False;
+     EdtIDFin.Enabled:= False;
+     EdtIDIni.Color   := clGray;
+     EdtIDFin.Color   := clGray;
+   End;
+  inherited;
+end;
+
+procedure TF_BusCid.ChUFClick(Sender: TObject);
+begin
+  If (ChUF.Checked = True) then
+   Begin
+     EdtUF.Enabled := True;
+     EdtUF.Color   := ClWhite;
+     EdtUF.SetFocus;
+   End
+ Else
+   Begin
+     EdtUF.Enabled:= False;
+     EdtUF.Color   := clGray;
+   End;
+  inherited;
+end;
+
+procedure TF_BusCid.BitBtn1Click(Sender: TObject);
+begin
+ 
+  SqlFiltro := ' WHERE 1=1';
+  //Testando os CheckBox
+  If (ChID.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CIDADES.IDCIDADE >= ' + QuotedStr(EdtIDIni.Text) +
+                    ' AND CIDADES.IDCIDADE <= ' + QuotedStr(EdtIDFin.Text);
+    End;
+
+  If (ChNome.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CIDADES.NOME_CID LIKE ' + QuotedStr('%'+EdtNome.Text+'%');
+    End;
+
+  If (ChUF.Checked = True) Then
+    Begin
+       SqlFiltro := SqlFiltro + ' AND CIDADES.UF_CID = ' + QuotedStr(EdtUF.Text);
+    End;
+
+  //Montando a variavel do order by
+  Case RadioOrdem.itemindex of
+    0: SqlOrdem := ' ORDER BY CIDADES.IDCIDADE';
+    1: SqlOrdem := ' ORDER BY CIDADES.NOME_CID';
+    2: SqlOrdem := ' ORDER BY CIDADES.UF_CID';
+  End;
+
+  //MONTANDO A VARIAVEL DO STATUS
+  Case RadioStatus.ItemIndex of
+    0: SqlStatus := ' AND CIDADES.STATUS_SIS = ' + QuotedStr('A') + ' OR CIDADES.STATUS_SIS = ' + QuotedStr('D');
+    1: SqlStatus := ' AND CIDADES.STATUS_SIS = ' + QuotedStr('A');
+    2: SqlStatus := ' AND CIDADES.STATUS_SIS = ' + QuotedStr('D');
+  End;
+
+
+  CDSCID.Close;
+  SQLCID.Close;
+  SQLCID.CommandText := '';
+  SQLCID.CommandText := SqlOriginal + SqlFiltro + SqlStatus + SqlOrdem;
+  SQLCID.Open;
+  CDSCID.Open;
+  inherited;
+end;
+
+procedure TF_BusCid.FormCreate(Sender: TObject);
+begin
+  inherited;
+  PnlTitulo.Color := StringToColor(F_Modelo.DadosConfigura.Corum);
+  SqlOriginal := SQLCID.CommandText;
+end;
+
+procedure TF_BusCid.DBGrid1DblClick(Sender: TObject);
+begin
+    If (CDSCID.RecordCount > 0 ) Then
+    Begin
+        if CDSCID.FieldByName('STATUS_SIS').AsString = 'A' then
+         begin
+            F_CadCidades.CdsCidades.Close;
+            F_CadCidades.SQLCidades.Close;
+            F_CadCidades.SQLCidades.ParamByName('PARIDCIDADE').AsInteger := CDSCIDIDCIDADE.AsInteger;
+            F_CadCidades.SQLCidades.Active:=true;
+            F_CadCidades.CdsCidades.Open;
+            F_CadCidades.CdsCidades.Edit;
+            F_CadCidades.MedBusca.Text := IntToStr(CDSCIDIDCIDADE.AsInteger);
+            F_CadCidades.ativaedesativa;
+            Close;
+         end
+        else
+         begin
+            showmessage('Impossível Editar '+#13+#10+' Cidade Desativado!');
+         end;
+    End
+  Else
+    Begin
+      ShowMessage('Impossível Editar,' + #13 + #10 +'Cidade Inexistente !');
+      Exit;
+    End;
+  inherited;
+end;
+
+end.

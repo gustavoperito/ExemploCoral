@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, FMTBcd, DB, DBClient, Provider, SqlExpr;
 
 type
-  TFrmCadItensCompras = class(TFrmCadObjeto)
+  TF_CadItensCompras = class(TF_CadObjeto)
     SQLITEMCOMPRA: TSQLDataSet;
     PROVIDER: TDataSetProvider;
     CDSITEMCOMPRA: TClientDataSet;
@@ -41,7 +41,7 @@ type
   end;
 
 var
-  FrmCadItensCompras: TFrmCadItensCompras;
+  F_CadItensCompras: TF_CadItensCompras;
 
 implementation
 

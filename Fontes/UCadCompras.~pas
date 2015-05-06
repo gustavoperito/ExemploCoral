@@ -8,7 +8,7 @@ uses
   DBGrids, DBCtrls, FMTBcd, DB, DBClient, Provider, SqlExpr;
 
 type
-  TFrmCadCompras = class(TFrmCadObjeto)
+  TF_CadCompras = class(TFrmCadObjeto)
     SQLCOMPRA: TSQLDataSet;
     PROVIDER: TDataSetProvider;
     CDSCOMPRA: TClientDataSet;
@@ -52,7 +52,7 @@ type
   end;
 
 var
-  FrmCadCompras: TFrmCadCompras;
+  F_CadCompras: TF_CadCompras;
 
 implementation
 
@@ -60,7 +60,7 @@ uses Udm;
 
 {$R *.dfm}
 
-procedure TFrmCadCompras.BtnNovoClick(Sender: TObject);
+procedure TF_CadCompras.BtnNovoClick(Sender: TObject);
 begin
   dm.auxiliar.close;
   dm.auxiliar.CommandText :=(' SELECT MAX (COMPRAS.IDCOMPRA +1) FROM COMPRAS ');
@@ -83,7 +83,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadCompras.BtnGravarClick(Sender: TObject);
+procedure TF_CadCompras.BtnGravarClick(Sender: TObject);
 begin
     If (CDSCOMPRA.State = DsInsert) Then
     Begin
@@ -108,7 +108,7 @@ begin
   inherited;
 end;
 
-procedure TFrmCadCompras.BtnCancelarClick(Sender: TObject);
+procedure TF_CadCompras.BtnCancelarClick(Sender: TObject);
 begin
   CDSCOMPRA.Cancel;
   MedBusca.Text:='';

@@ -1,6 +1,6 @@
-inherited FrmCadCidades: TFrmCadCidades
-  Left = 197
-  Top = 108
+inherited F_CadCidades: TF_CadCidades
+  Left = 504
+  Top = 202
   Caption = 'Cadastro de Cidades'
   ClientHeight = 356
   ClientWidth = 676
@@ -17,11 +17,20 @@ inherited FrmCadCidades: TFrmCadCidades
   end
   inherited PnlBotoes: TPanel
     Left = 551
-    Height = 216
+    Height = 235
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
+    inherited BtnBuscar: TBitBtn
+      OnClick = BtnBuscarClick
+    end
+    inherited BtnStatus: TBitBtn
+      OnClick = BtnStatusClick
+    end
   end
   inherited PnlDados: TPanel
     Width = 551
-    Height = 216
+    Height = 235
     Font.Height = -15
     Font.Name = 'Times New Roman'
     Font.Style = []
@@ -126,14 +135,11 @@ inherited FrmCadCidades: TFrmCadCidades
   end
   inherited MedBusca: TMaskEdit
     Left = 20
-    Top = 141
+    Top = 125
     Width = 93
     Height = 29
     Font.Name = 'Segoe UI Light'
     Font.Style = []
-  end
-  inherited Panel1: TPanel
-    Width = 676
   end
   object DsCidades: TDataSource
     DataSet = CdsCidades

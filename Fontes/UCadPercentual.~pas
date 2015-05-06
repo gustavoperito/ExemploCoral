@@ -1,0 +1,33 @@
+unit UCadPercentual;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, UCadObjeto, StdCtrls, ExtCtrls, Mask, Buttons, ComCtrls, Grids,
+  DBGrids, DBCtrls, DB, DBClient, SimpleDS;
+
+type
+  TF_CadPercentual = class(TFrmCadObjeto)
+    Label1: TLabel;
+    Label2: TLabel;
+    DBEdescr: TDBEdit;
+    Label3: TLabel;
+    DBEperc: TDBEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  F_CadPercentual: TF_CadPercentual;
+
+implementation
+
+uses Udm;
+
+{$R *.dfm}
+
+
+end.

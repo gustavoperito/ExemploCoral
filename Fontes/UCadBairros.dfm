@@ -1,6 +1,6 @@
-inherited FrmCadBairros: TFrmCadBairros
-  Left = 248
-  Top = 150
+inherited F_CadBairros: TF_CadBairros
+  Left = 506
+  Top = 341
   Caption = 'CADASTRO DE BAIRROS'
   ClientHeight = 355
   ClientWidth = 719
@@ -73,10 +73,8 @@ inherited FrmCadBairros: TFrmCadBairros
     Top = 141
     Width = 93
     Height = 29
-    EditMask = '999999;0; '
     Font.Name = 'Segoe UI Light'
     Font.Style = []
-    MaxLength = 6
   end
   object SQLBAI: TSQLDataSet
     CommandText = 'select * '#13#10'from BAIRROS'#13#10#13#10'where BAIRROS.IDBAIRRO = :PARIDBAIRRO'

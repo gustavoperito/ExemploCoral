@@ -49,7 +49,7 @@ begin
  ArquivoIni := TIniFile.Create(caminhoexe+'config.ini');
  //Linkando a variavel de memória com o caminho do arquivo no disco.
 
-
+ 
  //Carregando os valores das variáveis do arquivo.ini para a variável(record) da aplicação....
  DadosConfigura.Aplicacao :=  ArquivoIni.ReadString('SOFTWARE','APLICACAO','Software Ilegal......');
  DadosConfigura.Versao    :=  ArquivoIni.ReadString('SOFTWARE','VERSAO','Pirata');
@@ -59,6 +59,7 @@ begin
  DadosConfigura.Cordois   :=  ArquivoIni.ReadString('CONFIGURACOES','CORDOIS','clWhite');
  ArquivoIni.Free;
  //Descarregando o arquivo.ini da memória.....
+
 end;
 
 end.

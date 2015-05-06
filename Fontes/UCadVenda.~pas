@@ -8,7 +8,7 @@ uses
   Grids, DBGrids;
 
 type
-  TFrmCadVendas = class(TFrmCadObjeto)
+  TF_CadVendas = class(TF_CadObjeto)
     Label1: TLabel;
     Label2: TLabel;
     DBEdit1: TDBEdit;
@@ -18,7 +18,6 @@ type
     DBEdit3: TDBEdit;
     Label5: TLabel;
     DBEdit4: TDBEdit;
-    DBGridVendas: TDBGrid;
   private
     { Private declarations }
   public

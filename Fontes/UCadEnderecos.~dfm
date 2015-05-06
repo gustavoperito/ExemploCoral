@@ -1,4 +1,4 @@
-inherited FrmCadEnderecos: TFrmCadEnderecos
+inherited F_CadEnderecos: TF_CadEnderecos
   Left = 358
   Top = 153
   Caption = 'CADASTRO DE ENDERE'#199'OS'
@@ -287,7 +287,7 @@ inherited FrmCadEnderecos: TFrmCadEnderecos
   end
   inherited MedBusca: TMaskEdit
     Left = 22
-    Top = 120
+    Top = 118
     Width = 155
     Height = 29
     Font.Name = 'Segoe UI Light'
@@ -367,7 +367,6 @@ inherited FrmCadEnderecos: TFrmCadEnderecos
     Top = 8
   end
   object CdsEnd: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Provider'
@@ -379,11 +378,13 @@ inherited FrmCadEnderecos: TFrmCadEnderecos
     end
     object CdsEndIDCIDADE: TIntegerField
       FieldName = 'IDCIDADE'
+      ProviderFlags = []
       Required = True
       OnValidate = CdsEndIDCIDADEValidate
     end
     object CdsEndIDBAIRRO: TIntegerField
       FieldName = 'IDBAIRRO'
+      ProviderFlags = []
       Required = True
       OnValidate = CdsEndIDBAIRROValidate
     end

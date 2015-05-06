@@ -1,6 +1,6 @@
-inherited FrmCadFornecedores: TFrmCadFornecedores
-  Left = 232
-  Top = 112
+inherited F_CadFornecedores: TF_CadFornecedores
+  Left = 252
+  Top = 141
   Caption = 'Cadastro de Fornecedores'
   ClientHeight = 524
   ClientWidth = 1029
@@ -26,9 +26,6 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     inherited BtnGravar: TBitBtn
       OnClick = BtnGravarClick
     end
-    inherited BtnCancelar: TBitBtn
-      OnClick = BtnCancelarClick
-    end
   end
   inherited PnlDados: TPanel
     Top = 81
@@ -39,7 +36,7 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     Font.Style = []
     object Label1: TLabel
       Left = 35
-      Top = 16
+      Top = 15
       Width = 49
       Height = 21
       Caption = 'C'#243'digo'
@@ -355,9 +352,16 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Left = 32
       Top = 200
       Width = 185
-      Height = 27
+      Height = 29
       DataField = 'CEP'
       DataSource = DsFor
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MaxLength = 10
+      ParentFont = False
       TabOrder = 9
     end
     object DBEcompl: TDBEdit
@@ -384,30 +388,51 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
       Left = 224
       Top = 200
       Width = 161
-      Height = 27
+      Height = 29
       Color = clSilver
       DataField = 'NOME_CID'
       DataSource = DsFor
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 12
     end
     object DBEdit2: TDBEdit
       Left = 392
       Top = 200
       Width = 185
-      Height = 27
+      Height = 29
       Color = clSilver
       DataField = 'NOME_BAI'
       DataSource = DsFor
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 13
     end
     object DBEdit3: TDBEdit
       Left = 584
       Top = 200
       Width = 305
-      Height = 27
+      Height = 29
       Color = clSilver
       DataField = 'NOME_END'
       DataSource = DsFor
+      Enabled = False
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 14
     end
   end
@@ -419,11 +444,13 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
   end
   object SqlFor: TSQLDataSet
     CommandText = 
-      'select '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP,'#13#10'CIDADES.NOME_CID,'#13#10'BAI' +
-      'RROS.NOME_BAI,'#13#10'ENDERECOS.NOME_END'#13#10#13#10'from FORNECEDORES, ENDEREC' +
-      'OS, CIDADES, BAIRROS'#13#10#13#10'WHERE FORNECEDORES.IDFORNECEDOR = :PARID' +
-      'FORNECEDOR'#13#10'AND ENDERECOS.IDBAIRRO= BAIRROS.IDBAIRRO '#13#10'AND ENDER' +
-      'ECOS.IDCIDADE = CIDADES.IDCIDADE'
+      'SELECT '#13#10'FORNECEDORES.*,'#13#10'ENDERECOS.CEP,'#13#10'CIDADES.NOME_CID,'#13#10'BAI' +
+      'RROS.NOME_BAI,'#13#10'ENDERECOS.NOME_END'#13#10#13#10'FROM FORNECEDORES'#13#10#13#10'LEFT ' +
+      'OUTER JOIN ENDERECOS ON (ENDERECOS.IDENDERECO = FORNECEDORES.IDE' +
+      'NDERECO)'#13#10'LEFT OUTER JOIN CIDADES ON (CIDADES.IDCIDADE = ENDEREC' +
+      'OS.IDCIDADE)'#13#10'LEFT OUTER JOIN BAIRROS ON (BAIRROS.IDBAIRRO = END' +
+      'ERECOS.IDBAIRRO)'#13#10#13#10'WHERE FORNECEDORES.IDFORNECEDOR = :PARIDFORN' +
+      'ECEDOR'
     DataSource = DsFor
     MaxBlobSize = -1
     Params = <
@@ -543,7 +570,6 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     Top = 8
   end
   object CdsFor: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'Provider'
@@ -626,6 +652,9 @@ inherited FrmCadFornecedores: TFrmCadFornecedores
     end
     object CdsForCEP: TStringField
       FieldName = 'CEP'
+      ProviderFlags = []
+      OnValidate = CdsForCEPValidate
+      EditMask = '99\.999\-999;0;_'
       FixedChar = True
       Size = 8
     end

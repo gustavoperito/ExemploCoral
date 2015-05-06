@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TFrmCadBairros = class(TFrmCadObjeto)
+  TF_CadBairros = class(TFrmCadObjeto)
     Label1: TLabel;
     Label2: TLabel;
     DBEnome: TDBEdit;
@@ -33,7 +33,7 @@ type
   end;
 
 var
-  FrmCadBairros: TFrmCadBairros;
+  F_CadBairros: TF_CadBairros;
 
 implementation
 
@@ -41,7 +41,7 @@ uses Udm;
 
 {$R *.dfm}
 
-procedure TFrmCadBairros.BtnNovoClick(Sender: TObject);
+procedure TF_CadBairros.BtnNovoClick(Sender: TObject);
 begin
 //Gerando o código automaticamente no Auxiliar
   dm.auxiliar.close;
@@ -71,13 +71,13 @@ begin
 
 end;
 
-procedure TFrmCadBairros.BtnSairClick(Sender: TObject);
+procedure TF_CadBairros.BtnSairClick(Sender: TObject);
 begin
   inherited;
   close;
 end;
 
-procedure TFrmCadBairros.BtnCancelarClick(Sender: TObject);
+procedure TF_CadBairros.BtnCancelarClick(Sender: TObject);
 begin
   inherited;
   CDSBAI.Cancel;
@@ -85,7 +85,7 @@ begin
   DBEnome.Text:='';
 end;
 
-procedure TFrmCadBairros.BtnGravarClick(Sender: TObject);
+procedure TF_CadBairros.BtnGravarClick(Sender: TObject);
 begin
   If (CDSBAI.State = DsInsert) Then
     Begin

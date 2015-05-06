@@ -1,6 +1,6 @@
-inherited FrmCadModelos: TFrmCadModelos
-  Left = 456
-  Top = 176
+inherited F_CadModelos: TF_CadModelos
+  Left = 292
+  Top = 247
   Caption = 'CADASTRO DE MODELOS'
   ClientHeight = 418
   ClientWidth = 816
@@ -18,6 +18,9 @@ inherited FrmCadModelos: TFrmCadModelos
   inherited PnlBotoes: TPanel
     Left = 691
     Height = 297
+    inherited BtnGravar: TBitBtn
+      OnClick = BtnGravarClick
+    end
   end
   inherited PnlDados: TPanel
     Width = 691
@@ -141,7 +144,6 @@ inherited FrmCadModelos: TFrmCadModelos
     Top = 8
   end
   object CDSMODELO: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'PROVIDER'
