@@ -21,7 +21,8 @@ uses
   UStatusCli in 'UStatusCli.pas' {F_StatusCli},
   UBusCidade in 'UBusCidade.pas' {F_BusCid},
   UStatusCid in 'UStatusCid.pas' {F_StatusCid},
-  UCadPercentual in 'UCadPercentual.pas' {F_CadPercentual};
+  UCadPercentual in 'UCadPercentual.pas' {F_CadPercentual},
+  UConfiguracoes in 'UConfiguracoes.pas' {F_Configuracoes};
 
 {$R *.res}
 

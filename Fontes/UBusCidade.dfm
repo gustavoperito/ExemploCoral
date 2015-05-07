@@ -1,6 +1,6 @@
 inherited F_BusCid: TF_BusCid
-  Left = 354
-  Top = 156
+  Left = 569
+  Top = 111
   Width = 697
   Height = 563
   Caption = 'Busca de Cidade'
@@ -31,13 +31,13 @@ inherited F_BusCid: TF_BusCid
       OnDblClick = DBGrid1DblClick
       Columns = <
         item
+          Color = clWhite
           Expanded = False
           FieldName = 'IDCIDADE'
           Title.Alignment = taCenter
           Title.Caption = 'C'#243'digo'
-          Title.Color = 16711808
           Title.Font.Charset = ANSI_CHARSET
-          Title.Font.Color = clWhite
+          Title.Font.Color = clBlack
           Title.Font.Height = -12
           Title.Font.Name = 'Arial Narrow'
           Title.Font.Style = [fsBold]
@@ -48,9 +48,8 @@ inherited F_BusCid: TF_BusCid
           FieldName = 'NOME_CID'
           Title.Alignment = taCenter
           Title.Caption = 'Nome da CIdade'
-          Title.Color = 16711808
           Title.Font.Charset = ANSI_CHARSET
-          Title.Font.Color = clWhite
+          Title.Font.Color = clBlack
           Title.Font.Height = -12
           Title.Font.Name = 'Arial Narrow'
           Title.Font.Style = [fsBold]
@@ -61,9 +60,8 @@ inherited F_BusCid: TF_BusCid
           FieldName = 'UF_CID'
           Title.Alignment = taCenter
           Title.Caption = 'UF'
-          Title.Color = 16711808
           Title.Font.Charset = ANSI_CHARSET
-          Title.Font.Color = clWhite
+          Title.Font.Color = clBlack
           Title.Font.Height = -12
           Title.Font.Name = 'Arial Narrow'
           Title.Font.Style = [fsBold]
@@ -74,9 +72,8 @@ inherited F_BusCid: TF_BusCid
           FieldName = 'STATUS_SIS'
           Title.Alignment = taCenter
           Title.Caption = 'Status'
-          Title.Color = 16711808
           Title.Font.Charset = ANSI_CHARSET
-          Title.Font.Color = clWhite
+          Title.Font.Color = clBlack
           Title.Font.Height = -12
           Title.Font.Name = 'Arial Narrow'
           Title.Font.Style = [fsBold]

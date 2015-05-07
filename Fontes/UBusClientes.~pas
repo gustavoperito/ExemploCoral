@@ -184,14 +184,14 @@ begin
     Begin
         if CdsCli.FieldByName('STATUS_SIS').AsString = 'A' then
          begin
-            FrmCadClientes.Cdscli.Close;
-            FrmCadClientes.SqlCli.Close;
-            FrmCadClientes.sqlcli.ParamByName('PARIDCLIENTE').AsInteger := CdsCliIDCLIENTE.AsInteger;
-            FrmCadClientes.sqlcli.Active:=true;
-            FrmCadClientes.Cdscli.Open;
-            FrmCadClientes.cdscli.Edit;
-            FrmCadClientes.MedBusca.Text := IntToStr(CdsCliIDCLIENTE.AsInteger);
-            FrmCadClientes.ativaedesativa;
+            F_CadClientes.Cdscli.Close;
+            F_CadClientes.SqlCli.Close;
+            F_CadClientes.sqlcli.ParamByName('PARIDCLIENTE').AsInteger := CdsCliIDCLIENTE.AsInteger;
+            F_CadClientes.sqlcli.Active:=true;
+            F_CadClientes.Cdscli.Open;
+            F_CadClientes.cdscli.Edit;
+            F_CadClientes.MedBusca.Text := IntToStr(CdsCliIDCLIENTE.AsInteger);
+            F_CadClientes.ativaedesativa;
             Close;
          end
         else

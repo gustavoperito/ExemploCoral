@@ -154,7 +154,7 @@ end;
 procedure TF_BusCid.FormCreate(Sender: TObject);
 begin
   inherited;
-  PnlTitulo.Color := StringToColor(F_Modelo.DadosConfigura.Corum);
+  PnlTitulo.Color := StringToColor(DadosConfigura.Corum);
   SqlOriginal := SQLCID.CommandText;
 end;
 
@@ -164,14 +164,14 @@ begin
     Begin
         if CDSCID.FieldByName('STATUS_SIS').AsString = 'A' then
          begin
-            FrmCadCidades.CdsCidades.Close;
-            FrmCadCidades.SQLCidades.Close;
-            FrmCadCidades.SQLCidades.ParamByName('PARIDCIDADE').AsInteger := CDSCIDIDCIDADE.AsInteger;
-            FrmCadCidades.SQLCidades.Active:=true;
-            FrmCadCidades.CdsCidades.Open;
-            FrmCadCidades.CdsCidades.Edit;
-            FrmCadCidades.MedBusca.Text := IntToStr(CDSCIDIDCIDADE.AsInteger);
-            FrmCadCidades.ativaedesativa;
+            F_CadCidades.CdsCidades.Close;
+            F_CadCidades.SQLCidades.Close;
+            F_CadCidades.SQLCidades.ParamByName('PARIDCIDADE').AsInteger := CDSCIDIDCIDADE.AsInteger;
+            F_CadCidades.SQLCidades.Active:=true;
+            F_CadCidades.CdsCidades.Open;
+            F_CadCidades.CdsCidades.Edit;
+            F_CadCidades.MedBusca.Text := IntToStr(CDSCIDIDCIDADE.AsInteger);
+            F_CadCidades.ativaedesativa;
             Close;
          end
         else

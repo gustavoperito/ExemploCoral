@@ -6,7 +6,8 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, StdCtrls, ExtCtrls, ToolWin, ActnMan, ActnCtrls,
   ActnMenus, ComCtrls,
-  U_Modelo;
+  U_Modelo,
+  Mask;
 
 type
   TF_Principal = class(TF_Modelo)
@@ -36,6 +37,7 @@ type
     lblCadTamanhos: TLabel;
     lblCadModelo: TLabel;
     lblCadMarcas: TLabel;
+    MaskEdit1: TMaskEdit;
     procedure CLIENTES1Click(Sender: TObject);
     procedure FORNECEDORES1Click(Sender: TObject);
     procedure BAIRROS1Click(Sender: TObject);
@@ -76,6 +78,7 @@ type
     procedure lblCadTamanhosClick(Sender: TObject);
     procedure lblCadModeloClick(Sender: TObject);
     procedure lblCadMarcasClick(Sender: TObject);
+    procedure lblConfigClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -90,7 +93,8 @@ implementation
 uses UCadClientes, UcadFornecedor, UCadBairros, UCadCidades, UCadCompras,
   UCadEnderecos, UCadItensCompras, UCadItensVendas, UCadLogradouro,
   UCadMarcas, UCadModelos, UCadObjeto, UCadPercentual, UCadProdutos,
-  UCadTamanhos, UCadVenda, Udm;
+  UCadTamanhos, UCadVenda, Udm,
+  UConfiguracoes;
 
 {$R *.dfm}
 
@@ -287,6 +291,7 @@ end;
 procedure TF_Principal.FormShow(Sender: TObject);
 var
    caminhoexe:string;
+   i:integer;
 begin
   shpMenu.Brush.Color := StringToColor(DadosConfigura.Corum);
 
@@ -297,6 +302,18 @@ begin
   DM.conexao.Params.Values['User_Name'] := 'SYSDBA';
   DM.conexao.Params.Values['Password']  := 'masterkey';
   DM.conexao.Params.Values['SQLDialect']:= '3';
+
+  for i := 0 to ComponentCount-1 do
+  begin
+   if (Components[i] is TLabel) then
+     TLabel(Components[i]).Color := StringToColor(DadosConfigura.Corum);
+     TLabel(Components[i]).Font.Color := StringToColor(DadosConfigura.Cordois);
+  end;
+  lblLogo.Color := clWhite;
+  lblLogo.Font.Color := StringToColor(DadosConfigura.Corum);
+  pnlCliente.Color := StringToColor(DadosConfigura.Corum);
+  MonthCalendar1.CalColors.TitleBackColor := StringToColor(DadosConfigura.Corum);
+
   inherited;
 end;
 
@@ -356,6 +373,14 @@ begin
    Application.CreateForm(TF_CadMarcas, F_CadMarcas);
    F_CadMarcas.ShowModal;
    F_CadMarcas.Free;
+  inherited;
+end;
+
+procedure TF_Principal.lblConfigClick(Sender: TObject);
+begin
+    Application.CreateForm(TF_Configuracoes, F_Configuracoes);
+    F_Configuracoes.ShowModal;
+    F_Configuracoes.Free;
   inherited;
 end;
 

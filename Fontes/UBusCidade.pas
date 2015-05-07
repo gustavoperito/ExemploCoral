@@ -154,7 +154,7 @@ end;
 procedure TF_BusCid.FormCreate(Sender: TObject);
 begin
   inherited;
-  PnlTitulo.Color := StringToColor(F_Modelo.DadosConfigura.Corum);
+  PnlTitulo.Color := StringToColor(DadosConfigura.Corum);
   SqlOriginal := SQLCID.CommandText;
 end;
 

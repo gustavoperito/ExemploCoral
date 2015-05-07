@@ -1,17 +1,19 @@
 inherited F_Buscas: TF_Buscas
-  Left = 255
-  Top = 95
+  Left = 217
+  Top = 114
   Width = 1066
   Height = 636
   Caption = 'F_Buscas'
   Color = clWhite
   OldCreateOrder = True
+  Position = poDesktopCenter
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object PnlTitulo: TPanel
     Left = 0
     Top = 0
-    Width = 1050
+    Width = 1058
     Height = 73
     Align = alTop
     Caption = 'T'#205'TULO'
@@ -26,8 +28,8 @@ inherited F_Buscas: TF_Buscas
   end
   object StbStatus: TStatusBar
     Left = 0
-    Top = 557
-    Width = 1050
+    Top = 565
+    Width = 1058
     Height = 40
     Panels = <
       item
@@ -46,8 +48,8 @@ inherited F_Buscas: TF_Buscas
   object PnlDados: TPanel
     Left = 0
     Top = 228
-    Width = 1050
-    Height = 329
+    Width = 1058
+    Height = 337
     Align = alClient
     BevelInner = bvRaised
     BevelWidth = 2
@@ -63,8 +65,8 @@ inherited F_Buscas: TF_Buscas
     object DBGrid1: TDBGrid
       Left = 4
       Top = 4
-      Width = 1038
-      Height = 317
+      Width = 1046
+      Height = 325
       Align = alClient
       TabOrder = 0
       TitleFont.Charset = ANSI_CHARSET
@@ -72,12 +74,13 @@ inherited F_Buscas: TF_Buscas
       TitleFont.Height = -12
       TitleFont.Name = 'Arial Narrow'
       TitleFont.Style = [fsBold]
+      OnDrawColumnCell = DBGrid1DrawColumnCell
     end
   end
   object PanFiltro: TPanel
     Left = 0
     Top = 73
-    Width = 1050
+    Width = 1058
     Height = 155
     Align = alTop
     BevelInner = bvRaised

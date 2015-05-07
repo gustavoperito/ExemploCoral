@@ -1,6 +1,6 @@
 object F_Principal: TF_Principal
   Left = 225
-  Top = 117
+  Top = 125
   Width = 1035
   Height = 609
   Caption = 'Lojas'
@@ -38,7 +38,7 @@ object F_Principal: TF_Principal
     Width = 60
     Height = 21
     Caption = 'Cadastro'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -55,7 +55,7 @@ object F_Principal: TF_Principal
     Width = 29
     Height = 21
     Caption = 'Lista'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -71,7 +71,7 @@ object F_Principal: TF_Principal
     Width = 4
     Height = 21
     Caption = '|'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -86,7 +86,7 @@ object F_Principal: TF_Principal
     Width = 4
     Height = 21
     Caption = '|'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -121,7 +121,7 @@ object F_Principal: TF_Principal
     Caption = 'DuPr'#225' Langerie.'
     Color = clWhite
     Font.Charset = ANSI_CHARSET
-    Font.Color = 16711808
+    Font.Color = clBlack
     Font.Height = -35
     Font.Name = 'Segoe UI Light'
     Font.Style = []
@@ -134,7 +134,7 @@ object F_Principal: TF_Principal
     Width = 96
     Height = 21
     Caption = 'Configura'#231#245'es'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -142,6 +142,7 @@ object F_Principal: TF_Principal
     Font.Style = []
     ParentColor = False
     ParentFont = False
+    OnClick = lblConfigClick
   end
   object lblTraco3: TLabel
     Left = 530
@@ -149,7 +150,7 @@ object F_Principal: TF_Principal
     Width = 4
     Height = 21
     Caption = '|'
-    Color = 16711808
+    Color = clBlack
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
     Font.Height = -16
@@ -174,9 +175,9 @@ object F_Principal: TF_Principal
       Height = 154
       CalColors.BackColor = clWhite
       CalColors.TextColor = clBlack
-      CalColors.TitleBackColor = 16711808
+      CalColors.TitleBackColor = clBlack
       CalColors.TrailingTextColor = clBlack
-      Date = 42098.323604606480000000
+      Date = 42132.485367789360000000
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -190,13 +191,23 @@ object F_Principal: TF_Principal
         'Lembretes do dia:')
       TabOrder = 1
     end
+    object MaskEdit1: TMaskEdit
+      Left = 328
+      Top = 176
+      Width = 115
+      Height = 21
+      EditMask = '!\(999\)000-0000;1;_'
+      MaxLength = 13
+      TabOrder = 2
+      Text = '(   )   -    '
+    end
   end
   object pnlCliente: TPanel
     Left = 136
     Top = 125
     Width = 177
     Height = 260
-    Color = 16711808
+    Color = clBlack
     TabOrder = 1
     Visible = False
     object lblCadCli: TLabel
@@ -205,11 +216,13 @@ object F_Principal: TF_Principal
       Width = 121
       Height = 17
       Caption = 'Cadastro de Clientes'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadCliClick
       OnMouseEnter = lblCadCliMouseEnter
@@ -221,11 +234,13 @@ object F_Principal: TF_Principal
       Width = 123
       Height = 17
       Caption = 'Cadastro de Cidades'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = LblListaFornClick
       OnMouseMove = LblCadCidMouseMove
@@ -237,11 +252,13 @@ object F_Principal: TF_Principal
       Width = 137
       Height = 17
       Caption = 'Cadastro de Endere'#231'os'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadEndClick
       OnMouseEnter = lblCadEndMouseEnter
@@ -253,11 +270,13 @@ object F_Principal: TF_Principal
       Width = 117
       Height = 17
       Caption = 'Cadastro de Bairros'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = Label7Click
     end
@@ -267,11 +286,13 @@ object F_Principal: TF_Principal
       Width = 156
       Height = 17
       Caption = 'Cadastro de Fornecedores'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadFornClick
       OnMouseEnter = lblCadFornMouseEnter
@@ -283,11 +304,13 @@ object F_Principal: TF_Principal
       Width = 129
       Height = 17
       Caption = 'Cadastro de Compras'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadCompraClick
     end
@@ -297,11 +320,13 @@ object F_Principal: TF_Principal
       Width = 129
       Height = 17
       Caption = 'Cadastro de Produtos'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadProdutoClick
     end
@@ -311,11 +336,13 @@ object F_Principal: TF_Principal
       Width = 136
       Height = 17
       Caption = 'Cadastro de Tamanhos'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadTamanhosClick
     end
@@ -325,11 +352,13 @@ object F_Principal: TF_Principal
       Width = 128
       Height = 17
       Caption = 'Cadastro de Modelos'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadModeloClick
     end
@@ -339,11 +368,13 @@ object F_Principal: TF_Principal
       Width = 119
       Height = 17
       Caption = 'Cadastro de Marcas'
+      Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentColor = False
       ParentFont = False
       OnClick = lblCadMarcasClick
     end
@@ -353,7 +384,7 @@ object F_Principal: TF_Principal
     Top = 125
     Width = 142
     Height = 84
-    Color = 16711808
+    Color = clBlack
     TabOrder = 2
     Visible = False
   end

@@ -7,24 +7,24 @@ inherited F_BusCli: TF_BusCli
   PixelsPerInch = 96
   TextHeight = 13
   inherited PnlTitulo: TPanel
-    Width = 1030
+    Width = 1038
     Height = 105
     Caption = 'Busca de Clientes'
     Font.Name = 'Segoe UI Light'
     Font.Style = []
   end
   inherited StbStatus: TStatusBar
-    Top = 575
-    Width = 1030
+    Top = 583
+    Width = 1038
   end
   inherited PnlDados: TPanel
     Top = 217
-    Width = 1030
-    Height = 358
+    Width = 1038
+    Height = 366
     Enabled = True
     inherited DBGrid1: TDBGrid
-      Width = 1018
-      Height = 346
+      Width = 1026
+      Height = 354
       DataSource = DSClientes
       Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
       ReadOnly = True
@@ -157,7 +157,7 @@ inherited F_BusCli: TF_BusCli
   end
   inherited PanFiltro: TPanel
     Top = 105
-    Width = 1030
+    Width = 1038
     Height = 112
     object Label1: TLabel [0]
       Left = 668
