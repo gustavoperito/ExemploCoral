@@ -8,7 +8,7 @@ uses
   Grids, DBGrids, DB, DBClient, SimpleDS, FMTBcd, Provider, SqlExpr;
 
 type
-  TF_CadBairros = class(TFrmCadObjeto)
+  TF_CadBairros = class(TF_CadObjeto)
     Label1: TLabel;
     Label2: TLabel;
     DBEnome: TDBEdit;

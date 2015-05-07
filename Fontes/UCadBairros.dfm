@@ -1,6 +1,6 @@
 inherited F_CadBairros: TF_CadBairros
-  Left = 506
-  Top = 341
+  Left = 380
+  Top = 193
   Caption = 'CADASTRO DE BAIRROS'
   ClientHeight = 355
   ClientWidth = 719

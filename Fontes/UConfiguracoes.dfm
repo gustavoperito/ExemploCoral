@@ -12,7 +12,6 @@ object F_Configuracoes: TF_Configuracoes
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -52,6 +51,5 @@ object F_Configuracoes: TF_Configuracoes
     Height = 25
     Caption = 'Salvar'
     TabOrder = 2
-    OnClick = btnSalvarClick
   end
 end

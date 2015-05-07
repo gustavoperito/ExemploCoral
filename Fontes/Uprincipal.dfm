@@ -1,6 +1,6 @@
 object F_Principal: TF_Principal
-  Left = 225
-  Top = 125
+  Left = 207
+  Top = 110
   Width = 1035
   Height = 609
   Caption = 'Lojas'
@@ -177,7 +177,7 @@ object F_Principal: TF_Principal
       CalColors.TextColor = clBlack
       CalColors.TitleBackColor = clBlack
       CalColors.TrailingTextColor = clBlack
-      Date = 42132.485367789360000000
+      Date = 42132.876462546290000000
       TabOrder = 0
     end
     object Memo1: TMemo
@@ -190,16 +190,6 @@ object F_Principal: TF_Principal
       Lines.Strings = (
         'Lembretes do dia:')
       TabOrder = 1
-    end
-    object MaskEdit1: TMaskEdit
-      Left = 328
-      Top = 176
-      Width = 115
-      Height = 21
-      EditMask = '!\(999\)000-0000;1;_'
-      MaxLength = 13
-      TabOrder = 2
-      Text = '(   )   -    '
     end
   end
   object pnlCliente: TPanel

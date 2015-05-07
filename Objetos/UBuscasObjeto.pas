@@ -63,7 +63,10 @@ begin
       Canvas.Brush.Color := $00D2D2D2;
 
     if (gdSelected in State) then
-        Canvas.Brush.Color := clGray
+    begin
+        Canvas.Brush.Color := clGray;
+        Canvas.Font.Color := clBlack;
+    end
       else
       begin
         Canvas.Font.Style := [fsBold];

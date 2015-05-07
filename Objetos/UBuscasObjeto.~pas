@@ -47,7 +47,6 @@ var
 begin
   PnlTitulo.Color := StringToColor(DadosConfigura.Corum);
   PnlTitulo.Font.Color := StringToColor(DadosConfigura.Cordois);
-  //DBGrid1.Columns.State.Color := StringToColor(DadosConfigura.Corum);
 
   inherited;
 end;

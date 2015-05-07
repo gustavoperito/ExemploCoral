@@ -1,6 +1,6 @@
 inherited F_CadEnderecos: TF_CadEnderecos
-  Left = 358
-  Top = 153
+  Left = 403
+  Top = 56
   Caption = 'CADASTRO DE ENDERE'#199'OS'
   ClientHeight = 414
   ClientWidth = 722
@@ -53,7 +53,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 22
+      Left = 390
       Top = 160
       Width = 125
       Height = 21
@@ -67,7 +67,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 22
+      Left = 390
       Top = 208
       Width = 118
       Height = 21
@@ -109,7 +109,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object SpeedButton1: TSpeedButton
-      Left = 147
+      Left = 523
       Top = 179
       Width = 25
       Height = 25
@@ -122,7 +122,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object SpeedButton2: TSpeedButton
-      Left = 175
+      Left = 551
       Top = 179
       Width = 25
       Height = 25
@@ -136,7 +136,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       OnClick = SpeedButton2Click
     end
     object SpeedButton5: TSpeedButton
-      Left = 174
+      Left = 550
       Top = 227
       Width = 25
       Height = 25
@@ -150,7 +150,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       OnClick = SpeedButton5Click
     end
     object SpeedButton6: TSpeedButton
-      Left = 146
+      Left = 522
       Top = 227
       Width = 25
       Height = 25
@@ -163,7 +163,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 208
+      Left = 24
       Top = 160
       Width = 113
       Height = 21
@@ -177,7 +177,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 209
+      Left = 25
       Top = 208
       Width = 110
       Height = 21
@@ -191,12 +191,14 @@ inherited F_CadEnderecos: TF_CadEnderecos
       ParentFont = False
     end
     object edtIDCidade: TDBEdit
-      Left = 22
+      Left = 390
       Top = 179
-      Width = 123
+      Width = 131
       Height = 29
+      Color = clSilver
       DataField = 'IDCIDADE'
       DataSource = DsEnd
+      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -206,12 +208,14 @@ inherited F_CadEnderecos: TF_CadEnderecos
       TabOrder = 0
     end
     object edtIDBairro: TDBEdit
-      Left = 22
+      Left = 390
       Top = 227
-      Width = 123
+      Width = 131
       Height = 29
+      Color = clSilver
       DataField = 'IDBAIRRO'
       DataSource = DsEnd
+      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -251,14 +255,12 @@ inherited F_CadEnderecos: TF_CadEnderecos
       TabOrder = 3
     end
     object DBEdit5: TDBEdit
-      Left = 208
+      Left = 22
       Top = 179
       Width = 361
       Height = 29
-      Color = clSilver
       DataField = 'NOME_CID'
       DataSource = DsEnd
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -266,16 +268,15 @@ inherited F_CadEnderecos: TF_CadEnderecos
       Font.Style = []
       ParentFont = False
       TabOrder = 4
+      OnKeyPress = DBEdit5KeyPress
     end
     object DBEdit6: TDBEdit
-      Left = 208
+      Left = 22
       Top = 227
       Width = 361
       Height = 29
-      Color = clSilver
       DataField = 'NOME_BAI'
       DataSource = DsEnd
-      Enabled = False
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -283,6 +284,7 @@ inherited F_CadEnderecos: TF_CadEnderecos
       Font.Style = []
       ParentFont = False
       TabOrder = 5
+      OnKeyPress = DBEdit6KeyPress
     end
   end
   inherited MedBusca: TMaskEdit
@@ -380,13 +382,11 @@ inherited F_CadEnderecos: TF_CadEnderecos
       FieldName = 'IDCIDADE'
       ProviderFlags = []
       Required = True
-      OnValidate = CdsEndIDCIDADEValidate
     end
     object CdsEndIDBAIRRO: TIntegerField
       FieldName = 'IDBAIRRO'
       ProviderFlags = []
       Required = True
-      OnValidate = CdsEndIDBAIRROValidate
     end
     object CdsEndNOME_END: TStringField
       FieldName = 'NOME_END'

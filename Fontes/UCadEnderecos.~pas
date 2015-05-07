@@ -58,6 +58,8 @@ type
     procedure SpeedButton5Click(Sender: TObject);
     procedure CdsEndIDCIDADEValidate(Sender: TField);
     procedure CdsEndIDBAIRROValidate(Sender: TField);
+    procedure DBEdit5KeyPress(Sender: TObject; var Key: Char);
+    procedure DBEdit6KeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -197,7 +199,7 @@ end;
 
 procedure TF_CadEnderecos.SpeedButton5Click(Sender: TObject);
 begin
-  Application.CreateForm(T_CadBairros, F_CadBairros);
+  Application.CreateForm(TF_CadBairros, F_CadBairros);
   F_CadBairros.ShowModal;
   F_CadBairros.Free;
   inherited;
@@ -246,6 +248,51 @@ begin
       CdsEndNOME_CID.AsString := '';
       MessageDlg('Cidade Desativada....',mtInformation,[MBOK],0);
     END;
+  inherited;
+end;
+
+procedure TF_CadEnderecos.DBEdit5KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+   begin
+      DM.auxiliar.Close;
+      dm.auxiliar.CommandText:=('SELECT IDCIDADE, NOME_CID FROM CIDADES WHERE NOME_CID LIKE ' + QuotedStr(DBEdit5.Text+'%'));//QuotedStr(CdsEnd.FIELDBYNAME('NOME_CID').AsString+'%'));
+      DM.auxiliar.Open;
+      if (DM.auxiliar.FIELDBYNAME('IDCIDADE').AsString <> '') then
+       begin
+          CdsEndIDCIDADE.AsString := DM.auxiliar.FIELDBYNAME('IDCIDADE').AsString;
+          CdsEndNOME_CID.AsString := DM.auxiliar.FIELDBYNAME('NOME_CID').AsString;
+       end
+      else
+       begin
+          ShowMessage('Cidade não encontrada!');
+          DBEdit5.Text := '';
+          edtIDCidade.Text := '';
+       end;
+   end;
+  inherited;
+
+end;
+
+procedure TF_CadEnderecos.DBEdit6KeyPress(Sender: TObject; var Key: Char);
+begin
+  if key = #13 then
+   begin
+      DM.auxiliar.Close;
+      dm.auxiliar.CommandText:=('SELECT IDBAIRRO, NOME_BAI FROM BAIRROS WHERE NOME_BAI LIKE ' + QuotedStr(DBEdit6.Text+'%'));
+      DM.auxiliar.Open;
+      if (DM.auxiliar.FIELDBYNAME('IDBAIRRO').AsString <> '') then
+       begin
+          CdsEndIDBAIRRO.AsString := DM.auxiliar.FIELDBYNAME('IDBAIRRO').AsString;
+          CdsEndNOME_BAI.AsString := DM.auxiliar.FIELDBYNAME('NOME_BAI').AsString;
+       end
+      else
+       begin
+          ShowMessage('Bairro não encontrada!');
+          DBEdit6.Text := '';
+          edtIDBairro.Text := '';
+       end;
+   end;
   inherited;
 end;
 

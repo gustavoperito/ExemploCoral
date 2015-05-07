@@ -261,6 +261,8 @@ begin
   MedBusca.Text :=IntToStr(CdsCli.FieldByName('IDCLIENTE').AsInteger);
   //Atribuindo o Status
   CdsCliSTATUS_SIS.AsString := 'A';
+  CdsCliDATA_CAD_CLI.AsString := DateToStr(date);
+
   inherited;
 end;
 

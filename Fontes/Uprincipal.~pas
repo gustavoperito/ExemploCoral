@@ -37,7 +37,6 @@ type
     lblCadTamanhos: TLabel;
     lblCadModelo: TLabel;
     lblCadMarcas: TLabel;
-    MaskEdit1: TMaskEdit;
     procedure CLIENTES1Click(Sender: TObject);
     procedure FORNECEDORES1Click(Sender: TObject);
     procedure BAIRROS1Click(Sender: TObject);
